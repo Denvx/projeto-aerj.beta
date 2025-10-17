@@ -4,7 +4,6 @@ import com.example.projeto_aerj.beta.enums.PessoaStatusEnum;
 import com.example.projeto_aerj.beta.valueObjects.CPFValue;
 import com.example.projeto_aerj.beta.valueObjects.EmailValue;
 import com.example.projeto_aerj.beta.enums.PessoaSexoEnum;
-
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.Date;

@@ -5,13 +5,12 @@ import com.example.projeto_aerj.beta.enums.PessoaStatusEnum;
 import com.example.projeto_aerj.beta.enums.StudentStatusEnum;
 import com.example.projeto_aerj.beta.valueObjects.CPFValue;
 import com.example.projeto_aerj.beta.valueObjects.EmailValue;
-
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.Date;
 
 public class Student extends Pessoa{
-    private long id;
+    private long idStudent;
     // falta fk de pessoa
     private String registration;
     private String course;
@@ -20,9 +19,9 @@ public class Student extends Pessoa{
     private LocalDateTime creationDate;
     private LocalDateTime updateDate;
 
-    public Student(long idPerson, String name, Date dataNascimento, EmailValue emailValue, String telefone, CPFValue cpfValue, PessoaSexoEnum pessoaSexoEnum, PessoaStatusEnum pessoaStatusEnum, ZonedDateTime dataCriacao, ZonedDateTime dataAtualizacao, long id, String registration, String course, String institution, StudentStatusEnum studentStatus, LocalDateTime creationDate, LocalDateTime updateDate) {
+    public Student(long idPerson, String name, Date dataNascimento, EmailValue emailValue, String telefone, CPFValue cpfValue, PessoaSexoEnum pessoaSexoEnum, PessoaStatusEnum pessoaStatusEnum, ZonedDateTime dataCriacao, ZonedDateTime dataAtualizacao, long idStudent, String registration, String course, String institution, StudentStatusEnum studentStatus, LocalDateTime creationDate, LocalDateTime updateDate) {
         super(idPerson, name, dataNascimento, emailValue, telefone, cpfValue, pessoaSexoEnum, pessoaStatusEnum, dataCriacao, dataAtualizacao);
-        this.id = id;
+        this.idStudent = idStudent;
         this.registration = registration;
         this.course = course;
         this.institution = institution;
@@ -31,12 +30,12 @@ public class Student extends Pessoa{
         this.updateDate = updateDate;
     }
 
-    public long getId() {
-        return id;
+    public long getIdStudent() {
+        return idStudent;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdStudent(long idStudent) {
+        this.idStudent = idStudent;
     }
 
     public String getRegistration() {
