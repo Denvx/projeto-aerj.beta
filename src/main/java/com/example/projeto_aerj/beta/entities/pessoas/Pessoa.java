@@ -1,54 +1,56 @@
 package com.example.projeto_aerj.beta.entities.pessoas;
 
-import com.example.projeto_aerj.beta.enums.AtivosEnum;
+import com.example.projeto_aerj.beta.enums.PessoaStatusEnum;
 import com.example.projeto_aerj.beta.valueObjects.CPFValue;
 import com.example.projeto_aerj.beta.valueObjects.EmailValue;
-import com.example.projeto_aerj.beta.enums.SexoEnum;
+import com.example.projeto_aerj.beta.enums.PessoaSexoEnum;
+
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.Date;
 
 public class Pessoa {
 
-    private long id;
-    private String nome;
+    private long idPerson;
+    private String name;
     private Date dataNascimento;
     private EmailValue emailValue;
     private String telefone;
     private CPFValue cpfValue;
-    private SexoEnum sexoEnum;
-    private AtivosEnum ativosEnum;
+    private PessoaSexoEnum pessoaSexoEnum;
+    private PessoaStatusEnum pessoaStatusEnum;
     private ZonedDateTime dataCriacao;
     private ZonedDateTime dataAtualizacao;
 
     public Pessoa() {}
 
-    public Pessoa(long id, String nome, Date dataNascimento, EmailValue emailValue, String telefone, CPFValue cpfValue, SexoEnum sexoEnum, AtivosEnum ativosEnum, ZonedDateTime dataCriacao, ZonedDateTime dataAtualizacao) {
-        this.id = id;
-        this.nome = nome;
+    public Pessoa(long idPerson, String name, Date dataNascimento, EmailValue emailValue, String telefone, CPFValue cpfValue, PessoaSexoEnum pessoaSexoEnum, PessoaStatusEnum pessoaStatusEnum, ZonedDateTime dataCriacao, ZonedDateTime dataAtualizacao) {
+        this.idPerson = idPerson;
+        this.name = name;
         this.dataNascimento = dataNascimento;
         this.emailValue = emailValue;
         this.telefone = telefone;
         this.cpfValue = cpfValue;
-        this.sexoEnum = sexoEnum;
-        this.ativosEnum = ativosEnum;
+        this.pessoaSexoEnum = pessoaSexoEnum;
+        this.pessoaStatusEnum = pessoaStatusEnum;
         this.dataCriacao = dataCriacao;
         this.dataAtualizacao = dataAtualizacao;
     }
 
-    public long getId() {
-        return id;
+    public long getIdPerson() {
+        return idPerson;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdPerson(long idPerson) {
+        this.idPerson = idPerson;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getDataNascimento() {
@@ -83,24 +85,24 @@ public class Pessoa {
         this.cpfValue = cpfValue;
     }
 
-    public SexoEnum getSexoEnum() {
-        return sexoEnum;
+    public PessoaSexoEnum getSexoEnum() {
+        return pessoaSexoEnum;
     }
 
-    public void setSexoEnum(SexoEnum sexoEnum) {
-        this.sexoEnum = sexoEnum;
+    public void setSexoEnum(PessoaSexoEnum pessoaSexoEnum) {
+        this.pessoaSexoEnum = pessoaSexoEnum;
     }
 
-    public AtivosEnum getAtivosEnum() {
-        return ativosEnum;
+    public PessoaStatusEnum getAtivosEnum() {
+        return pessoaStatusEnum;
     }
 
-    public void setAtivosEnum(AtivosEnum ativosEnum) {
-        this.ativosEnum = ativosEnum;
+    public void setAtivosEnum(PessoaStatusEnum pessoaStatusEnum) {
+        this.pessoaStatusEnum = pessoaStatusEnum;
     }
 
-    public ZonedDateTime getDataCriacao() {
-        return dataCriacao;
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao.toLocalDateTime();
     }
 
     public void setDataCriacao(ZonedDateTime dataCriacao) {

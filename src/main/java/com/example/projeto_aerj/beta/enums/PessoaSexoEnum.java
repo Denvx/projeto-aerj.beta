@@ -1,13 +1,13 @@
 package com.example.projeto_aerj.beta.enums;
 
-public enum SexoEnum {
+public enum PessoaSexoEnum {
     MASCULINO("Masculino"),
     FEMININO("Feminino"),
     OUTRO("Outro");
 
     private final String descricao;
 
-    SexoEnum(String descricao) {
+    PessoaSexoEnum(String descricao) {
         this.descricao = descricao;
     }
 

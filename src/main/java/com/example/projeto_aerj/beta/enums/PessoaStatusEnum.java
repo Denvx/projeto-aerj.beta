@@ -1,13 +1,12 @@
 package com.example.projeto_aerj.beta.enums;
 
-public enum AtivosEnum {
+public enum PessoaStatusEnum {
     ATIVO("Ativo"),
-    INATIVO("Inativo"),
-    SUSPENSO("Suspenso"); // caso queira
+    INATIVO("Inativo");
 
     private final String descricao;
 
-    AtivosEnum(String descricao) {
+    PessoaStatusEnum(String descricao) {
         this.descricao = descricao;
     }
 
