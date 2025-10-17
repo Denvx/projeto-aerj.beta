@@ -4,13 +4,13 @@ public enum PessoaStatusEnum {
     ATIVO("Ativo"),
     INATIVO("Inativo");
 
-    private final String descricao;
+    private final String status;
 
     PessoaStatusEnum(String descricao) {
-        this.descricao = descricao;
+        this.status = descricao;
     }
 
     public String getDescricao() {
-        return descricao;
+        return status;
     }
 }

@@ -5,13 +5,13 @@ public enum PessoaSexoEnum {
     FEMININO("Feminino"),
     OUTRO("Outro");
 
-    private final String descricao;
+    private final String sexo;
 
     PessoaSexoEnum(String descricao) {
-        this.descricao = descricao;
+        this.sexo = descricao;
     }
 
     public String getDescricao() {
-        return descricao;
+        return sexo;
     }
 }

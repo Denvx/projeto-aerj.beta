@@ -22,8 +22,6 @@ public class Pessoa {
     private ZonedDateTime dataCriacao;
     private ZonedDateTime dataAtualizacao;
 
-    public Pessoa() {}
-
     public Pessoa(long idPerson, String name, Date dataNascimento, EmailValue emailValue, String telefone, CPFValue cpfValue, PessoaSexoEnum pessoaSexoEnum, PessoaStatusEnum pessoaStatusEnum, ZonedDateTime dataCriacao, ZonedDateTime dataAtualizacao) {
         this.idPerson = idPerson;
         this.name = name;

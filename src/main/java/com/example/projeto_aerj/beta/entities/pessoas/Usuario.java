@@ -11,7 +11,6 @@ import java.util.Date;
 
 public class Usuario extends Pessoa {
     private long idUser;
-    //aqui vem a fk de pessoa
     private String nameUser;
     private String passoword;
     private UsuarioRoleEnum usuarioRoleEnum;
