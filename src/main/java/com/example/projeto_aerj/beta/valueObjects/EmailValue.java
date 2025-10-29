@@ -1,7 +1,11 @@
 package com.example.projeto_aerj.beta.valueObjects;
 
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
+
 import java.util.regex.Pattern;
 
+@Embeddable
 public class EmailValue {
     private final String email;
     private static final Pattern EMAIL_PATTERN = Pattern.compile(

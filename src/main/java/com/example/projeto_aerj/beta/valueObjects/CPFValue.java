@@ -1,5 +1,8 @@
 package com.example.projeto_aerj.beta.valueObjects;
 
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public class CPFValue {
 
     private final String cpf;
