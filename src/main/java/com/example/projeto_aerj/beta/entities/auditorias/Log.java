@@ -1,4 +1,4 @@
-package com.example.projeto_aerj.beta.entities.auditoria;
+package com.example.projeto_aerj.beta.entities.auditorias;
 
 import java.time.LocalDateTime;
 
