@@ -1,13 +1,15 @@
 package com.example.projeto_aerj.beta.entities.viagens;
 
+import com.example.projeto_aerj.beta.enums.StatusViagemEnum;
+
 public class StatusAlunoViagem {
 
     private long id;
-    private statusAlunoViagemEnum statusAlunoViagemEnum;
+    private StatusViagemEnum statusViagemEnum;
 
-    public StatusAlunoViagem(long id, statusAlunoViagemEnum statusAlunoViagemEnum) {
+    public StatusAlunoViagem(long id, StatusViagemEnum statusViagemEnum) {
         this.id = id;
-        this.statusAlunoViagemEnum = statusAlunoViagemEnum;
+        this.statusViagemEnum = statusViagemEnum;
     }
 
     public long getId() {
@@ -18,11 +20,11 @@ public class StatusAlunoViagem {
         this.id = id;
     }
 
-    public statusAlunoViagemEnum getStatusAlunoViagemEnum() {
-        return statusAlunoViagemEnum;
+    public StatusViagemEnum getStatusViagemEnum() {
+        return statusViagemEnum;
     }
 
-    public void setStatusAlunoViagemEnum(statusAlunoViagemEnum statusAlunoViagemEnum) {
-        this.statusAlunoViagemEnum = statusAlunoViagemEnum;
+    public void setStatusViagemEnum(StatusViagemEnum statusViagemEnum) {
+        this.statusViagemEnum = statusViagemEnum;
     }
 }
