@@ -2,6 +2,7 @@ package com.example.projeto_aerj.beta.enums;
 
 public enum UsuarioStatusEnum {
     ATIVO("Ativo"),
+    INATIVO("Inativo"),
     BLOQUEADO("Bloqueado"),
     BANIDO("Banido"),
     AGUARDANDOCONFIRMACAO("Aguardando Confirmação");

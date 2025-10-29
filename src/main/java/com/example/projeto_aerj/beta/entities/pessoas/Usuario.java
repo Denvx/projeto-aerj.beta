@@ -1,52 +1,95 @@
 package com.example.projeto_aerj.beta.entities.pessoas;
 
-import com.example.projeto_aerj.beta.enums.PessoaSexoEnum;
-import com.example.projeto_aerj.beta.enums.PessoaStatusEnum;
+import com.example.projeto_aerj.beta.enums.UsuarioSexoEnum;
 import com.example.projeto_aerj.beta.enums.UsuarioRoleEnum;
 import com.example.projeto_aerj.beta.enums.UsuarioStatusEnum;
 import com.example.projeto_aerj.beta.valueObjects.CPFValue;
 import com.example.projeto_aerj.beta.valueObjects.EmailValue;
-import java.time.ZonedDateTime;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
-public class Usuario extends Pessoa {
-    private long idUser;
-    private String nameUser;
-    private String passoword;
+public class Usuario{
+    private long id;
+    private String name;
+    private CPFValue cpfValue;
+    private Date dataNascimento;
+    private String telefone;
+    private EmailValue emailValue;
+    private UsuarioSexoEnum usuarioSexoEnum;
     private UsuarioRoleEnum usuarioRoleEnum;
     private UsuarioStatusEnum usuarioStatusEnum;
+    private LocalDateTime dataCriacao;
+    private LocalDateTime dataAtualizacao;
 
-    public Usuario(long id, String nome, Date dataNascimento, EmailValue emailValue, String telefone, CPFValue cpfValue, PessoaSexoEnum pessoaSexoEnum, PessoaStatusEnum pessoaStatusEnum, ZonedDateTime dataCriacao, ZonedDateTime dataAtualizacao, long idUser, String nameUser, String passoword, UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum) {
-        super(idUser, nome, dataNascimento, emailValue, telefone, cpfValue, pessoaSexoEnum, pessoaStatusEnum, dataCriacao, dataAtualizacao);
-        this.idUser = idUser;
-        this.nameUser = nameUser;
-        this.passoword = passoword;
+    public Usuario(long id, String name, CPFValue cpfValue, Date dataNascimento, String telefone, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
+        this.id = id;
+        this.name = name;
+        this.cpfValue = cpfValue;
+        this.dataNascimento = dataNascimento;
+        this.telefone = telefone;
+        this.emailValue = emailValue;
+        this.usuarioSexoEnum = usuarioSexoEnum;
         this.usuarioRoleEnum = usuarioRoleEnum;
         this.usuarioStatusEnum = usuarioStatusEnum;
+        this.dataCriacao = dataCriacao;
+        this.dataAtualizacao = dataAtualizacao;
     }
 
-    public long getIdUser() {
-        return idUser;
+    public long getId() {
+        return id;
     }
 
-    public void setIdUser(long idUser) {
-        this.idUser = idUser;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getNameUser() {
-        return nameUser;
+    public String getName() {
+        return name;
     }
 
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPassoword() {
-        return passoword;
+    public CPFValue getCpfValue() {
+        return cpfValue;
     }
 
-    public void setPassoword(String passoword) {
-        this.passoword = passoword;
+    public void setCpfValue(CPFValue cpfValue) {
+        this.cpfValue = cpfValue;
+    }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public EmailValue getEmailValue() {
+        return emailValue;
+    }
+
+    public void setEmailValue(EmailValue emailValue) {
+        this.emailValue = emailValue;
+    }
+
+    public UsuarioSexoEnum getUsuarioSexoEnum() {
+        return usuarioSexoEnum;
+    }
+
+    public void setUsuarioSexoEnum(UsuarioSexoEnum usuarioSexoEnum) {
+        this.usuarioSexoEnum = usuarioSexoEnum;
     }
 
     public UsuarioRoleEnum getUsuarioRoleEnum() {
@@ -63,5 +106,21 @@ public class Usuario extends Pessoa {
 
     public void setUsuarioStatusEnum(UsuarioStatusEnum usuarioStatusEnum) {
         this.usuarioStatusEnum = usuarioStatusEnum;
+    }
+
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(LocalDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
     }
 }
