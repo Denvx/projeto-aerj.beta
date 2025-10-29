@@ -10,11 +10,10 @@ public class AlunoViagem {
 
     private LocalDateTime dataAtualizacao;
 
-    public AlunoViagem(long id, String descricao, LocalDateTime dataCriacao) {
+    public AlunoViagem(long id, String descricao) {
         this.id = id;
         this.descricao = descricao;
         this.dataCriacao = LocalDateTime.now();
-
         this.dataAtualizacao = LocalDateTime.now();
     }
 
@@ -37,5 +36,9 @@ public class AlunoViagem {
 
     public LocalDateTime getDataCriacao() {
         return dataCriacao;
+    }
+
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
     }
 }
