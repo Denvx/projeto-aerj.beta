@@ -86,7 +86,7 @@ Auditoria
 **Decisão**: Criar uma tabela `Pessoas` centralizada para armazenar dados comuns.
 
 **Por que?**
-- Evita duplicação de dados (nome, CPF, telefone, email)
+- Evita duplicação de dados (name, CPF, telefone, email)
 - Uma pessoa pode ter múltiplos papéis (ex: aluno que vira motorista)
 - Facilita atualizações de dados pessoais
 - Segue o princípio DRY (Don't Repeat Yourself)
@@ -223,10 +223,10 @@ Veiculos 1───N Viagens          │
 **Exemplos**:
 ```sql
 -- Não pode apagar Aluno com Pagamentos
-FOREIGN KEY (alunosId) REFERENCES Alunos(id) ON DELETE RESTRICT
+FOREIGN KEY (alunosId) REFERENCES Alunos(idUser) ON DELETE RESTRICT
 
 -- Não pode apagar Pessoa com Usuarios
-FOREIGN KEY (pessoasId) REFERENCES Pessoas(id) ON DELETE RESTRICT
+FOREIGN KEY (pessoasId) REFERENCES Pessoas(idUser) ON DELETE RESTRICT
 ```
 
 ---
@@ -300,7 +300,7 @@ ativo BOOLEAN DEFAULT TRUE
 
 **Desativar usuário** (ao invés de DELETE):
 ```sql
-UPDATE Pessoas SET ativo = FALSE WHERE id = 1;
+UPDATE Pessoas SET ativo = FALSE WHERE idUser = 1;
 UPDATE Usuarios SET ativo = FALSE WHERE pessoasId = 1;
 UPDATE Alunos SET ativo = FALSE WHERE pessoasId = 1;
 ```
@@ -313,7 +313,7 @@ SELECT * FROM Usuarios WHERE ativo = TRUE;
 
 **Reativar usuário**:
 ```sql
-UPDATE Pessoas SET ativo = TRUE WHERE id = 1;
+UPDATE Pessoas SET ativo = TRUE WHERE idUser = 1;
 UPDATE Usuarios SET ativo = TRUE WHERE pessoasId = 1;
 ```
 
@@ -338,7 +338,7 @@ UPDATE Usuarios SET ativo = TRUE WHERE pessoasId = 1;
 **Pessoas**:
 ```sql
 INDEX idx_identificacao (identificacao)  -- Busca por CPF
-INDEX idx_nome (nome)                    -- Busca/ordenação por nome
+INDEX idx_nome (name)                    -- Busca/ordenação por name
 INDEX idx_ativo (ativo)                  -- Filtragem de ativos
 ```
 
@@ -373,7 +373,7 @@ SELECT * FROM Pessoas WHERE identificacao = '12345678901';
 ### Índices Automáticos
 
 O MySQL cria automaticamente índices em:
-- PRIMARY KEY (id)
+- PRIMARY KEY (idUser)
 - UNIQUE (identificacao, matricula, cnh, placa)
 - FOREIGN KEY (InnoDB cria automaticamente)
 
@@ -402,7 +402,7 @@ SOURCE /caminho/para/schema.sql;
 **Cadastrar nova pessoa/aluno**:
 ```sql
 -- 1. Inserir pessoa
-INSERT INTO Pessoas (nome, identificacao, dataNascimento, telefone, email, sexo)
+INSERT INTO Pessoas (name, identificacao, dataNascimento, telefone, email, sexo)
 VALUES ('João Silva', '12345678901', '2000-05-15', '71987654321', 'joao@email.com', 'M');
 
 -- 2. Inserir aluno
@@ -438,30 +438,30 @@ VALUES (1, CURDATE(), 200.00, 2, 1);
 ```sql
 SELECT 
     a.matricula,
-    p.nome,
+    p.name,
     p.email,
     p.telefone,
     a.curso
 FROM Alunos a
-INNER JOIN Pessoas p ON a.pessoasId = p.id
+INNER JOIN Pessoas p ON a.pessoasId = p.idUser
 WHERE a.ativo = TRUE AND p.ativo = TRUE;
 ```
 
 **Viagens do dia com motorista e veículo**:
 ```sql
 SELECT 
-    v.id,
+    v.idUser,
     v.horarioSaida,
     r.origem,
     r.destino,
-    p.nome AS motorista,
+    p.name AS motorista,
     ve.placa,
     ve.modelo
 FROM Viagens v
-INNER JOIN Rotas r ON v.rotasId = r.id
-INNER JOIN Motoristas m ON v.motoristasId = m.id
-INNER JOIN Pessoas p ON m.pessoasId = p.id
-INNER JOIN Veiculos ve ON v.veiculosId = ve.id
+INNER JOIN Rotas r ON v.rotasId = r.idUser
+INNER JOIN Motoristas m ON v.motoristasId = m.idUser
+INNER JOIN Pessoas p ON m.pessoasId = p.idUser
+INNER JOIN Veiculos ve ON v.veiculosId = ve.idUser
 WHERE v.dataViagem = CURDATE()
 AND v.status = 'Agendada';
 ```
@@ -469,19 +469,19 @@ AND v.status = 'Agendada';
 **Alunos inadimplentes**:
 ```sql
 SELECT 
-    p.nome,
+    p.name,
     a.matricula,
     m.mesReferencia,
     m.valor,
     COALESCE(SUM(pag.valor), 0) AS pago,
     (m.valor - COALESCE(SUM(pag.valor), 0)) AS devido
 FROM Mensalidades m
-INNER JOIN Alunos a ON m.alunosId = a.id
-INNER JOIN Pessoas p ON a.pessoasId = p.id
-LEFT JOIN Pagamentos pag ON pag.alunosId = a.id 
+INNER JOIN Alunos a ON m.alunosId = a.idUser
+INNER JOIN Pessoas p ON a.pessoasId = p.idUser
+LEFT JOIN Pagamentos pag ON pag.alunosId = a.idUser 
     AND MONTH(pag.dataPagamento) = MONTH(m.mesReferencia)
 WHERE a.ativo = TRUE
-GROUP BY m.id, p.nome, a.matricula, m.mesReferencia, m.valor
+GROUP BY m.idUser, p.name, a.matricula, m.mesReferencia, m.valor
 HAVING devido > 0;
 ```
 
@@ -502,12 +502,12 @@ ORDER BY capacidade DESC;
 
 ```sql
 -- Desativar completamente
-UPDATE Pessoas SET ativo = FALSE WHERE id = 1;
+UPDATE Pessoas SET ativo = FALSE WHERE idUser = 1;
 UPDATE Alunos SET ativo = FALSE WHERE pessoasId = 1;
 UPDATE Usuarios SET ativo = FALSE WHERE pessoasId = 1;
 
 -- Ou apenas impedir login
-UPDATE Usuarios SET ativo = FALSE WHERE id = 1;
+UPDATE Usuarios SET ativo = FALSE WHERE idUser = 1;
 ```
 
 ---
