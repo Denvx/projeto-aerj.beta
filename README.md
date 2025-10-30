@@ -65,7 +65,6 @@ Operacionais
 ├── Rotas
 ├── Viagens
 ├── AlunosViagens (N:N)
-└── Assentos
 
 Financeiro
 ├── Pagamentos
