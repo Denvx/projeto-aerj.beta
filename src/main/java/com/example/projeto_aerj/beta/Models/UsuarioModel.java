@@ -1,28 +1,57 @@
-package com.example.projeto_aerj.beta.entities.pessoas;
+package com.example.projeto_aerj.beta.Models;
 
-import com.example.projeto_aerj.beta.enums.UsuarioSexoEnum;
 import com.example.projeto_aerj.beta.enums.UsuarioRoleEnum;
+import com.example.projeto_aerj.beta.enums.UsuarioSexoEnum;
 import com.example.projeto_aerj.beta.enums.UsuarioStatusEnum;
 import com.example.projeto_aerj.beta.valueObjects.CPFValue;
 import com.example.projeto_aerj.beta.valueObjects.EmailValue;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class Usuario{
-    private long id;
+@Entity
+@Table(name = "usuario")
+public class UsuarioModel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "name")
     private String name;
+
+    private String firstName;
+
+    @Embedded
     private CPFValue cpfValue;
+
     private Date dataNascimento;
+
     private String telefone;
+
+    @Embedded
     private EmailValue emailValue;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "usuarioSexo", columnDefinition = "VARCHAR(20)")
     private UsuarioSexoEnum usuarioSexoEnum;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "usuarioRole", columnDefinition = "VARCHAR(20)")
     private UsuarioRoleEnum usuarioRoleEnum;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "usuarioStatus", columnDefinition = "VARCHAR(20)")
     private UsuarioStatusEnum usuarioStatusEnum;
+
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;
 
-    public Usuario(long id, String name, CPFValue cpfValue, Date dataNascimento, String telefone, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
+    public UsuarioModel() {
+    }
+
+    public UsuarioModel(int id, String name, String firstName, CPFValue cpfValue, Date dataNascimento, String telefone, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
         this.id = id;
         this.name = name;
         this.cpfValue = cpfValue;
@@ -40,7 +69,7 @@ public class Usuario{
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -50,6 +79,14 @@ public class Usuario{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public CPFValue getCpfValue() {
