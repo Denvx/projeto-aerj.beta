@@ -13,7 +13,7 @@ public class LogModel {
     private int id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_log_id", referencedColumnName = "id", unique = true)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id", unique = true)
     private UsuarioModel usuarioModel;
 
     private String acao;
@@ -24,11 +24,8 @@ public class LogModel {
     public LogModel() {
     }
 
-    public LogModel(int id, String acao, LocalDateTime dataRegistrada) {
-        this.id = id;
+    public LogModel(String acao) {
         this.acao = acao;
-
-        this.dataRegistrada = dataRegistrada;
     }
 
     public int getId() {
@@ -43,20 +40,16 @@ public class LogModel {
         return acao;
     }
 
+    public void setAcao(String acao) {
+        this.acao = acao;
+    }
+
     public UsuarioModel getUsuarioModel() {
         return usuarioModel;
     }
 
     public void setUsuarioModel(UsuarioModel usuarioModel) {
         this.usuarioModel = usuarioModel;
-    }
-
-    public void setDataRegistrada(LocalDateTime dataRegistrada) {
-        this.dataRegistrada = dataRegistrada;
-    }
-
-    public void setAcao(String acao) {
-        this.acao = acao;
     }
 
     public LocalDateTime getDataRegistrada() {
@@ -68,5 +61,3 @@ public class LogModel {
         this.dataRegistrada = LocalDateTime.now();
     }
 }
-
-

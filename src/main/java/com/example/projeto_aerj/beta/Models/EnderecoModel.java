@@ -107,15 +107,7 @@ public class EnderecoModel {
         return dataRegistrada;
     }
 
-    public void setDataRegistrada(LocalDateTime dataRegistrada) {
-        this.dataRegistrada = dataRegistrada;
-    }
-
     public LocalDateTime getDataAtualizacao() {
         return dataAtualizacao;
-    }
-
-    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
-        this.dataAtualizacao = dataAtualizacao;
     }
 }
