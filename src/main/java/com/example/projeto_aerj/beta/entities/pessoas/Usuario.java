@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Usuario{
-    private long id;
+    private int id;
     private String name;
     private CPFValue cpfValue;
     private Date dataNascimento;
@@ -22,7 +22,7 @@ public class Usuario{
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;
 
-    public Usuario(long id, String name, CPFValue cpfValue, Date dataNascimento, String telefone, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
+    public Usuario(int id, String name, CPFValue cpfValue, Date dataNascimento, String telefone, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
         this.id = id;
         this.name = name;
         this.cpfValue = cpfValue;
@@ -36,11 +36,11 @@ public class Usuario{
         this.dataAtualizacao = dataAtualizacao;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

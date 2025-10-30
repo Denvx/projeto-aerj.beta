@@ -4,19 +4,19 @@ import com.example.projeto_aerj.beta.enums.StatusViagemEnum;
 
 public class StatusAlunoViagem {
 
-    private long id;
+    private int id;
     private StatusViagemEnum statusViagemEnum;
 
-    public StatusAlunoViagem(long id, StatusViagemEnum statusViagemEnum) {
+    public StatusAlunoViagem(int id, StatusViagemEnum statusViagemEnum) {
         this.id = id;
         this.statusViagemEnum = statusViagemEnum;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

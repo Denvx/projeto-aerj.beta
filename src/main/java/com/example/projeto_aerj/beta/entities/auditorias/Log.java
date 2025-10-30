@@ -4,21 +4,21 @@ import java.time.LocalDateTime;
 
 public class Log {
 
-    private long id;
+    private int id;
     private String acao;
     private LocalDateTime dataRegistrada;
 
-    public Log(long id, String acao, LocalDateTime dataRegistrada) {
+    public Log(int id, String acao, LocalDateTime dataRegistrada) {
         this.id = id;
         this.acao = acao;
         this.dataRegistrada = dataRegistrada;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

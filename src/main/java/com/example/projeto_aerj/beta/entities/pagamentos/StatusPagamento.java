@@ -2,19 +2,19 @@ package com.example.projeto_aerj.beta.entities.pagamentos;
 
 public class StatusPagamento {
 
-    private long id;
+    private int id;
     private String nome;
 
-    public StatusPagamento(long id, String nome) {
+    public StatusPagamento(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

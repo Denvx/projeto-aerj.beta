@@ -5,21 +5,21 @@ import java.util.Date;
 
 public class Avisos {
 
-    private long id;
+    private int id;
     private String mensagem;
     private LocalDateTime dataEnvio;
 
-    public Avisos(long id, String mensagem, LocalDateTime dataEnvio) {
+    public Avisos(int id, String mensagem, LocalDateTime dataEnvio) {
         this.id = id;
         this.mensagem = mensagem;
         this.dataEnvio = dataEnvio;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

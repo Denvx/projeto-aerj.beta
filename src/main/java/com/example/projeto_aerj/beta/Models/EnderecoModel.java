@@ -9,10 +9,11 @@ public class EnderecoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @Column(name = "UsuarioId")
-    private Long usuarioId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id", unique = true)
+    private UsuarioModel usuarioModel;
 
     private String logradouro;
     private String numero;
@@ -46,55 +47,75 @@ public class EnderecoModel {
         this.dataAtualizacao = LocalDateTime.now();
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public UsuarioModel getUsuarioModel() {
+        return usuarioModel;
+    }
+
+    public void setUsuarioModel(UsuarioModel usuarioModel) {
+        this.usuarioModel = usuarioModel;
     }
 
     public String getLogradouro() {
         return logradouro;
     }
 
-    public String getNumero() {
-        return numero;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public LocalDateTime getDataRegistrada() {
-        return dataRegistrada;
-    }
-
-    public LocalDateTime getDataAtualizacao() {
-        return dataAtualizacao;
-    }
-
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
+    }
+
+    public String getNumero() {
+        return numero;
     }
 
     public void setNumero(String numero) {
         this.numero = numero;
     }
 
+    public String getBairro() {
+        return bairro;
+    }
+
     public void setBairro(String bairro) {
         this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
     }
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
 
+    public String getCep() {
+        return cep;
+    }
+
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public LocalDateTime getDataRegistrada() {
+        return dataRegistrada;
+    }
+
+    public void setDataRegistrada(LocalDateTime dataRegistrada) {
+        this.dataRegistrada = dataRegistrada;
+    }
+
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
     }
 }

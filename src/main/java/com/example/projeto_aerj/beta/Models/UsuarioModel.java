@@ -18,6 +18,12 @@ public class UsuarioModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @OneToOne(mappedBy = "usuarioModel")
+    private EnderecoModel endereco;
+
+    @OneToOne(mappedBy = "logModel")
+    private LogModel log;
+
     @Column(name = "name")
     private String name;
 
@@ -45,15 +51,20 @@ public class UsuarioModel {
     @Column(name = "usuarioStatus", columnDefinition = "VARCHAR(20)")
     private UsuarioStatusEnum usuarioStatusEnum;
 
+    @Column(updatable = false)
     private LocalDateTime dataCriacao;
+
     private LocalDateTime dataAtualizacao;
 
     public UsuarioModel() {
     }
 
-    public UsuarioModel(int id, String name, String firstName, CPFValue cpfValue, Date dataNascimento, String telefone, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
+    public UsuarioModel(int id, EnderecoModel endereco, LogModel log, String name, String firstName, CPFValue cpfValue, Date dataNascimento, String telefone, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
         this.id = id;
+        this.endereco = endereco;
+        this.log = log;
         this.name = name;
+        this.firstName = firstName;
         this.cpfValue = cpfValue;
         this.dataNascimento = dataNascimento;
         this.telefone = telefone;
@@ -65,7 +76,17 @@ public class UsuarioModel {
         this.dataAtualizacao = dataAtualizacao;
     }
 
-    public long getId() {
+    @PrePersist
+    public void onCreate(){
+        this.dataCriacao = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void onUpdate(){
+        this.dataAtualizacao = LocalDateTime.now();
+    }
+
+    public int getId() {
         return id;
     }
 

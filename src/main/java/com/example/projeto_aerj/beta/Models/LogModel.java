@@ -10,7 +10,7 @@ public class LogModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_log_id", referencedColumnName = "id", unique = true)
@@ -24,18 +24,18 @@ public class LogModel {
     public LogModel() {
     }
 
-    public LogModel(Long id, String acao, LocalDateTime dataRegistrada) {
+    public LogModel(int id, String acao, LocalDateTime dataRegistrada) {
         this.id = id;
         this.acao = acao;
 
         this.dataRegistrada = dataRegistrada;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
