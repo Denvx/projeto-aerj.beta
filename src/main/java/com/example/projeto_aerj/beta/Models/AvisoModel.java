@@ -16,7 +16,7 @@ public class AvisoModel {
     private int usuarioId;
 
     @OneToOne
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id", unique = true)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id", insertable = false, updatable = false, unique = true)
     private UsuarioModel usuarioModel;
 
     private String mensagem;

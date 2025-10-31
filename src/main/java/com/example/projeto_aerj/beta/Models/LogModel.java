@@ -16,7 +16,7 @@ public class LogModel {
     private int usuarioId;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id", unique = true)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id", insertable = false, updatable = false, unique = true)
     private UsuarioModel usuarioModel;
 
     private String acao;
