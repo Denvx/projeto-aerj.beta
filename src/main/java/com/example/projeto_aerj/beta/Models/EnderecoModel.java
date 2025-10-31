@@ -11,6 +11,9 @@ public class EnderecoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "usuario_id") //id que eu referencio onde vai ser criado e usado a fk
+    private int usuarioId;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", unique = true)
     private UsuarioModel usuarioModel;

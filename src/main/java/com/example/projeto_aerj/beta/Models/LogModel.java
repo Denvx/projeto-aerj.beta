@@ -12,6 +12,9 @@ public class LogModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "usuario_id")
+    private int usuarioId;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", unique = true)
     private UsuarioModel usuarioModel;

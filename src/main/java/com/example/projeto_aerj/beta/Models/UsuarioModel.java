@@ -24,6 +24,10 @@ public class UsuarioModel {
     @OneToOne(mappedBy = "usuarioModel")
     private LogModel log;
 
+    @OneToOne(mappedBy = "usuarioModel")
+    private AvisoModel avisoModel;
+
+
     private String name;
     private String firstName;
 
