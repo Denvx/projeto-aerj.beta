@@ -1,4 +1,4 @@
-package com.example.projeto_aerj.beta.Models;
+package com.example.projeto_aerj.beta.models;
 
 import com.example.projeto_aerj.beta.enums.UsuarioRoleEnum;
 import com.example.projeto_aerj.beta.enums.UsuarioSexoEnum;

@@ -1,4 +1,4 @@
-package com.example.projeto_aerj.beta.Models;
+package com.example.projeto_aerj.beta.models;
 
 import jakarta.persistence.*;
 
