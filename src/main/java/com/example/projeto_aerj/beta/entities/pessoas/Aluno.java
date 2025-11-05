@@ -15,7 +15,7 @@ public class Aluno extends Usuario{
     private String curso;
     private String instituicao;
 
-    public Aluno(long id, String name, CPFValue cpfValue, Date dataNascimento, String telefone, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, String matricula, String curso, String instituicao) {
+    public Aluno(int id, String name, CPFValue cpfValue, Date dataNascimento, String telefone, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, String matricula, String curso, String instituicao) {
         super(id, name, cpfValue, dataNascimento, telefone, emailValue, usuarioSexoEnum, usuarioRoleEnum, usuarioStatusEnum, dataCriacao, dataAtualizacao);
 
         this.matricula = matricula;

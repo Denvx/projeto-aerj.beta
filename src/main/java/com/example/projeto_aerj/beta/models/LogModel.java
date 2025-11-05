@@ -1,4 +1,4 @@
-package com.example.projeto_aerj.beta.Models;
+package com.example.projeto_aerj.beta.models;
 
 import jakarta.persistence.*;
 
@@ -10,10 +10,13 @@ public class LogModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
+
+    @Column(name = "usuario_id")
+    private int usuarioId;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_log_id", referencedColumnName = "id", unique = true)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id", insertable = false, updatable = false, unique = true)
     private UsuarioModel usuarioModel;
 
     private String acao;
@@ -24,23 +27,24 @@ public class LogModel {
     public LogModel() {
     }
 
-    public LogModel(Long id, String acao, LocalDateTime dataRegistrada) {
-        this.id = id;
+    public LogModel(String acao) {
         this.acao = acao;
-
-        this.dataRegistrada = dataRegistrada;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     public String getAcao() {
         return acao;
+    }
+
+    public void setAcao(String acao) {
+        this.acao = acao;
     }
 
     public UsuarioModel getUsuarioModel() {
@@ -49,14 +53,6 @@ public class LogModel {
 
     public void setUsuarioModel(UsuarioModel usuarioModel) {
         this.usuarioModel = usuarioModel;
-    }
-
-    public void setDataRegistrada(LocalDateTime dataRegistrada) {
-        this.dataRegistrada = dataRegistrada;
-    }
-
-    public void setAcao(String acao) {
-        this.acao = acao;
     }
 
     public LocalDateTime getDataRegistrada() {
@@ -68,5 +64,3 @@ public class LogModel {
         this.dataRegistrada = LocalDateTime.now();
     }
 }
-
-

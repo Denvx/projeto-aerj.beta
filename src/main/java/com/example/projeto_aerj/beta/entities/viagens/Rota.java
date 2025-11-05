@@ -2,23 +2,23 @@ package com.example.projeto_aerj.beta.entities.viagens;
 
 public class Rota {
 
-    private long id;
+    private int id;
     private String origem;
     private String destino;
     private String duracaoEstimada;
 
-    public Rota(long id, String origem, String destino, String duracaoEstimada) {
+    public Rota(int id, String origem, String destino, String duracaoEstimada) {
         this.id = id;
         this.origem = origem;
         this.destino = destino;
         this.duracaoEstimada = duracaoEstimada;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

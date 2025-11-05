@@ -13,7 +13,7 @@ public class Administrador extends Usuario {
 
     private String cargo;
 
-    public Administrador(long id, String name, CPFValue cpfValue, Date dataNascimento, String telefone, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, String cargo) {
+    public Administrador(int id, String name, CPFValue cpfValue, Date dataNascimento, String telefone, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, String cargo) {
         super(id, name, cpfValue, dataNascimento, telefone, emailValue, usuarioSexoEnum, usuarioRoleEnum, usuarioStatusEnum, dataCriacao, dataAtualizacao);
 
         this.cargo = cargo;
