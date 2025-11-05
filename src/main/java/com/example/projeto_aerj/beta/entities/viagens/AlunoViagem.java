@@ -4,13 +4,13 @@ import java.time.LocalDateTime;
 
 public class AlunoViagem {
 
-    private long id;
+    private int id;
     private String descricao;
     private LocalDateTime dataCriacao;
 
     private LocalDateTime dataAtualizacao;
 
-    public AlunoViagem(long id, String descricao) {
+    public AlunoViagem(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
         this.dataCriacao = LocalDateTime.now();
@@ -26,11 +26,11 @@ public class AlunoViagem {
         this.dataAtualizacao = LocalDateTime.now();
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

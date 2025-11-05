@@ -1,4 +1,4 @@
-package com.example.projeto_aerj.beta.Models;
+package com.example.projeto_aerj.beta.models;
 
 import com.example.projeto_aerj.beta.enums.UsuarioRoleEnum;
 import com.example.projeto_aerj.beta.enums.UsuarioSexoEnum;
@@ -7,8 +7,8 @@ import com.example.projeto_aerj.beta.valueObjects.CPFValue;
 import com.example.projeto_aerj.beta.valueObjects.EmailValue;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "usuario")
@@ -18,15 +18,23 @@ public class UsuarioModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
-    private String name;
+    @OneToOne(mappedBy = "usuarioModel")
+    private EnderecoModel endereco;
 
+    @OneToOne(mappedBy = "usuarioModel")
+    private LogModel log;
+
+    @OneToOne(mappedBy = "usuarioModel")
+    private AvisoModel avisoModel;
+
+
+    private String name;
     private String firstName;
 
     @Embedded
     private CPFValue cpfValue;
 
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
 
     private String telefone;
 
@@ -45,15 +53,19 @@ public class UsuarioModel {
     @Column(name = "usuarioStatus", columnDefinition = "VARCHAR(20)")
     private UsuarioStatusEnum usuarioStatusEnum;
 
+    @Column(updatable = false)
     private LocalDateTime dataCriacao;
+
     private LocalDateTime dataAtualizacao;
 
     public UsuarioModel() {
     }
 
-    public UsuarioModel(int id, String name, String firstName, CPFValue cpfValue, Date dataNascimento, String telefone, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
-        this.id = id;
+    public UsuarioModel(String name, String firstName, CPFValue cpfValue, LocalDate dataNascimento,
+                        String telefone, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum,
+                        UsuarioRoleEnum usuarioRoleEnum, UsuarioStatusEnum usuarioStatusEnum) {
         this.name = name;
+        this.firstName = firstName;
         this.cpfValue = cpfValue;
         this.dataNascimento = dataNascimento;
         this.telefone = telefone;
@@ -61,16 +73,40 @@ public class UsuarioModel {
         this.usuarioSexoEnum = usuarioSexoEnum;
         this.usuarioRoleEnum = usuarioRoleEnum;
         this.usuarioStatusEnum = usuarioStatusEnum;
-        this.dataCriacao = dataCriacao;
-        this.dataAtualizacao = dataAtualizacao;
     }
 
-    public long getId() {
+    @PrePersist
+    protected void onCreate() { // ✅ Use 'protected' em vez de 'public'
+        this.dataCriacao = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() { // ✅ Use 'protected' em vez de 'public'
+        this.dataAtualizacao = LocalDateTime.now();
+    }
+
+    public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public EnderecoModel getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(EnderecoModel endereco) {
+        this.endereco = endereco;
+    }
+
+    public LogModel getLog() {
+        return log;
+    }
+
+    public void setLog(LogModel log) {
+        this.log = log;
     }
 
     public String getName() {
@@ -97,11 +133,11 @@ public class UsuarioModel {
         this.cpfValue = cpfValue;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -149,15 +185,7 @@ public class UsuarioModel {
         return dataCriacao;
     }
 
-    public void setDataCriacao(LocalDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
-    }
-
     public LocalDateTime getDataAtualizacao() {
         return dataAtualizacao;
-    }
-
-    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
-        this.dataAtualizacao = dataAtualizacao;
     }
 }

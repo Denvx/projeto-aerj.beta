@@ -3,7 +3,7 @@ package com.example.projeto_aerj.beta.entities.endereco;
 import java.time.LocalDateTime;
 
 public class Endereco {
-    private long id;
+    private int id;
     private String logradouro;
     private String numero;
     private String bairro;
@@ -12,7 +12,7 @@ public class Endereco {
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;
 
-    public Endereco(long id, String logradouro, String numero, String bairro, String cidade, String cep, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
+    public Endereco(int id, String logradouro, String numero, String bairro, String cidade, String cep, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
         this.id = id;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -23,11 +23,11 @@ public class Endereco {
         this.dataAtualizacao = dataAtualizacao;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

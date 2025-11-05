@@ -4,21 +4,21 @@ import java.time.LocalTime;
 import java.util.Date;
 
 public class Viagem {
-    private long id;
+    private int id;
     private LocalTime horaSaida;
     private Date horaChegada;
 
-    public Viagem(long id, LocalTime horaSaida, Date horaChegada) {
+    public Viagem(int id, LocalTime horaSaida, Date horaChegada) {
         this.id = id;
         this.horaSaida = horaSaida;
         this.horaChegada = horaChegada;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

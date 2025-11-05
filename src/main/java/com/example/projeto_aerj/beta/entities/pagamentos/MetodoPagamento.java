@@ -4,21 +4,21 @@ import com.example.projeto_aerj.beta.enums.StatusPagamentoEnum;
 
 public class MetodoPagamento {
 
-    private long id;
+    private int id;
     private String nome;
     private StatusPagamentoEnum statusPagamentoEnum;
 
-    public MetodoPagamento(long id, String nome, StatusPagamentoEnum statusPagamentoEnum) {
+    public MetodoPagamento(int id, String nome, StatusPagamentoEnum statusPagamentoEnum) {
         this.id = id;
         this.nome = nome;
         this.statusPagamentoEnum = statusPagamentoEnum;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

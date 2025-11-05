@@ -1,15 +1,28 @@
-package com.example.projeto_aerj.beta.entities.notificacoes;
+package com.example.projeto_aerj.beta.models;
+
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
-public class Avisos {
+@Entity
+@Table(name = "aviso")
+public class AvisoModel {
 
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "usuario_id")
+    private int usuarioId;
+
+    @OneToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id", insertable = false, updatable = false, unique = true)
+    private UsuarioModel usuarioModel;
+
     private String mensagem;
     private LocalDateTime dataEnvio;
 
-    public Avisos(int id, String mensagem, LocalDateTime dataEnvio) {
+    public AvisoModel(int id, String mensagem, LocalDateTime dataEnvio) {
         this.id = id;
         this.mensagem = mensagem;
         this.dataEnvio = dataEnvio;
