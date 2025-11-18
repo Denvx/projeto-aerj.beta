@@ -24,7 +24,6 @@ Sistema de banco de dados relacional desenvolvido para gerenciar operações com
 
 - Cadastro unificado de pessoas (alunos, motoristas, administradores)
 - Gestão completa de veículos e rotas
-- Controle de viagens e reserva de assentos
 - Sistema de pagamentos e mensalidades
 - Logs de auditoria
 - Sistema de avisos

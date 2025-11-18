@@ -1,8 +1,5 @@
 package com.example.projeto_aerj.beta.applications;
 
-import com.example.projeto_aerj.beta.interfaces.UsuarioRepository;
-import com.example.projeto_aerj.beta.models.UsuarioModel;
-
 import java.util.List;
 
 public class UsuarioApplication { //precisa da interfaçe do repository
