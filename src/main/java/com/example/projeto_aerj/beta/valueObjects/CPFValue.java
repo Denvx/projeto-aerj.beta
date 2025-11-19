@@ -5,7 +5,10 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class CPFValue {
 
-    private final String cpf;
+    private String cpf;
+
+    public CPFValue() {
+    }
 
     public CPFValue(String receivedCpf) {
         if (receivedCpf == null || receivedCpf.trim().isEmpty()) {
