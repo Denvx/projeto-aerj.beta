@@ -45,8 +45,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String name, CPFValue cpfValue, Date dataNascimento, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, String senhaHash, UsuarioRoleEnum roleEnum, Date dataCriacao, Date dataAtualizacao) {
-        this.id = id;
+    public User( String name, CPFValue cpfValue, Date dataNascimento, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, String senhaHash, UsuarioRoleEnum roleEnum, Date dataCriacao, Date dataAtualizacao) {
         this.name = name;
         this.cpfValue = cpfValue;
         this.dataNascimento = dataNascimento;

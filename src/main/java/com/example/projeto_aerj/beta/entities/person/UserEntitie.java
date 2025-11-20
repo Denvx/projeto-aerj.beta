@@ -137,7 +137,6 @@ public class UserEntitie {
 
     public User toUser(){
         return new User(
-                this.getId(),
                 this.getName(),
                 this.getCpfValue(),
                 this.getDataNascimento(),
