@@ -5,15 +5,23 @@ import com.example.projeto_aerj.beta.enums.UsuarioSexoEnum;
 import com.example.projeto_aerj.beta.models.User;
 import com.example.projeto_aerj.beta.valueObjects.CPFValue;
 import com.example.projeto_aerj.beta.valueObjects.EmailValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 public class UserEntitie {
 
     private int id;
     private String name;
+
+    @JsonProperty("cpfValue")
     private CPFValue cpfValue;
+
     private Date dataNascimento;
+
+    @JsonProperty("emailValue")
     private EmailValue emailValue;
+
     private UsuarioSexoEnum usuarioSexoEnum;
     private String senhaHash;
     private UsuarioRoleEnum roleEnum;

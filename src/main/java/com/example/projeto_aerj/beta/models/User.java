@@ -20,14 +20,12 @@ public class User {
     private String name;
 
     @Embedded
-    @JsonUnwrapped
     private CPFValue cpfValue;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataNascimento;
 
     @Embedded
-    @JsonUnwrapped
     private EmailValue emailValue;
 
     @Enumerated(EnumType.STRING)

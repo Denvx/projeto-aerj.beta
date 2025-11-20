@@ -1,5 +1,7 @@
 package com.example.projeto_aerj.beta.valueObjects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
@@ -68,10 +70,12 @@ public class CPFValue {
         }
     }
 
+    @JsonIgnore
     public String getValue() {
         return cpf;
     }
 
+    @JsonIgnore
     public String getFormatted() {
         if (cpf == null || cpf.length() != 11) {
             return cpf;
@@ -80,6 +84,28 @@ public class CPFValue {
                 cpf.substring(3, 6) + "." +
                 cpf.substring(6, 9) + "-" +
                 cpf.substring(9);
+    }
+
+    // Métodos específicos para JSON
+    @JsonProperty("numero")
+    public String getNumero() {
+        return cpf;
+    }
+
+    @JsonProperty("numero")
+    public void setNumero(String receivedCpf) {
+        if (receivedCpf == null || receivedCpf.trim().isEmpty()) {
+            this.cpf = null;
+            return;
+        }
+
+        String cpfLimpo = receivedCpf.replaceAll("[.\\-]", "").trim();
+
+        if (!isValid(cpfLimpo)) {
+            throw new IllegalArgumentException("CPF inválido: " + receivedCpf);
+        }
+
+        this.cpf = cpfLimpo;
     }
 
     @Override
@@ -100,6 +126,7 @@ public class CPFValue {
         return getFormatted();
     }
 
+    @JsonIgnore
     public String getCpf() {
         return cpf;
     }

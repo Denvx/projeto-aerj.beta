@@ -1,7 +1,8 @@
 package com.example.projeto_aerj.beta.valueObjects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Embedded;
 
 import java.util.regex.Pattern;
 
@@ -9,12 +10,12 @@ import java.util.regex.Pattern;
 public class EmailValue {
     private String email;
 
+    private static final Pattern EMAIL_PATTERN = Pattern.compile(
+            "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+    );
+
     public EmailValue() {
     }
-
-    private static final Pattern EMAIL_PATTERN = Pattern.compile(
-            "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$" //
-    );
 
     public EmailValue(String email) {
         if (email == null || email.trim().isEmpty()) {
@@ -30,8 +31,31 @@ public class EmailValue {
         this.email = emailToFormat;
     }
 
+    @JsonIgnore
     public String getValue() {
         return email;
+    }
+
+    // Métodos específicos para JSON
+    @JsonProperty("endereco")
+    public String getEndereco() {
+        return email;
+    }
+
+    @JsonProperty("endereco")
+    public void setEndereco(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            this.email = null;
+            return;
+        }
+
+        String emailToFormat = email.trim().toLowerCase();
+
+        if (!EMAIL_PATTERN.matcher(emailToFormat).matches()) {
+            throw new IllegalArgumentException("Email inválido: " + email);
+        }
+
+        this.email = emailToFormat;
     }
 
     @Override
@@ -52,6 +76,7 @@ public class EmailValue {
         return email;
     }
 
+    @JsonIgnore
     public String getEmail() {
         return email;
     }
