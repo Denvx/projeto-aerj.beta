@@ -20,6 +20,9 @@ public class UserEntitie {
     private Date dataCriacao;
     private Date dataAtualizacao;
 
+    public UserEntitie() {
+    }
+
     public UserEntitie(int id, String name, CPFValue cpfValue, Date dataNascimento, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, String senhaHash, UsuarioRoleEnum roleEnum, Date dataCriacao, Date dataAtualizacao) {
         this.id = id;
         this.name = name;
@@ -139,18 +142,18 @@ public class UserEntitie {
         );
     }
 
-    public static UserEntitie fromUser(UserEntitie userEntitie){
+    public static UserEntitie fromUser(User user){
         return new UserEntitie(
-                userEntitie.getId(),
-                userEntitie.getName(),
-                userEntitie.getCpfValue(),
-                userEntitie.getDataNascimento(),
-                userEntitie.getEmailValue(),
-                userEntitie.getUsuarioSexoEnum(),
-                userEntitie.getSenhaHash(),
-                userEntitie.getRoleEnum(),
-                userEntitie.getDataCriacao(),
-                userEntitie.getDataAtualizacao()
+                user.getId(),
+                user.getName(),
+                user.getCpfValue(),
+                user.getDataNascimento(),
+                user.getEmailValue(),
+                user.getUsuarioSexoEnum(),
+                user.getSenhaHash(),
+                user.getRoleEnum(),
+                user.getDataCriacao(),
+                user.getDataAtualizacao()
         );
     }
 }
