@@ -99,4 +99,12 @@ public class CPFValue {
     public String toString() {
         return getFormatted();
     }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 }

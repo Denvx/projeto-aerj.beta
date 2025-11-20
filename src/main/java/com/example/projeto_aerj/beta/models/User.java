@@ -4,6 +4,7 @@ import com.example.projeto_aerj.beta.enums.UsuarioRoleEnum;
 import com.example.projeto_aerj.beta.enums.UsuarioSexoEnum;
 import com.example.projeto_aerj.beta.valueObjects.CPFValue;
 import com.example.projeto_aerj.beta.valueObjects.EmailValue;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -19,12 +20,14 @@ public class User {
     private String name;
 
     @Embedded
+    @JsonUnwrapped
     private CPFValue cpfValue;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataNascimento;
 
     @Embedded
+    @JsonUnwrapped
     private EmailValue emailValue;
 
     @Enumerated(EnumType.STRING)
