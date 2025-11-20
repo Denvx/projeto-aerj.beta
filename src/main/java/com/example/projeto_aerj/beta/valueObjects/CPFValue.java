@@ -71,11 +71,6 @@ public class CPFValue {
     }
 
     @JsonIgnore
-    public String getValue() {
-        return cpf;
-    }
-
-    @JsonIgnore
     public String getFormatted() {
         if (cpf == null || cpf.length() != 11) {
             return cpf;
