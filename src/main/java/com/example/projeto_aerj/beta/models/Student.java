@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Student")
+@Table(name = "student")
 public class Student {
 
     @Id
@@ -15,7 +15,7 @@ public class Student {
 
     private String matricula;
     private String curso;
-    private String istituicao;  // <- coerente com StudentEntitie
+    private String istituicao;
 
     @Enumerated(EnumType.STRING)
     private UsuarioStatusEnum usuarioStatusEnum;
@@ -26,36 +26,98 @@ public class Student {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataAtualizacao;
 
-    public Student() {
-    }
+    @Column(name = "user_id")
+    private int userId;
 
-    public Student(String matricula, String curso, String istituicao, UsuarioStatusEnum usuarioStatusEnum, Date dataCriacao, Date dataAtualizacao) {
+    // RELACIONAMENTO 1:1 CORRETO
+    @OneToOne()
+    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private User user;
+
+    public Student() {}
+
+    public Student(String matricula, String curso, String istituicao, UsuarioStatusEnum usuarioStatusEnum,
+                   Date dataCriacao, Date dataAtualizacao, int userId, User user) {
+
         this.matricula = matricula;
         this.curso = curso;
         this.istituicao = istituicao;
         this.usuarioStatusEnum = usuarioStatusEnum;
         this.dataCriacao = dataCriacao;
         this.dataAtualizacao = dataAtualizacao;
+        this.userId = userId;
+        this.user = user;
     }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public int getId() {
+        return id;
+    }
 
-    public String getMatricula() { return matricula; }
-    public void setMatricula(String matricula) { this.matricula = matricula; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getCurso() { return curso; }
-    public void setCurso(String curso) { this.curso = curso; }
+    public String getMatricula() {
+        return matricula;
+    }
 
-    public String getIstituicao() { return istituicao; }
-    public void setIstituicao(String istituicao) { this.istituicao = istituicao; }
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
 
-    public UsuarioStatusEnum getUsuarioStatusEnum() { return usuarioStatusEnum; }
-    public void setUsuarioStatusEnum(UsuarioStatusEnum usuarioStatusEnum) { this.usuarioStatusEnum = usuarioStatusEnum; }
+    public String getCurso() {
+        return curso;
+    }
 
-    public Date getDataCriacao() { return dataCriacao; }
-    public void setDataCriacao(Date dataCriacao) { this.dataCriacao = dataCriacao; }
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
 
-    public Date getDataAtualizacao() { return dataAtualizacao; }
-    public void setDataAtualizacao(Date dataAtualizacao) { this.dataAtualizacao = dataAtualizacao; }
+    public String getIstituicao() {
+        return istituicao;
+    }
+
+    public void setIstituicao(String istituicao) {
+        this.istituicao = istituicao;
+    }
+
+    public UsuarioStatusEnum getUsuarioStatusEnum() {
+        return usuarioStatusEnum;
+    }
+
+    public void setUsuarioStatusEnum(UsuarioStatusEnum usuarioStatusEnum) {
+        this.usuarioStatusEnum = usuarioStatusEnum;
+    }
+
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public Date getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(Date dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

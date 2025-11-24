@@ -145,7 +145,8 @@ public class UserEntitie {
                 this.getSenhaHash(),
                 this.getRoleEnum(),
                 this.getDataCriacao(),
-                this.getDataAtualizacao()
+                this.getDataAtualizacao(),
+                null
         );
     }
 

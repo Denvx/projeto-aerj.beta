@@ -42,10 +42,13 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataAtualizacao;
 
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+    private Student student;
+
     public User() {
     }
 
-    public User( String name, CPFValue cpfValue, Date dataNascimento, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, String senhaHash, UsuarioRoleEnum roleEnum, Date dataCriacao, Date dataAtualizacao) {
+    public User( String name, CPFValue cpfValue, Date dataNascimento, EmailValue emailValue, UsuarioSexoEnum usuarioSexoEnum, String senhaHash, UsuarioRoleEnum roleEnum, Date dataCriacao, Date dataAtualizacao,  Student student) {
         this.name = name;
         this.cpfValue = cpfValue;
         this.dataNascimento = dataNascimento;
@@ -55,6 +58,7 @@ public class User {
         this.roleEnum = roleEnum;
         this.dataCriacao = dataCriacao;
         this.dataAtualizacao = dataAtualizacao;
+        this.student = student;
     }
 
     public int getId() {
@@ -135,5 +139,13 @@ public class User {
 
     public void setDataAtualizacao(Date dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }
