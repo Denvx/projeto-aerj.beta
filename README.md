@@ -1,547 +1,350 @@
-# projeto-aerj.beta
-Sistema de gerenciamento de transporte escolar desenvolvido para uma associação municipal, destinado ao controle logístico e administrativo do transporte de estudantes universitários entre a cidade de origem e Feira de Santana. O projeto abrange gestão de alunos, motoristas, veículos, rotas, viagens, pagamentos, mensalidades e etc.
+AERJ – Sistema de Gestão de Transporte Escolar
+Versão Beta – Fase 1 (Back-end + Banco de Dados)
 
-# Sistema de Gestão de Transporte Escolar
+📋 Sumário
 
-## Sumário
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Arquitetura do Banco de Dados](#arquitetura-do-banco-de-dados)
-- [Decisões de Design Importantes](#decisões-de-design-importantes)
-- [Relacionamentos Principais](#relacionamentos-principais)
-- [Segurança e Integridade de Dados](#segurança-e-integridade-de-dados)
-- [Exclusão Lógica](#exclusão-lógica)
-- [Performance e Índices](#performance-e-índices)
-- [Como Usar](#como-usar)
-- [Requisitos](#requisitos)
+Sobre o Projeto
+Objetivo Geral
+Como o Sistema Vai Funcionar no Final
+Fluxo dos Usuários
+Arquitetura Geral
+Arquitetura do Banco de Dados
+Decisões de Design Importantes
+Comentários Importantes do Código
+Como Usar o Projeto
+Requisitos
+Autor
 
----
 
-## Sobre o Projeto
+🎯 Sobre o Projeto
+Este é um sistema completo de gerenciamento para transporte escolar universitário da AERJ.
+A plataforma controla:
 
-Sistema de banco de dados relacional desenvolvido para gerenciar operações completas de transporte escolar, incluindo controle de alunos, motoristas, veículos, rotas, viagens, pagamentos e mensalidades.
+✅ Estudantes
+✅ Administradores
+✅ Pagamentos
+✅ Mensalidades
+✅ Viagens
+✅ Rotas
+✅ Avisos
+✅ Logs de auditoria
+✅ Segurança e autenticação
 
-### Principais Funcionalidades
 
-- Cadastro unificado de pessoas (alunos, motoristas, administradores)
-- Gestão completa de veículos e rotas
-- Sistema de pagamentos e mensalidades
-- Logs de auditoria
-- Sistema de avisos
+⚠️ Importante: O motorista não utiliza o sistema. Ele é cadastrado por um administrador e apenas recebe a rota/resumo da viagem via WhatsApp.
 
----
+O projeto está sendo desenvolvido em múltiplas fases.
+Este README documenta a primeira fase — Banco, API e Regras de Negócio.
 
-## Arquitetura do Banco de Dados
+🎯 Objetivo Geral
+Construir um sistema seguro, organizado e escalável para gerenciar todo o fluxo logístico e financeiro do transporte universitário da AERJ, reduzindo erros manuais, organizando dados e preparando terreno para funcionalidades avançadas no TCC.
 
-### Padrão Adotado: CamelCase
+🚀 Como o Sistema Vai Funcionar no Final
+Versão Final do Sistema (Visão Macro)
 
-Todas as tabelas e colunas seguem o padrão CamelCase para manter consistência:
-- Tabelas: `Pessoas`, `AlunosViagens`, `MetodoPagamentos`
-- Colunas: `pessoasId`, `dataNascimento`, `apelidoUsuario`
+✔ Portal do aluno
+✔ Portal do administrador
+✔ Controle financeiro completo
+✔ Geração automática de mensalidades
+✔ Emissão de recibos
+✔ Viagens geradas automaticamente com base na rota
+✔ Controle de presenças das viagens
+✔ Painel em tempo real
+✔ Painel de avisos
+✔ Sistema completo de logs
+✔ Integração com WhatsApp para envio de rotas ao motorista
+✔ Segurança avançada, auditoria e exclusões lógicas
 
-**Motivo**: Padronização, legibilidade e facilidade de manutenção.
 
-### Engine: InnoDB
+📌 A Fase 1 (este projeto) está preparando toda a base estrutural e funcional para isso.
 
-**Motivos da escolha**:
-- Suporte completo a transações (ACID compliance)
-- Suporte a Foreign Keys para integridade referencial
-- Bloqueio por linha (melhor performance em ambientes multi-usuário)
-- Recuperação automática de falhas
-- Padrão moderno do MySQL/MariaDB
 
-### Total de Tabelas: 15
+👥 Fluxo dos Usuários
+🎓 Alunos
 
-```
-Pessoas (base)
+Fazem cadastro (ou são cadastrados por um ADM)
+Realizam login
+Visualizam suas viagens
+Visualizam mensalidades e pagamentos
+Recebem avisos
+Recuperam senha
+Consultam histórico
+
+👨‍💼 Administradores
+
+Cadastram alunos
+Cadastram motoristas
+Cadastram veículos
+Geram viagens
+Enviam rotas para o motorista (via WhatsApp)
+Acompanham financeiro
+Veem logs
+Gerenciam avisos
+
+🚐 Motoristas
+
+Não usam o sistema
+Não fazem login
+São cadastrados por um ADM
+Recebem instruções e rota pelo WhatsApp
+Apenas dirigem a rota informada
+
+
+🏗️ Arquitetura Geral
+Back-end
+
+Java + Spring Boot
+Padrão MVC
+Camadas separadas (Controller, Service, Repository)
+DTOs para entrada e saída
+Entidades limpas e coesas
+
+Banco de Dados
+
+MySQL / MariaDB
+InnoDB
+100% relacional
+Integridade referencial com Foreign Keys
+Exclusão lógica em entidades principais
+
+Real Time
+
+WebSockets ou long-polling no painel do ADM
+Sincronização instantânea de viagens, presenças, avisos e alertas
+
+
+🗄️ Arquitetura do Banco de Dados
+Padrão adotado
+
+CamelCase em tabelas e colunas
+Engine InnoDB
+Índices manuais + automáticos
+Comentários explicando campos sensíveis
+Uso de ENUM para evitar valores inválidos
+
+Organização das tabelas
+Pessoas (tabela base)
+│
 ├── Alunos
 ├── Motoristas
 ├── Administradores
-├── Usuarios
+└── Usuarios
 └── Enderecos
 
-Operacionais
-├── Veiculos
-├── Rotas
-├── Viagens
-├── AlunosViagens (N:N)
-
 Financeiro
-├── Pagamentos
 ├── Mensalidades
-└── MetodoPagamentos
+└── Pagamentos
+
+Operacional
+├── Rotas
+├── Veiculos
+├── Viagens
+└── AlunosViagens (N:N)
 
 Auditoria
 ├── Logs
 └── Avisos
-```
 
----
+💡 Decisões de Design Importantes
+Aqui estão as decisões mais relevantes que definem a arquitetura do sistema.
+📊 Tabela Pessoas como Base
+Uma das decisões mais importantes.
+Por que existe a tabela Pessoas?
+Porque evita duplicação.
+Sem Pessoas:
 
-## Decisões de Design Importantes
+Alunos teriam email
+Motoristas teriam email
+Administradores teriam email
+→ e tudo isso seria duplicado.
 
-### 1. Tabela Pessoas como Base
+Com Pessoas:
 
-**Decisão**: Criar uma tabela `Pessoas` centralizada para armazenar dados comuns.
+Os dados pessoais ficam centralizados
+Cada pessoa pode ter vários papéis
+Facilita manutenção
+Mantém normalização 3FN
 
-**Por que?**
-- Evita duplicação de dados (name, CPF, telefone, email)
-- Uma pessoa pode ter múltiplos papéis (ex: aluno que vira motorista)
-- Facilita atualizações de dados pessoais
-- Segue o princípio DRY (Don't Repeat Yourself)
-- Normalização (3FN)
+Diagrama do conceito:
+Pessoas 1───1 Usuarios
+│
+├──1 Alunos
+│
+├──1 Motoristas
+│
+└──1 Administradores
 
-**Estrutura**:
-```sql
+🔐 Login, Senhas e Segurança
+O login só funciona para:
+
+Alunos
+Administradores
+
+Motoristas não fazem login.
+Senha
+Armazenada sempre hash (ex: BCrypt).
+sqlsenhaHash VARCHAR(255) COMMENT 'Senha criptografada'
+Recuperação de senha
+Fluxo:
+
+Aluno/ADM informa email
+Sistema gera token temporário
+Envia link por email
+Usuário redefine senha
+
+
+⚡ Real Time: Como Vai Funcionar
+O painel do administrador receberá notificações instantâneas:
+
+Alunos presentes ou ausentes
+Status das viagens
+Alterações de rota
+Avisos importantes
+Logs críticos
+
+Tecnologias possíveis:
+
+WebSockets
+SSE (Server-Sent Events)
+Long-polling fallback
+
+
+⚠️ Rotas do motorista não são em tempo real — ele recebe via WhatsApp.
+
+
+🔗 Relacionamentos Principais
+Alunos ⟷ Viagens (N:N)
+Motivo:
+
+Um aluno participa de várias viagens
+Uma viagem inclui vários alunos
+
+Viagens x Motorista
+
+1 motorista por viagem
+Motorista não acessa sistema
+Apenas recebe a rota gerada pelo ADM
+
+Veículos x Viagens
+
+Cada viagem usa 1 veículo
+Mas o veículo pode participar de várias viagens
+
+
+🗑️ Exclusão Lógica
+Implementada nas entidades principais:
+
 Pessoas
-├── Alunos (1:N)
-├── Motoristas (1:N)
-├── Administradores (1:N)
-├── Usuarios (1:N)
-└── Enderecos (1:N)
-```
-
----
-
-### 2. Campo `tempoEstimado` em Rotas
-
-**Decisão**: Usar `INT` (minutos) ao invés de `TIME`.
-
-**Por que?**
-- `TIME` limita-se a 838:59:59 (menos de 35 dias)
-- Rotas longas podem exceder 24 horas
-- `INT` permite cálculos matemáticos simples
-- Flexibilidade para converter em horas, dias, etc.
-
-**Exemplo**:
-```sql
--- Rota de 2h30min
-tempoEstimado = 150 (minutos)
-
--- Consulta: converter para horas
-SELECT tempoEstimado / 60 AS horas FROM Rotas;
-```
-
----
-
-### 3. Status em Veículos vs Campo Ativo
-
-**Decisão**: Manter ambos `status ENUM` e `ativo BOOLEAN`.
-
-**Por que?**
-- `status`: Estado operacional temporário
-  - 'Ativo': Disponível para uso
-  - 'Manutenção': Temporariamente indisponível
-  - 'Reservado': Alocado para viagem específica
-  - 'Inativo': Parado mas pode voltar
-  
-- `ativo`: Desativação permanente
-  - FALSE: Veículo vendido, sucateado ou removido da frota
-  - Mantém histórico de viagens antigas
-
-**Uso prático**:
-```sql
--- Veículos disponíveis AGORA
-SELECT * FROM Veiculos WHERE ativo = TRUE AND status = 'Ativo';
-
--- Todos veículos (incluindo histórico)
-SELECT * FROM Veiculos WHERE ativo = FALSE;
-```
-
----
-
-### 4. Relacionamento Alunos e Viagens (N:N)
-
-**Decisão**: Criar tabela intermediária `AlunosViagens`.
-
-**Por que?**
-- Um aluno pode participar de várias viagens
-- Uma viagem pode ter vários alunos
-- Permite armazenar informações específicas da relação (status, descrição)
-- Facilita consultas e relatórios
-
-**Estrutura**:
-```sql
-AlunosViagens
-├── alunosId (FK)
-├── viagensId (FK)
-├── status ENUM('Confirmado', 'Pendente', 'Cancelado', 'Ausente')
-└── descricao TEXT
-```
-
----
-
-### 5. Separação Pagamentos e Mensalidades
-
-**Decisão**: Tabelas separadas ao invés de uma única tabela.
-
-**Por que?**
-- **Mensalidades**: Valores devidos (obrigação)
-- **Pagamentos**: Valores pagos (quitação)
-- Permite múltiplos pagamentos para uma mensalidade (parcelamento)
-- Facilita controle de inadimplência
-- Histórico financeiro mais claro
-
-**Fluxo**:
-```
-1. Gerar Mensalidade (R$ 200,00) - mês de Outubro
-2. Aluno paga R$ 100,00 (Pagamento 1)
-3. Aluno paga R$ 100,00 (Pagamento 2)
-4. Mensalidade quitada
-```
-
----
-
-## Relacionamentos Principais
-
-### Diagrama Simplificado
-
-```
-Pessoas 1───N Alunos
-              │
-              ├─── 1:N Pagamentos
-              ├─── 1:N Mensalidades
-              └─── N:M Viagens (via AlunosViagens)
-
-Pessoas 1───N Motoristas 1───N Viagens
-                                │
-Rotas 1─────N Viagens           │
-                │               │
-Veiculos 1───N Viagens          │
-                                │
-                         N:1 Assentos N:1 Usuarios
-```
-
-### Constraints de Integridade
-
-**ON DELETE RESTRICT**: Usado em relações financeiras e críticas
-- Impede exclusão acidental de dados importantes
-- Força verificação antes de deletar
-- Protege histórico financeiro
-
-**Exemplos**:
-```sql
--- Não pode apagar Aluno com Pagamentos
-FOREIGN KEY (alunosId) REFERENCES Alunos(idUser) ON DELETE RESTRICT
-
--- Não pode apagar Pessoa com Usuarios
-FOREIGN KEY (pessoasId) REFERENCES Pessoas(idUser) ON DELETE RESTRICT
-```
-
----
-
-## Segurança e Integridade de Dados
-
-### 1. Campos UNIQUE
-
-Garantem unicidade de dados críticos:
-```sql
-- identificacao (CPF) - UNIQUE
-- matricula - UNIQUE
-- cnh - UNIQUE
-- placa - UNIQUE
-- apelidoUsuario - UNIQUE
-```
-
-### 2. Validações via ENUM
-
-Limitam valores aceitos, evitando dados inválidos:
-```sql
-sexo ENUM('M', 'F', 'Outro', 'Prefiro não informar')
-role ENUM('Administrador', 'Motorista', 'Aluno', 'Suporte')
-status ENUM('Agendada', 'Em andamento', 'Concluída', 'Cancelada')
-```
-
-### 3. Timestamps Automáticos
-
-Rastreiam criação e modificação:
-```sql
-dataCriacao DATETIME DEFAULT CURRENT_TIMESTAMP
-dataAtualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-```
-
-### 4. Comentários em Campos Sensíveis
-
-Documentam formato esperado:
-```sql
-identificacao VARCHAR(11) COMMENT 'CPF sem pontuação'
-cep VARCHAR(8) COMMENT 'CEP sem pontuação'
-senhaHash VARCHAR(255) COMMENT 'Senha criptografada'
-```
-
----
-
-## Exclusão Lógica
-
-### O Problema da Exclusão Física
-
-Apagar dados permanentemente causa:
-- Perda de histórico financeiro
-- Impossibilidade de auditoria
-- Violação de requisitos legais (LGPD)
-- Relatórios inconsistentes
-
-### A Solução: Campo `ativo`
+Usuarios
+Alunos
+Motoristas
+Veiculos
+
+sqlativo BOOLEAN DEFAULT TRUE
+Por que não excluir fisicamente?
+
+Mantém histórico
+Evita quebrar integrações
+Atende requisitos legais
+Permite auditoria
+Permite reativar posteriormente
+
+
+⚡ Performance e Índices
+Exemplos:
+sqlINDEX idx_identificacao (identificacao)
+INDEX idx_matricula (matricula)
+INDEX idx_dataViagem (dataViagem)
+Motivo:
+
+Consultas mais rápidas
+Filtros mais leves
+Melhor performance com muitos dados
+
+
+💻 Comentários Importantes do Código
+Agora os comentários que explicam os pontos críticos das entidades.
+1. PessoaModel
+   java// Tabela base de todos os tipos de usuários do sistema.
+   // Racional: centralizar dados pessoais (nome, CPF, email).
+   @Entity
+   @Table(name = "pessoas")
+   public class PessoaModel {
+
+   // CPF sem pontuação, único no banco.
+   // Evita duplicidades como dois cadastros da mesma pessoa.
+   @Column(unique = true, length = 11)
+   private String identificacao;
+
+   // Exclusão lógica. Nunca removemos pessoa definitivamente.
+   private boolean ativo = true;
+   }
+2. UsuarioModel
+   java// Representa a credencial de login.
+   // Associada diretamente a uma Pessoa.
+   @Entity
+   @Table(name = "usuario")
+   public class UsuarioModel {
+
+   // Senha nunca é armazenada em texto puro.
+   // Sempre vem com BCrypt no campo senhaHash.
+   private String senhaHash;
+
+   // Papel do usuário: Aluno ou Administrador.
+   // Motorista não possui login.
+   private String role;
+   }
+3. AlunoModel
+   java// Extensão da Pessoa contendo dados específicos de aluno.
+   @Entity
+   @Table(name = "aluno")
+   public class AlunoModel {
+
+   // Relacionamento 1:1 com Pessoa.
+   // O aluno herda nome, CPF, email, etc de Pessoa.
+   @OneToOne
+   @JoinColumn(name = "pessoaId")
+   private PessoaModel pessoa;
+   }
+4. ViagemModel
+   java// Representa uma viagem real.
+   // Cada viagem tem um motorista, mesmo que ele não use o app.
+   @Entity
+   @Table(name = "viagem")
+   public class ViagemModel {
+
+   // FK para Motorista.
+   // O motorista é cadastrado por um ADM e recebe rota via WhatsApp.
+   @ManyToOne
+   @JoinColumn(name = "motoristaId")
+   private MotoristaModel motorista;
+   }
+5. AlunosViagens
+   java// Tabela de junção para relação muitos-para-muitos.
+   // Guarda presença, status e descrições da participação do aluno.
+   @Entity
+   @Table(name = "alunos_viagens")
+   public class AlunosViagens {
+   // ...
+   }
+
+🚀 Como Usar o Projeto
+
+Importar no IntelliJ
+Configurar application.properties
+Rodar o projeto
+Banco será criado automaticamente
+Consumir via Postman
+
 
-**Implementação**:
-```sql
-ativo BOOLEAN DEFAULT TRUE
-```
-
-**Tabelas com exclusão lógica**:
-- Pessoas
-- Alunos
-- Motoristas
-- Usuarios
-- Veiculos
-
-### Como Funciona
-
-**Desativar usuário** (ao invés de DELETE):
-```sql
-UPDATE Pessoas SET ativo = FALSE WHERE idUser = 1;
-UPDATE Usuarios SET ativo = FALSE WHERE pessoasId = 1;
-UPDATE Alunos SET ativo = FALSE WHERE pessoasId = 1;
-```
-
-**Listar apenas ativos**:
-```sql
-SELECT * FROM Alunos WHERE ativo = TRUE;
-SELECT * FROM Usuarios WHERE ativo = TRUE;
-```
-
-**Reativar usuário**:
-```sql
-UPDATE Pessoas SET ativo = TRUE WHERE idUser = 1;
-UPDATE Usuarios SET ativo = TRUE WHERE pessoasId = 1;
-```
-
-### Vantagens
-
-1. **Conformidade LGPD**: Mantém dados para fins legais
-2. **Histórico completo**: Pagamentos e viagens preservados
-3. **Auditoria**: Rastreabilidade total
-4. **Reversibilidade**: Pode reativar se necessário
-5. **Integridade**: Sem referências quebradas
-
----
-
-## Performance e Índices
-
-### O que são Índices?
-
-Índices funcionam como o índice de um livro: permitem encontrar informações rapidamente sem ler tudo.
-
-### Índices Criados
-
-**Pessoas**:
-```sql
-INDEX idx_identificacao (identificacao)  -- Busca por CPF
-INDEX idx_nome (name)                    -- Busca/ordenação por name
-INDEX idx_ativo (ativo)                  -- Filtragem de ativos
-```
-
-**Alunos**:
-```sql
-INDEX idx_matricula (matricula)          -- Busca por matrícula
-INDEX idx_ativo (ativo)                  -- Filtragem de ativos
-```
-
-**Viagens**:
-```sql
-INDEX idx_dataViagem (dataViagem)        -- Consultas por data
-INDEX idx_status (status)                -- Filtragem por status
-```
-
-### Impacto na Performance
-
-**Sem índice** (100.000 registros):
-```sql
-SELECT * FROM Pessoas WHERE identificacao = '12345678901';
--- Tempo: ~500ms (lê todos os registros)
-```
-
-**Com índice**:
-```sql
-SELECT * FROM Pessoas WHERE identificacao = '12345678901';
--- Tempo: ~5ms (vai direto ao registro)
-```
-
-**Ganho: 100x mais rápido**
-
-### Índices Automáticos
-
-O MySQL cria automaticamente índices em:
-- PRIMARY KEY (idUser)
-- UNIQUE (identificacao, matricula, cnh, placa)
-- FOREIGN KEY (InnoDB cria automaticamente)
-
----
-
-## Como Usar
-
-### 1. Instalação
-
-**Requisitos**:
-- MySQL 5.7+ ou MariaDB 10.2+
-- Cliente MySQL (mysql-client, phpMyAdmin, MySQL Workbench)
-
-**Criar banco de dados**:
-```bash
-mysql -u root -p < schema.sql
-```
-
-Ou via cliente:
-```sql
-SOURCE /caminho/para/schema.sql;
-```
-
-### 2. Operações Básicas
-
-**Cadastrar nova pessoa/aluno**:
-```sql
--- 1. Inserir pessoa
-INSERT INTO Pessoas (name, identificacao, dataNascimento, telefone, email, sexo)
-VALUES ('João Silva', '12345678901', '2000-05-15', '71987654321', 'joao@email.com', 'M');
-
--- 2. Inserir aluno
-INSERT INTO Alunos (pessoasId, matricula, curso, instituicao)
-VALUES (LAST_INSERT_ID(), 'ALU2024001', 'Engenharia', 'Universidade Federal');
-
--- 3. Criar usuário
-INSERT INTO Usuarios (pessoasId, apelidoUsuario, senhaHash, role)
-VALUES (LAST_INSERT_ID(), 'joaosilva', '$2y$10$hash...', 'Aluno');
-```
-
-**Cadastrar viagem**:
-```sql
-INSERT INTO Viagens (rotasId, motoristasId, veiculosId, dataViagem, horarioSaida, status)
-VALUES (1, 1, 1, '2024-11-15', '07:00:00', 'Agendada');
-```
-
-**Vincular aluno à viagem**:
-```sql
-INSERT INTO AlunosViagens (alunosId, viagensId, status)
-VALUES (1, 1, 'Confirmado');
-```
-
-**Registrar pagamento**:
-```sql
-INSERT INTO Pagamentos (alunosId, dataPagamento, valor, metodoPagamentosId, statusPagamentoId)
-VALUES (1, CURDATE(), 200.00, 2, 1);
-```
-
-### 3. Consultas Úteis
-
-**Listar alunos ativos com dados pessoais**:
-```sql
-SELECT 
-    a.matricula,
-    p.name,
-    p.email,
-    p.telefone,
-    a.curso
-FROM Alunos a
-INNER JOIN Pessoas p ON a.pessoasId = p.idUser
-WHERE a.ativo = TRUE AND p.ativo = TRUE;
-```
-
-**Viagens do dia com motorista e veículo**:
-```sql
-SELECT 
-    v.idUser,
-    v.horarioSaida,
-    r.origem,
-    r.destino,
-    p.name AS motorista,
-    ve.placa,
-    ve.modelo
-FROM Viagens v
-INNER JOIN Rotas r ON v.rotasId = r.idUser
-INNER JOIN Motoristas m ON v.motoristasId = m.idUser
-INNER JOIN Pessoas p ON m.pessoasId = p.idUser
-INNER JOIN Veiculos ve ON v.veiculosId = ve.idUser
-WHERE v.dataViagem = CURDATE()
-AND v.status = 'Agendada';
-```
-
-**Alunos inadimplentes**:
-```sql
-SELECT 
-    p.name,
-    a.matricula,
-    m.mesReferencia,
-    m.valor,
-    COALESCE(SUM(pag.valor), 0) AS pago,
-    (m.valor - COALESCE(SUM(pag.valor), 0)) AS devido
-FROM Mensalidades m
-INNER JOIN Alunos a ON m.alunosId = a.idUser
-INNER JOIN Pessoas p ON a.pessoasId = p.idUser
-LEFT JOIN Pagamentos pag ON pag.alunosId = a.idUser 
-    AND MONTH(pag.dataPagamento) = MONTH(m.mesReferencia)
-WHERE a.ativo = TRUE
-GROUP BY m.idUser, p.name, a.matricula, m.mesReferencia, m.valor
-HAVING devido > 0;
-```
-
-**Veículos disponíveis**:
-```sql
-SELECT 
-    placa,
-    modelo,
-    capacidade,
-    status
-FROM Veiculos
-WHERE ativo = TRUE 
-AND status IN ('Ativo', 'Reservado')
-ORDER BY capacidade DESC;
-```
-
-### 4. Desativar Usuário (Exclusão Lógica)
-
-```sql
--- Desativar completamente
-UPDATE Pessoas SET ativo = FALSE WHERE idUser = 1;
-UPDATE Alunos SET ativo = FALSE WHERE pessoasId = 1;
-UPDATE Usuarios SET ativo = FALSE WHERE pessoasId = 1;
-
--- Ou apenas impedir login
-UPDATE Usuarios SET ativo = FALSE WHERE idUser = 1;
-```
-
----
-
-## Requisitos
-
-### Ambiente de Desenvolvimento
-
-- MySQL 5.7+ ou MariaDB 10.2+
-- Codificação: UTF-8 (utf8mb4_unicode_ci)
-- InnoDB como engine padrão
-
-### Configurações Recomendadas
-
-```ini
-[mysqld]
-default-storage-engine=InnoDB
-character-set-server=utf8mb4
-collation-server=utf8mb4_unicode_ci
-max_allowed_packet=256M
-innodb_buffer_pool_size=1G
-```
-
-### Permissões Necessárias
-
-```sql
-GRANT ALL PRIVILEGES ON TransporteEscolar.* TO 'usuario'@'localhost';
-FLUSH PRIVILEGES;
-```
-
----
-
-## Autor
-
-Desenvolvido como projeto acadêmico para disciplina de Banco de Dados.
-
-## Licença
-
-Este projeto é de uso educacional.
+📦 Requisitos
+
+Java 17+
+Spring Boot
+MySQL 5.7+ ou MariaDB 10.2+
+JPA / Hibernate
+Maven
+
+
+👨‍💻 Autor
+Projeto desenvolvido por Denver como parte da evolução acadêmica e desenvolvimento do TCC.

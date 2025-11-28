@@ -2,8 +2,7 @@ package com.example.projeto_aerj.beta.enums;
 
 public enum UsuarioRoleEnum {
     ADIMIN("Adimin"),
-    ALUNO("Aluno"),
-    MOTORISTA("Motorista");
+    ALUNO("Aluno");
 
     private final String role;
 
