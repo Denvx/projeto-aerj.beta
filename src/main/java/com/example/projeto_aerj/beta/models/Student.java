@@ -3,6 +3,8 @@ package com.example.projeto_aerj.beta.models;
 import com.example.projeto_aerj.beta.enums.UsuarioRoleEnum;
 import com.example.projeto_aerj.beta.enums.UsuarioSexoEnum;
 import com.example.projeto_aerj.beta.enums.UsuarioStatusEnum;
+import com.example.projeto_aerj.beta.valueObjects.CPFValue;
+import com.example.projeto_aerj.beta.valueObjects.EmailValue;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -11,7 +13,7 @@ import java.util.Date;
 @Table(name = "student")
 public class Student {
 
-    @id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -19,15 +21,19 @@ public class Student {
 
     private String lastName;
 
-    private String cpf;
+    @Embedded
+    private CPFValue cpf;
 
-    private String dataNascimento;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataNascimento;
 
     private String telephone;
 
-    private String email;
+    @Embedded
+    private EmailValue email;
 
-    private String  sexo;
+    @Enumerated(EnumType.STRING)
+    private UsuarioSexoEnum sexo;
 
     private String nickName;
 
@@ -41,14 +47,16 @@ public class Student {
 
     private Boolean isAdmin;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private UsuarioStatusEnum status;
 
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private UsuarioRoleEnum role;
 
     public Student() {
     }
 
-    public Student( String name, String lastName, String cpf, String dataNascimento, String telephone, String email, String sexo, String nickName, String passowrd, String registration, String course, String institution, Boolean isAdmin, String status, String role) {
+    public Student(String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, Boolean isAdmin, UsuarioStatusEnum status, UsuarioRoleEnum role) {
         this.name = name;
         this.lastName = lastName;
         this.cpf = cpf;
@@ -64,14 +72,6 @@ public class Student {
         this.isAdmin = isAdmin;
         this.status = status;
         this.role = role;
-    }
-
-    public Boolean getAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
     }
 
     public int getId() {
@@ -98,19 +98,19 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public String getCpf() {
+    public CPFValue getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(CPFValue cpf) {
         this.cpf = cpf;
     }
 
-    public String getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -122,19 +122,19 @@ public class Student {
         this.telephone = telephone;
     }
 
-    public String getEmail() {
+    public EmailValue getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(EmailValue email) {
         this.email = email;
     }
 
-    public String getSexo() {
+    public UsuarioSexoEnum getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(UsuarioSexoEnum sexo) {
         this.sexo = sexo;
     }
 
@@ -178,19 +178,27 @@ public class Student {
         this.institution = institution;
     }
 
-    public String getStatus() {
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
+    }
+
+    public UsuarioStatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(UsuarioStatusEnum status) {
         this.status = status;
     }
 
-    public String getRole() {
+    public UsuarioRoleEnum getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(UsuarioRoleEnum role) {
         this.role = role;
     }
 }

@@ -6,43 +6,48 @@ import com.example.projeto_aerj.beta.enums.UsuarioStatusEnum;
 import com.example.projeto_aerj.beta.models.Student;
 import com.example.projeto_aerj.beta.valueObjects.CPFValue;
 import com.example.projeto_aerj.beta.valueObjects.EmailValue;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
 public class StudentEntitie {
 
     private int id;
-    private String nome;
-    private String sobrenome;
+    private String name;
+    private String lastName;
     private CPFValue cpf;
     private Date dataNascimento;
-    private String telefone;
+    private String telephone;
     private EmailValue email;
     private UsuarioSexoEnum sexo;
-    private String apelido;
-    private String senhaHash;
-    private String matricula;
-    private String curso;
-    private String instituicao;
+    private String nickName;
+    private String passowrd;
+    private String registration;
+    private String course;
+    private String institution;
     private Boolean isAdmin;
     private UsuarioStatusEnum status;
     private UsuarioRoleEnum role;
 
-    public StudentEntitie(int id, String nome, String sobrenome, CPFValue cpf, Date dataNascimento, String telefone, EmailValue email, UsuarioSexoEnum sexo, String apelido, String senhaHash, String matricula, String curso, String instituicao, Boolean isAdmin, UsuarioStatusEnum status, UsuarioRoleEnum role) {
+    public StudentEntitie() {
+    }
+
+    public StudentEntitie(int id, String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email,
+                          UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course,
+                          String institution, Boolean isAdmin, UsuarioStatusEnum status, UsuarioRoleEnum role) {
+
         this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
+        this.name = name;
+        this.lastName = lastName;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
-        this.telefone = telefone;
+        this.telephone = telephone;
         this.email = email;
         this.sexo = sexo;
-        this.apelido = apelido;
-        this.senhaHash = senhaHash;
-        this.matricula = matricula;
-        this.curso = curso;
-        this.instituicao = instituicao;
+        this.nickName = nickName;
+        this.passowrd = passowrd;
+        this.registration = registration;
+        this.course = course;
+        this.institution = institution;
         this.isAdmin = isAdmin;
         this.status = status;
         this.role = role;
@@ -56,20 +61,20 @@ public class StudentEntitie {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSobrenome() {
-        return sobrenome;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public CPFValue getCpf() {
@@ -88,12 +93,12 @@ public class StudentEntitie {
         this.dataNascimento = dataNascimento;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public EmailValue getEmail() {
@@ -112,44 +117,44 @@ public class StudentEntitie {
         this.sexo = sexo;
     }
 
-    public String getApelido() {
-        return apelido;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setApelido(String apelido) {
-        this.apelido = apelido;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
-    public String getSenhaHash() {
-        return senhaHash;
+    public String getPassowrd() {
+        return passowrd;
     }
 
-    public void setSenhaHash(String senhaHash) {
-        this.senhaHash = senhaHash;
+    public void setPassowrd(String passowrd) {
+        this.passowrd = passowrd;
     }
 
-    public String getMatricula() {
-        return matricula;
+    public String getRegistration() {
+        return registration;
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
+    public void setRegistration(String registration) {
+        this.registration = registration;
     }
 
-    public String getCurso() {
-        return curso;
+    public String getCourse() {
+        return course;
     }
 
-    public void setCurso(String curso) {
-        this.curso = curso;
+    public void setCourse(String course) {
+        this.course = course;
     }
 
-    public String getInstituicao() {
-        return instituicao;
+    public String getInstitution() {
+        return institution;
     }
 
-    public void setInstituicao(String instituicao) {
-        this.instituicao = instituicao;
+    public void setInstitution(String institution) {
+        this.institution = institution;
     }
 
     public Boolean getAdmin() {
@@ -176,42 +181,44 @@ public class StudentEntitie {
         this.role = role;
     }
 
-    public Student toStudent(){
+    public Student toModel() {
         return new Student(
-          this.getNome(),
-          this.getSobrenome(),
-          this.getCpf(),
-          this.getDataNascimento(),
-          this.getTelefone(),
-          this.getEmail(),
-          this.getSexo(),
-          this.getApelido(),
-          this.getSenhaHash(),
-          this.getMatricula(),
-          this.getCurso(),
-          this.getInstituicao(),
-          this.getAdmin(),
-          this.getStatus(),
-          this.getRole()
+                this.getName(),
+                this.getLastName(),
+                this.getCpf(),
+                this.getDataNascimento(),
+                this.getTelephone(),
+                this.getEmail(),
+                this.getSexo(),
+                this.getNickName(),
+                this.getPassowrd(),
+                this.getRegistration(),
+                this.getCourse(),
+                this.getInstitution(),
+                false,
+                this.getStatus(),
+                this.getRole()
         );
     }
 
-    public StudentEntitie fromStudent(Student model){
+    public static StudentEntitie fromModel(Student s) {
         return new StudentEntitie(
-                model.getId(),
-                model.getLastName(),
-                model.getCpf(),
-                model.getDataNascimento(),
-                model.getTelephone(),
-                model.getEmail(),
-                model.getSexo(),
-                model.getNickName(),
-                model.getPassowrd(),
-                model.getRegistration(),
-                model.getCourse(),
-                model.getInstitution(),
-                model.getStatus(),
-                model.getRole()
+                s.getId(),
+                s.getName(),
+                s.getLastName(),
+                s.getCpf(),
+                s.getDataNascimento(),
+                s.getTelephone(),
+                s.getEmail(),
+                s.getSexo(),
+                s.getNickName(),
+                s.getPassowrd(),
+                s.getRegistration(),
+                s.getCourse(),
+                s.getInstitution(),
+                false,
+                s.getStatus(),
+                s.getRole()
         );
     }
 }

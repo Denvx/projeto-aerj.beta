@@ -21,18 +21,18 @@ public class StudentApplication {
         List<Student> students = this.studentRepository.searchAll();
         List<StudentEntitie> studentEntities = new ArrayList<>();
         for (Student student : students) {
-            studentEntities.add(new StudentEntitie().fromStudent(student));
+            studentEntities.add(new StudentEntitie().fromModel(student));
         }
         return studentEntities;
     }
 
     public StudentEntitie searcForId(int id){
-        StudentEntitie studentEntitie = new StudentEntitie().fromStudent(this.studentRepository.searchForId(id));
+        StudentEntitie studentEntitie = new StudentEntitie().fromModel(this.studentRepository.searchForId(id));
         return studentEntitie;
     }
 
     public void toAdd(StudentEntitie studentEntitie){
-        Student student = studentEntitie.toStudent();
+        Student student = studentEntitie.toModel();
         this.studentRepository.toAdd(student);
     }
 
@@ -41,7 +41,7 @@ public class StudentApplication {
     }
 
     public void toUpdate(int id, StudentEntitie studentEntitie){
-        Student student = studentEntitie.toStudent();
+        Student student = studentEntitie.toModel();
         this.studentRepository.toUpdate(id, student);
     }
 }

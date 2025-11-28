@@ -43,7 +43,7 @@ public class StudentControler {
         studentFacade.delete(id);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public void updateStudent(@PathVariable int id, @RequestBody StudentEntitie studentEntitie){
         studentFacade.toUpdate(id,studentEntitie);
     }
