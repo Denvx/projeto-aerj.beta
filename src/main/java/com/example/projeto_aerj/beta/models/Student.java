@@ -1,5 +1,7 @@
 package com.example.projeto_aerj.beta.models;
 
+import com.example.projeto_aerj.beta.enums.UsuarioRoleEnum;
+import com.example.projeto_aerj.beta.enums.UsuarioSexoEnum;
 import com.example.projeto_aerj.beta.enums.UsuarioStatusEnum;
 import jakarta.persistence.*;
 
@@ -9,44 +11,67 @@ import java.util.Date;
 @Table(name = "student")
 public class Student {
 
-    @Id
+    @id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String matricula;
-    private String curso;
-    private String istituicao;
+    private String name;
 
-    @Enumerated(EnumType.STRING)
-    private UsuarioStatusEnum usuarioStatusEnum;
+    private String lastName;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataCriacao;
+    private String cpf;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataAtualizacao;
+    private String dataNascimento;
 
-    @Column(name = "user_id")
-    private int userId;
+    private String telephone;
 
-    // RELACIONAMENTO 1:1 CORRETO
-    @OneToOne()
-    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
-    private User user;
+    private String email;
 
-    public Student() {}
+    private String  sexo;
 
-    public Student(String matricula, String curso, String istituicao, UsuarioStatusEnum usuarioStatusEnum,
-                   Date dataCriacao, Date dataAtualizacao, int userId, User user) {
+    private String nickName;
 
-        this.matricula = matricula;
-        this.curso = curso;
-        this.istituicao = istituicao;
-        this.usuarioStatusEnum = usuarioStatusEnum;
-        this.dataCriacao = dataCriacao;
-        this.dataAtualizacao = dataAtualizacao;
-        this.userId = userId;
-        this.user = user;
+    private String passowrd;
+
+    private String registration;
+
+    private String course;
+
+    private String institution;
+
+    private Boolean isAdmin;
+
+    private String status;
+
+    private String role;
+
+    public Student() {
+    }
+
+    public Student( String name, String lastName, String cpf, String dataNascimento, String telephone, String email, String sexo, String nickName, String passowrd, String registration, String course, String institution, Boolean isAdmin, String status, String role) {
+        this.name = name;
+        this.lastName = lastName;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+        this.telephone = telephone;
+        this.email = email;
+        this.sexo = sexo;
+        this.nickName = nickName;
+        this.passowrd = passowrd;
+        this.registration = registration;
+        this.course = course;
+        this.institution = institution;
+        this.isAdmin = isAdmin;
+        this.status = status;
+        this.role = role;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
     }
 
     public int getId() {
@@ -57,67 +82,115 @@ public class Student {
         this.id = id;
     }
 
-    public String getMatricula() {
-        return matricula;
+    public String getName() {
+        return name;
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCurso() {
-        return curso;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setCurso(String curso) {
-        this.curso = curso;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getIstituicao() {
-        return istituicao;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setIstituicao(String istituicao) {
-        this.istituicao = istituicao;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public UsuarioStatusEnum getUsuarioStatusEnum() {
-        return usuarioStatusEnum;
+    public String getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setUsuarioStatusEnum(UsuarioStatusEnum usuarioStatusEnum) {
-        this.usuarioStatusEnum = usuarioStatusEnum;
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
-    public Date getDataCriacao() {
-        return dataCriacao;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setDataCriacao(Date dataCriacao) {
-        this.dataCriacao = dataCriacao;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
-    public Date getDataAtualizacao() {
-        return dataAtualizacao;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDataAtualizacao(Date dataAtualizacao) {
-        this.dataAtualizacao = dataAtualizacao;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
-    public User getUser() {
-        return user;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getPassowrd() {
+        return passowrd;
+    }
+
+    public void setPassowrd(String passowrd) {
+        this.passowrd = passowrd;
+    }
+
+    public String getRegistration() {
+        return registration;
+    }
+
+    public void setRegistration(String registration) {
+        this.registration = registration;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public String getInstitution() {
+        return institution;
+    }
+
+    public void setInstitution(String institution) {
+        this.institution = institution;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

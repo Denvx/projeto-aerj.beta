@@ -1,7 +1,6 @@
 package com.example.projeto_aerj.beta.facades;
 
 import com.example.projeto_aerj.beta.applications.StudentApplication;
-import com.example.projeto_aerj.beta.applications.UserApplication;
 import com.example.projeto_aerj.beta.entities.person.StudentEntitie;
 import org.springframework.stereotype.Service;
 

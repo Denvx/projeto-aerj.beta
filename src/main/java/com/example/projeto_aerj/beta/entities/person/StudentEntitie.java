@@ -10,96 +10,208 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
-public class StudentEntitie extends UserEntitie {
+public class StudentEntitie {
 
+    private int id;
+    private String nome;
+    private String sobrenome;
+    private CPFValue cpf;
+    private Date dataNascimento;
+    private String telefone;
+    private EmailValue email;
+    private UsuarioSexoEnum sexo;
+    private String apelido;
+    private String senhaHash;
     private String matricula;
     private String curso;
-    private String istituicao;
-    private UsuarioStatusEnum usuarioStatusEnum;
+    private String instituicao;
+    private Boolean isAdmin;
+    private UsuarioStatusEnum status;
+    private UsuarioRoleEnum role;
 
-    // AQUI ESTÁ A CORREÇÃO
-    private int userId;
-
-    public StudentEntitie() {}
-
-    public StudentEntitie(
-            int id,
-            String name,
-
-            @JsonProperty("cpfValue")
-            CPFValue cpfValue,
-            Date dataNascimento,
-
-            @JsonProperty("emailValue")
-            EmailValue emailValue,
-            UsuarioSexoEnum usuarioSexoEnum,
-            String senhaHash,
-            UsuarioRoleEnum roleEnum,
-            Date dataCriacao,
-            Date dataAtualizacao,
-            String matricula,
-            String curso,
-            String istituicao,
-            UsuarioStatusEnum usuarioStatusEnum,
-            int userId
-    ) {
-        super(id, name, cpfValue, dataNascimento, emailValue, usuarioSexoEnum, senhaHash, roleEnum, dataCriacao, dataAtualizacao);
+    public StudentEntitie(int id, String nome, String sobrenome, CPFValue cpf, Date dataNascimento, String telefone, EmailValue email, UsuarioSexoEnum sexo, String apelido, String senhaHash, String matricula, String curso, String instituicao, Boolean isAdmin, UsuarioStatusEnum status, UsuarioRoleEnum role) {
+        this.id = id;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+        this.telefone = telefone;
+        this.email = email;
+        this.sexo = sexo;
+        this.apelido = apelido;
+        this.senhaHash = senhaHash;
         this.matricula = matricula;
         this.curso = curso;
-        this.istituicao = istituicao;
-        this.usuarioStatusEnum = usuarioStatusEnum;
-
-        // AQUI ESTÁ A CORREÇÃO
-        this.userId = userId;
+        this.instituicao = instituicao;
+        this.isAdmin = isAdmin;
+        this.status = status;
+        this.role = role;
     }
 
-    public String getMatricula() { return matricula; }
-    public void setMatricula(String matricula) { this.matricula = matricula; }
+    public int getId() {
+        return id;
+    }
 
-    public String getCurso() { return curso; }
-    public void setCurso(String curso) { this.curso = curso; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getIstituicao() { return istituicao; }
-    public void setIstituicao(String istituicao) { this.istituicao = istituicao; }
+    public String getNome() {
+        return nome;
+    }
 
-    public UsuarioStatusEnum getUsuarioStatusEnum() { return usuarioStatusEnum; }
-    public void setUsuarioStatusEnum(UsuarioStatusEnum usuarioStatusEnum) { this.usuarioStatusEnum = usuarioStatusEnum; }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-    public int getUserId() { return userId; }
-    public void setUserId(int userId) { this.userId = userId; }
+    public String getSobrenome() {
+        return sobrenome;
+    }
 
-    // CONVERSÃO CORRIGIDA
-    public Student toStudent() {
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
+    public CPFValue getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(CPFValue cpf) {
+        this.cpf = cpf;
+    }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public EmailValue getEmail() {
+        return email;
+    }
+
+    public void setEmail(EmailValue email) {
+        this.email = email;
+    }
+
+    public UsuarioSexoEnum getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(UsuarioSexoEnum sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getApelido() {
+        return apelido;
+    }
+
+    public void setApelido(String apelido) {
+        this.apelido = apelido;
+    }
+
+    public String getSenhaHash() {
+        return senhaHash;
+    }
+
+    public void setSenhaHash(String senhaHash) {
+        this.senhaHash = senhaHash;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public String getInstituicao() {
+        return instituicao;
+    }
+
+    public void setInstituicao(String instituicao) {
+        this.instituicao = instituicao;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
+    }
+
+    public UsuarioStatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(UsuarioStatusEnum status) {
+        this.status = status;
+    }
+
+    public UsuarioRoleEnum getRole() {
+        return role;
+    }
+
+    public void setRole(UsuarioRoleEnum role) {
+        this.role = role;
+    }
+
+    public Student toStudent(){
         return new Student(
-                this.getMatricula(),
-                this.getCurso(),
-                this.getIstituicao(),
-                this.getUsuarioStatusEnum(),
-                this.getDataCriacao(),
-                this.getDataAtualizacao(),
-                this.getUserId(), // AQUI ESTAVA O ERRO
-                null
+          this.getNome(),
+          this.getSobrenome(),
+          this.getCpf(),
+          this.getDataNascimento(),
+          this.getTelefone(),
+          this.getEmail(),
+          this.getSexo(),
+          this.getApelido(),
+          this.getSenhaHash(),
+          this.getMatricula(),
+          this.getCurso(),
+          this.getInstituicao(),
+          this.getAdmin(),
+          this.getStatus(),
+          this.getRole()
         );
     }
 
-    // CORREÇÃO NO FROMMODEL
-    public static StudentEntitie fromStudent(Student student) {
+    public StudentEntitie fromStudent(Student model){
         return new StudentEntitie(
-                student.getId(),
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                student.getDataCriacao(),
-                student.getDataAtualizacao(),
-                student.getMatricula(),
-                student.getCurso(),
-                student.getIstituicao(),
-                student.getUsuarioStatusEnum(),
-                student.getUserId()
+                model.getId(),
+                model.getLastName(),
+                model.getCpf(),
+                model.getDataNascimento(),
+                model.getTelephone(),
+                model.getEmail(),
+                model.getSexo(),
+                model.getNickName(),
+                model.getPassowrd(),
+                model.getRegistration(),
+                model.getCourse(),
+                model.getInstitution(),
+                model.getStatus(),
+                model.getRole()
         );
     }
 }
