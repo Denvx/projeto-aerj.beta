@@ -45,8 +45,6 @@ public class Student {
 
     private String institution;
 
-    private Boolean isAdmin;
-
     @Enumerated(EnumType.STRING)
     private UsuarioStatusEnum status;
 
@@ -56,7 +54,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, Boolean isAdmin, UsuarioStatusEnum status, UsuarioRoleEnum role) {
+    public Student(String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, UsuarioStatusEnum status, UsuarioRoleEnum role) {
         this.name = name;
         this.lastName = lastName;
         this.cpf = cpf;
@@ -69,7 +67,6 @@ public class Student {
         this.registration = registration;
         this.course = course;
         this.institution = institution;
-        this.isAdmin = isAdmin;
         this.status = status;
         this.role = role;
     }
@@ -176,14 +173,6 @@ public class Student {
 
     public void setInstitution(String institution) {
         this.institution = institution;
-    }
-
-    public Boolean getIsAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
     }
 
     public UsuarioStatusEnum getStatus() {

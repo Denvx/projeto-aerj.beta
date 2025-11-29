@@ -24,7 +24,6 @@ public class StudentEntitie {
     private String registration;
     private String course;
     private String institution;
-    private Boolean isAdmin;
     private UsuarioStatusEnum status;
     private UsuarioRoleEnum role;
 
@@ -33,7 +32,7 @@ public class StudentEntitie {
 
     public StudentEntitie(int id, String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email,
                           UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course,
-                          String institution, Boolean isAdmin, UsuarioStatusEnum status, UsuarioRoleEnum role) {
+                          String institution, UsuarioStatusEnum status, UsuarioRoleEnum role) {
 
         this.id = id;
         this.name = name;
@@ -48,7 +47,6 @@ public class StudentEntitie {
         this.registration = registration;
         this.course = course;
         this.institution = institution;
-        this.isAdmin = isAdmin;
         this.status = status;
         this.role = role;
     }
@@ -157,14 +155,6 @@ public class StudentEntitie {
         this.institution = institution;
     }
 
-    public Boolean getAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
-    }
-
     public UsuarioStatusEnum getStatus() {
         return status;
     }
@@ -195,7 +185,6 @@ public class StudentEntitie {
                 this.getRegistration(),
                 this.getCourse(),
                 this.getInstitution(),
-                false,
                 this.getStatus(),
                 this.getRole()
         );
@@ -216,7 +205,6 @@ public class StudentEntitie {
                 s.getRegistration(),
                 s.getCourse(),
                 s.getInstitution(),
-                false,
                 s.getStatus(),
                 s.getRole()
         );
