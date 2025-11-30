@@ -1,5 +1,6 @@
 package com.example.projeto_aerj.beta.valueObjects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
@@ -7,96 +8,51 @@ public class CPFValue {
 
     private String cpf;
 
-    public CPFValue() {
+    public CPFValue() {}
+
+    public CPFValue(String cpf) {
+        setCpf(cpf);
     }
 
-    public CPFValue(String receivedCpf) {
-        if (receivedCpf == null || receivedCpf.trim().isEmpty()) {
-            throw new IllegalArgumentException("CPF não pode ser nulo ou vazio");
-        }
-
-        // Remove formatação (pontos e traço)
-        String cpfLimpo = receivedCpf.replaceAll("[.\\-]", "").trim();
-
-        if (!isValid(cpfLimpo)) {
-            throw new IllegalArgumentException("CPF inválido: " + receivedCpf);
-        }
-
-        // Armazena apenas os números
-        this.cpf = cpfLimpo;
-    }
-
-    private boolean isValid(String cpf) {
-        // Verifica se tem 11 dígitos numéricos
-        if (cpf == null || !cpf.matches("\\d{11}")) {
-            return false;
-        }
-
-        // Rejeita CPFs com todos os dígitos iguais
-        if (cpf.matches("(\\d)\\1{10}")) {
-            return false;
-        }
-
-        // Valida os dois dígitos verificadores
-        try {
-            // Calcula o primeiro dígito verificador
-            int soma = 0;
-            for (int i = 0; i < 9; i++) {
-                soma += Character.getNumericValue(cpf.charAt(i)) * (10 - i);
-            }
-            int primeiroDigito = 11 - (soma % 11);
-            if (primeiroDigito >= 10) primeiroDigito = 0;
-
-            // Verifica o primeiro dígito
-            if (Character.getNumericValue(cpf.charAt(9)) != primeiroDigito) {
-                return false;
-            }
-
-            // Calcula o segundo dígito verificador
-            soma = 0;
-            for (int i = 0; i < 10; i++) {
-                soma += Character.getNumericValue(cpf.charAt(i)) * (11 - i);
-            }
-            int segundoDigito = 11 - (soma % 11);
-            if (segundoDigito >= 10) segundoDigito = 0;
-
-            // Verifica o segundo dígito
-            return Character.getNumericValue(cpf.charAt(10)) == segundoDigito;
-
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public String getValue() {
+    @JsonProperty("cpf")
+    public String getCpf() {
         return cpf;
     }
 
-    public String getFormatted() {
-        if (cpf == null || cpf.length() != 11) {
-            return cpf;
+    @JsonProperty("cpf")
+    public void setCpf(String receivedCpf) {
+        if (receivedCpf == null || receivedCpf.isBlank()) {
+            throw new IllegalArgumentException("CPF não pode ser nulo ou vazio");
         }
-        return cpf.substring(0, 3) + "." +
-                cpf.substring(3, 6) + "." +
-                cpf.substring(6, 9) + "-" +
-                cpf.substring(9);
+
+        String cleanCpf = receivedCpf.replaceAll("[^0-9]", "");
+
+        if (!cleanCpf.matches("\\d{11}")) {
+            throw new IllegalArgumentException("CPF inválido");
+        }
+
+        if (!cpfValido(cleanCpf)) {
+            throw new IllegalArgumentException("CPF inválido");
+        }
+
+        this.cpf = cleanCpf;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CPFValue cpfValue = (CPFValue) o;
-        return cpf != null && cpf.equals(cpfValue.cpf);
-    }
+    private boolean cpfValido(String cpf) {
+        if (cpf.chars().distinct().count() == 1) return false;
 
-    @Override
-    public int hashCode() {
-        return cpf != null ? cpf.hashCode() : 0;
-    }
+        int soma = 0;
+        for (int i = 0; i < 9; i++) soma += (cpf.charAt(i) - '0') * (10 - i);
+        int resto = soma % 11;
+        int dig1 = resto < 2 ? 0 : 11 - resto;
 
-    @Override
-    public String toString() {
-        return getFormatted();
+        if (dig1 != (cpf.charAt(9) - '0')) return false;
+
+        soma = 0;
+        for (int i = 0; i < 10; i++) soma += (cpf.charAt(i) - '0') * (11 - i);
+        resto = soma % 11;
+        int dig2 = resto < 2 ? 0 : 11 - resto;
+
+        return dig2 == (cpf.charAt(10) - '0');
     }
 }
