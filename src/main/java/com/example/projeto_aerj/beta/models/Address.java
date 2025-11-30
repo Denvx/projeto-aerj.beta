@@ -1,9 +1,11 @@
 package com.example.projeto_aerj.beta.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Address")
@@ -12,22 +14,27 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String logradouro;
     private String numeroCasa;
     private String bairro;
     private String cidade;
     private int cep;
-
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime dataCriacao;
-
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime dataAtualizacao;
+
+    @Column(name = "studante_id")
+    private int studanteId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinColumn(name = "studante_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Student student;
+
 
     public Address() {
     }
 
-    public Address(String logradouro, String numeroCasa, String bairro, String cidade, int cep, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
+    public Address(String logradouro, String numeroCasa, String bairro, String cidade, int cep, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, int studanteId, Student student) {
         this.logradouro = logradouro;
         this.numeroCasa = numeroCasa;
         this.bairro = bairro;
@@ -35,6 +42,8 @@ public class Address {
         this.cep = cep;
         this.dataCriacao = dataCriacao;
         this.dataAtualizacao = dataAtualizacao;
+        this.studanteId = studanteId;
+        this.student = student;
     }
 
     @PrePersist
@@ -110,5 +119,21 @@ public class Address {
 
     public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
+    }
+
+    public int getStudanteId() {
+        return studanteId;
+    }
+
+    public void setStudanteId(int studanteId) {
+        this.studanteId = studanteId;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }

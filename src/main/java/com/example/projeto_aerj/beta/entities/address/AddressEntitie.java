@@ -1,8 +1,11 @@
 package com.example.projeto_aerj.beta.entities.address;
 
 import com.example.projeto_aerj.beta.models.Address;
+import com.example.projeto_aerj.beta.models.Student;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddressEntitie {
     
@@ -14,11 +17,13 @@ public class AddressEntitie {
     private int cep;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;
+    private int studanteId;
+    private Student student;
 
     public AddressEntitie() {
     }
 
-    public AddressEntitie(String logradouro, String numeroCasa, String bairro, String cidade, int cep, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
+    public AddressEntitie(String logradouro, String numeroCasa, String bairro, String cidade, int cep, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, int studanteId,Student student) {
         this.logradouro = logradouro;
         this.numeroCasa = numeroCasa;
         this.bairro = bairro;
@@ -26,6 +31,8 @@ public class AddressEntitie {
         this.cep = cep;
         this.dataCriacao = dataCriacao;
         this.dataAtualizacao = dataAtualizacao;
+        this.studanteId = studanteId;
+        this.student = student;
     }
 
     public int getId() {
@@ -92,6 +99,22 @@ public class AddressEntitie {
         this.dataAtualizacao = dataAtualizacao;
     }
 
+    public int getStudanteId() {
+        return studanteId;
+    }
+
+    public void setStudanteId(int studanteId) {
+        this.studanteId = studanteId;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     public Address toModel(){
         return new Address(
                 this.getLogradouro(),
@@ -100,7 +123,9 @@ public class AddressEntitie {
                 this.getCidade(),
                 this.getCep(),
                 this.getDataCriacao(),
-                this.getDataAtualizacao()
+                this.getDataAtualizacao(),
+                this.getStudanteId(),
+                null
         );
     }
 
@@ -112,7 +137,9 @@ public class AddressEntitie {
                 a.getCidade(),
                 a.getCep(),
                 a.getDataCriacao(),
-                a.getDataAtualizacao()
+                a.getDataAtualizacao(),
+                a.getStudanteId(),
+                null
         );
     }
 }
