@@ -1,7 +1,6 @@
 package com.example.projeto_aerj.beta.applications;
 
 import com.example.projeto_aerj.beta.entities.person.StudentEntitie;
-import com.example.projeto_aerj.beta.interfaces.LogRepository;
 import com.example.projeto_aerj.beta.interfaces.StudentRepository;
 import com.example.projeto_aerj.beta.models.Log;
 import com.example.projeto_aerj.beta.models.Student;
@@ -39,7 +38,7 @@ public class StudentApplication {
         this.studentRepository.toAdd(student);
 
         Log log = new Log();
-        log.setAcao("CRIACAO_STUDENT");
+        log.setAcao("Criação do estudante");
         log.setStudentId(student.getId());
         logRepository.toAdd(log);
     }
@@ -51,5 +50,10 @@ public class StudentApplication {
     public void toUpdate(int id, StudentEntitie studentEntitie){
         Student student = studentEntitie.toModel();
         this.studentRepository.toUpdate(id, student);
+
+        Log log = new Log();
+        log.setAcao("Atualização do estudante");
+        log.setStudentId(id);
+        logRepository.toAdd(log);
     }
 }

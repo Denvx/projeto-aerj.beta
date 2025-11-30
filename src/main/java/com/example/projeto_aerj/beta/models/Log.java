@@ -83,12 +83,4 @@ public class Log {
     public void setStudentId(int studentId) {
         this.studentId = studentId;
     }
-
-    public Student getStudet() {
-        return student;
-    }
-
-    public void setStudet(Student studet) {
-        this.student = studet;
-    }
 }
