@@ -1,7 +1,6 @@
 package com.example.projeto_aerj.beta.interfaces;
 
 import com.example.projeto_aerj.beta.models.Student;
-
 import java.util.List;
 
 public interface StudentRepository {

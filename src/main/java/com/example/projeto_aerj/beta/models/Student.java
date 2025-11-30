@@ -58,10 +58,14 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Address> address = new ArrayList<>();
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Log>  log = new ArrayList<>();
+
     public Student() {
     }
 
-    public Student(String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, UsuarioStatusEnum status, UsuarioRoleEnum role, List<Address> address) {
+    public Student(String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, UsuarioStatusEnum status, UsuarioRoleEnum role, List<Address> address, List<Log> log) {
         this.name = name;
         this.lastName = lastName;
         this.cpf = cpf;
@@ -77,6 +81,7 @@ public class Student {
         this.status = status;
         this.role = role;
         this.address = address;
+        this.log = log;
     }
 
     public int getId() {
@@ -205,5 +210,13 @@ public class Student {
 
     public void setAddress(List<Address> address) {
         this.address = address;
+    }
+
+    public List<Log> getLog() {
+        return log;
+    }
+
+    public void setLog(List<Log> log) {
+        this.log = log;
     }
 }
