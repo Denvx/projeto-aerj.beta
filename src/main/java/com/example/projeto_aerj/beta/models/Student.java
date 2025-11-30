@@ -62,10 +62,14 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Log>  log = new ArrayList<>();
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Warnings> warnings = new ArrayList<>();
+
     public Student() {
     }
 
-    public Student(String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, UsuarioStatusEnum status, UsuarioRoleEnum role, List<Address> address, List<Log> log) {
+    public Student(String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, UsuarioStatusEnum status, UsuarioRoleEnum role, List<Address> address, List<Log> log, List<Warnings> warnings) {
         this.name = name;
         this.lastName = lastName;
         this.cpf = cpf;
@@ -82,6 +86,7 @@ public class Student {
         this.role = role;
         this.address = address;
         this.log = log;
+        this.warnings = warnings;
     }
 
     public int getId() {
@@ -218,5 +223,13 @@ public class Student {
 
     public void setLog(List<Log> log) {
         this.log = log;
+    }
+
+    public List<Warnings> getWarnings() {
+        return warnings;
+    }
+
+    public void setWarnings(List<Warnings> warnings) {
+        this.warnings = warnings;
     }
 }

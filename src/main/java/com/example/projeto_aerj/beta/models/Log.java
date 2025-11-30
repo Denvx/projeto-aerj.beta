@@ -11,6 +11,7 @@ public class Log {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String acao;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;

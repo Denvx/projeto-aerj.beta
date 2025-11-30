@@ -6,6 +6,7 @@ import com.example.projeto_aerj.beta.enums.UsuarioStatusEnum;
 import com.example.projeto_aerj.beta.models.Address;
 import com.example.projeto_aerj.beta.models.Log;
 import com.example.projeto_aerj.beta.models.Student;
+import com.example.projeto_aerj.beta.models.Warnings;
 import com.example.projeto_aerj.beta.valueObjects.CPFValue;
 import com.example.projeto_aerj.beta.valueObjects.EmailValue;
 
@@ -31,11 +32,12 @@ public class StudentEntitie {
     private UsuarioRoleEnum role;
     private List<Address> address;
     private List<Log> log;
+    private List<Warnings> warnings;
 
     public StudentEntitie() {
     }
 
-    public StudentEntitie(int id, String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, UsuarioStatusEnum status, UsuarioRoleEnum role, List<Address> address, List<Log> log) {
+    public StudentEntitie(int id, String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, UsuarioStatusEnum status, UsuarioRoleEnum role, List<Address> address, List<Log> log, List<Warnings> warnings) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -53,6 +55,7 @@ public class StudentEntitie {
         this.role = role;
         this.address = address;
         this.log = log;
+        this.warnings = warnings;
     }
 
     public int getId() {
@@ -191,6 +194,14 @@ public class StudentEntitie {
         this.log = log;
     }
 
+    public List<Warnings> getWarnings() {
+        return warnings;
+    }
+
+    public void setWarnings(List<Warnings> warnings) {
+        this.warnings = warnings;
+    }
+
     public Student toModel() {
         return new Student(
                 this.getName(),
@@ -208,7 +219,8 @@ public class StudentEntitie {
                 this.getStatus(),
                 this.getRole(),
                 this.getAddress(),
-                this.getLog()
+                this.getLog(),
+                this.getWarnings()
 
         );
     }
@@ -231,7 +243,8 @@ public class StudentEntitie {
                 s.getStatus(),
                 s.getRole(),
                 s.getAddress(),
-                s.getLog()
+                s.getLog(),
+                s.getWarnings()
         );
     }
 }
