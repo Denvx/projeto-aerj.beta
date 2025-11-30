@@ -25,14 +25,34 @@ public class CPFValue {
             throw new IllegalArgumentException("CPF não pode ser nulo ou vazio");
         }
 
-        // remove pontos e traço
-        String cleaned = receivedCpf.replaceAll("[^0-9]", "");
+        String cleanCpf = receivedCpf.replaceAll("[^0-9]", "");
 
-        // valida se tem 11 dígitos
-        if (!cleaned.matches("\\d{11}")) {
+        if (!cleanCpf.matches("\\d{11}")) {
             throw new IllegalArgumentException("CPF inválido");
         }
 
-        this.cpf = cleaned;
+        if (!cpfValido(cleanCpf)) {
+            throw new IllegalArgumentException("CPF inválido");
+        }
+
+        this.cpf = cleanCpf;
+    }
+
+    private boolean cpfValido(String cpf) {
+        if (cpf.chars().distinct().count() == 1) return false;
+
+        int soma = 0;
+        for (int i = 0; i < 9; i++) soma += (cpf.charAt(i) - '0') * (10 - i);
+        int resto = soma % 11;
+        int dig1 = resto < 2 ? 0 : 11 - resto;
+
+        if (dig1 != (cpf.charAt(9) - '0')) return false;
+
+        soma = 0;
+        for (int i = 0; i < 10; i++) soma += (cpf.charAt(i) - '0') * (11 - i);
+        resto = soma % 11;
+        int dig2 = resto < 2 ? 0 : 11 - resto;
+
+        return dig2 == (cpf.charAt(10) - '0');
     }
 }

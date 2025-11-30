@@ -3,11 +3,13 @@ package com.example.projeto_aerj.beta.entities.person;
 import com.example.projeto_aerj.beta.enums.UsuarioRoleEnum;
 import com.example.projeto_aerj.beta.enums.UsuarioSexoEnum;
 import com.example.projeto_aerj.beta.enums.UsuarioStatusEnum;
+import com.example.projeto_aerj.beta.models.Address;
 import com.example.projeto_aerj.beta.models.Student;
 import com.example.projeto_aerj.beta.valueObjects.CPFValue;
 import com.example.projeto_aerj.beta.valueObjects.EmailValue;
 
 import java.util.Date;
+import java.util.List;
 
 public class StudentEntitie {
 
@@ -24,17 +26,14 @@ public class StudentEntitie {
     private String registration;
     private String course;
     private String institution;
-    private Boolean isAdmin;
     private UsuarioStatusEnum status;
     private UsuarioRoleEnum role;
+    private List<Address> address;
 
     public StudentEntitie() {
     }
 
-    public StudentEntitie(int id, String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email,
-                          UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course,
-                          String institution, Boolean isAdmin, UsuarioStatusEnum status, UsuarioRoleEnum role) {
-
+    public StudentEntitie(int id, String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, UsuarioStatusEnum status, UsuarioRoleEnum role, List<Address> address) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -48,9 +47,9 @@ public class StudentEntitie {
         this.registration = registration;
         this.course = course;
         this.institution = institution;
-        this.isAdmin = isAdmin;
         this.status = status;
         this.role = role;
+        this.address = address;
     }
 
     public int getId() {
@@ -157,14 +156,6 @@ public class StudentEntitie {
         this.institution = institution;
     }
 
-    public Boolean getAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
-    }
-
     public UsuarioStatusEnum getStatus() {
         return status;
     }
@@ -181,6 +172,14 @@ public class StudentEntitie {
         this.role = role;
     }
 
+    public List<Address> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<Address> address) {
+        this.address = address;
+    }
+
     public Student toModel() {
         return new Student(
                 this.getName(),
@@ -195,9 +194,9 @@ public class StudentEntitie {
                 this.getRegistration(),
                 this.getCourse(),
                 this.getInstitution(),
-                false,
                 this.getStatus(),
-                this.getRole()
+                this.getRole(),
+                this.getAddress()
         );
     }
 
@@ -216,9 +215,9 @@ public class StudentEntitie {
                 s.getRegistration(),
                 s.getCourse(),
                 s.getInstitution(),
-                false,
                 s.getStatus(),
-                s.getRole()
+                s.getRole(),
+                s.getAddress()
         );
     }
 }

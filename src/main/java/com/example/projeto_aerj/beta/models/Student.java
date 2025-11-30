@@ -5,9 +5,12 @@ import com.example.projeto_aerj.beta.enums.UsuarioSexoEnum;
 import com.example.projeto_aerj.beta.enums.UsuarioStatusEnum;
 import com.example.projeto_aerj.beta.valueObjects.CPFValue;
 import com.example.projeto_aerj.beta.valueObjects.EmailValue;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -45,18 +48,20 @@ public class Student {
 
     private String institution;
 
-    private Boolean isAdmin;
-
     @Enumerated(EnumType.STRING)
     private UsuarioStatusEnum status;
 
     @Enumerated(EnumType.STRING)
     private UsuarioRoleEnum role;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Address> address = new ArrayList<>();
+
     public Student() {
     }
 
-    public Student(String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, Boolean isAdmin, UsuarioStatusEnum status, UsuarioRoleEnum role) {
+    public Student(String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, UsuarioStatusEnum status, UsuarioRoleEnum role, List<Address> address) {
         this.name = name;
         this.lastName = lastName;
         this.cpf = cpf;
@@ -69,9 +74,9 @@ public class Student {
         this.registration = registration;
         this.course = course;
         this.institution = institution;
-        this.isAdmin = isAdmin;
         this.status = status;
         this.role = role;
+        this.address = address;
     }
 
     public int getId() {
@@ -178,14 +183,6 @@ public class Student {
         this.institution = institution;
     }
 
-    public Boolean getIsAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
-    }
-
     public UsuarioStatusEnum getStatus() {
         return status;
     }
@@ -200,5 +197,13 @@ public class Student {
 
     public void setRole(UsuarioRoleEnum role) {
         this.role = role;
+    }
+
+    public List<Address> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<Address> address) {
+        this.address = address;
     }
 }
