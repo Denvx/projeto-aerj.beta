@@ -21,14 +21,13 @@ public class StudentApplication {
         List<Student> students = this.studentRepository.searchAll();
         List<StudentEntitie> studentEntities = new ArrayList<>();
         for (Student student : students) {
-            studentEntities.add(new StudentEntitie().fromModel(student));
+            studentEntities.add(StudentEntitie.fromModel(student));
         }
         return studentEntities;
     }
 
     public StudentEntitie searcForId(int id){
-        StudentEntitie studentEntitie = new StudentEntitie().fromModel(this.studentRepository.searchForId(id));
-        return studentEntitie;
+        return StudentEntitie.fromModel(this.studentRepository.searchForId(id));
     }
 
     public void toAdd(StudentEntitie studentEntitie){

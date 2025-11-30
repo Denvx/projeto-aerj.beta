@@ -104,7 +104,7 @@ public class AddressEntitie {
         );
     }
 
-    public static AddressEntitie toModel(Address a) {
+    public static AddressEntitie fromModel(Address a) {
         return new AddressEntitie(
                 a.getLogradouro(),
                 a.getNumeroCasa(),
