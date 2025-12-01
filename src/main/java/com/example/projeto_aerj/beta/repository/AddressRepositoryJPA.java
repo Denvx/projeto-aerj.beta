@@ -5,13 +5,12 @@ import com.example.projeto_aerj.beta.interfaces.AddressRepository;
 import com.example.projeto_aerj.beta.models.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
 public class AddressRepositoryJPA implements AddressRepository {
 
-    private AddressJPA addressJPA;
+    private final AddressJPA addressJPA;
     @Autowired
     public AddressRepositoryJPA(AddressJPA addressJPA) {
         this.addressJPA = addressJPA;

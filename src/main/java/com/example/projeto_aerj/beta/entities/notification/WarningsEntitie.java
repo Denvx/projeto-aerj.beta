@@ -5,7 +5,7 @@ import com.example.projeto_aerj.beta.models.Warning;
 
 import java.time.LocalDateTime;
 
-public class warningsEntitie {
+public class WarningsEntitie {
 
     private int id;
     private String titulo;
@@ -14,10 +14,10 @@ public class warningsEntitie {
     private int studentId;
     private Student student;
 
-    public warningsEntitie() {
+    public WarningsEntitie() {
     }
 
-    public warningsEntitie(String titulo, String mensagem, LocalDateTime dataEnvio, int studentId, Student student) {
+    public WarningsEntitie(String titulo, String mensagem, LocalDateTime dataEnvio, int studentId, Student student) {
         this.titulo = titulo;
         this.mensagem = mensagem;
         this.dataEnvio = dataEnvio;
@@ -83,8 +83,8 @@ public class warningsEntitie {
         );
     }
 
-    public static  warningsEntitie fromModel(Warning w){
-        return new warningsEntitie(
+    public static WarningsEntitie fromModel(Warning w){
+        return new WarningsEntitie(
                 w.getTitulo(),
                 w.getMensagem(),
                 w.getDataEnvio(),
