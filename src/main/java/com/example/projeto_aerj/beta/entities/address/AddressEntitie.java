@@ -23,7 +23,8 @@ public class AddressEntitie {
     public AddressEntitie() {
     }
 
-    public AddressEntitie(String logradouro, String numeroCasa, String bairro, String cidade, int cep, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, int studanteId,Student student) {
+    public AddressEntitie(int id, String logradouro, String numeroCasa, String bairro, String cidade, int cep, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, int studanteId,Student student) {
+        this.id = id;
         this.logradouro = logradouro;
         this.numeroCasa = numeroCasa;
         this.bairro = bairro;
@@ -117,6 +118,7 @@ public class AddressEntitie {
 
     public Address toModel(){
         return new Address(
+                this.getId(),
                 this.getLogradouro(),
                 this.getNumeroCasa(),
                 this.getBairro(),
@@ -131,6 +133,7 @@ public class AddressEntitie {
 
     public static AddressEntitie fromModel(Address a) {
         return new AddressEntitie(
+                a.getId(),
                 a.getLogradouro(),
                 a.getNumeroCasa(),
                 a.getBairro(),

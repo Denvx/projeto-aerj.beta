@@ -31,7 +31,7 @@ public class LogController {
         return ResponseEntity.ok(logEntitie);
     }
 
-    @PostMapping("{id}")
+    @PostMapping
     public void createLog(@RequestBody LogEntitie log){
         logFacade.toAdd(log);
     }

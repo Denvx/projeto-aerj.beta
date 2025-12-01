@@ -16,7 +16,8 @@ public class LogEntitie {
     public LogEntitie() {
     }
 
-    public LogEntitie(String acao, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, int studentId, Student student) {
+    public LogEntitie(int id, String acao, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, int studentId, Student student) {
+        this.id = id;
         this.acao = acao;
         this.dataCriacao = dataCriacao;
         this.dataAtualizacao = dataAtualizacao;
@@ -74,6 +75,7 @@ public class LogEntitie {
 
     public Log toModel(){
         return new Log(
+                this.getId(),
                 this.getAcao(),
                 this.getDataCriacao(),
                 this.getDataAtualizacao(),
@@ -84,6 +86,7 @@ public class LogEntitie {
 
     public static LogEntitie fromModel(Log log){
         return new LogEntitie(
+                log.getId(),
                 log.getAcao(),
                 log.getDataCriacao(),
                 log.getDataAtualizacao(),

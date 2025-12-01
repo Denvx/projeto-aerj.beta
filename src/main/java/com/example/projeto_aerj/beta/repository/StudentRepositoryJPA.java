@@ -5,7 +5,6 @@ import com.example.projeto_aerj.beta.interfaces.StudentRepository;
 import com.example.projeto_aerj.beta.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository

@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "warnings")
-public class Warnings {
+public class Warning {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -26,10 +26,10 @@ public class Warnings {
     @JoinColumn(name = "student_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Student student;
 
-    public Warnings() {
+    public Warning() {
     }
 
-    public Warnings(String titulo, String mensagem, LocalDateTime dataEnvio, int studentId, Student student) {
+    public Warning(String titulo, String mensagem, LocalDateTime dataEnvio, int studentId, Student student) {
         this.titulo = titulo;
         this.mensagem = mensagem;
         this.dataEnvio = dataEnvio;

@@ -26,7 +26,8 @@ public class Log {
     public Log() {
     }
 
-    public Log( String acao, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, int studentId, Student student) {
+    public Log(int id, String acao, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, int studentId, Student student) {
+        this.id = id;
         this.acao = acao;
         this.dataCriacao = dataCriacao;
         this.dataAtualizacao = dataAtualizacao;

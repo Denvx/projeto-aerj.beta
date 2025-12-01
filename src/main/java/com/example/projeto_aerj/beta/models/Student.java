@@ -64,12 +64,12 @@ public class Student {
 
     @JsonIgnore
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    private List<Warnings> warnings = new ArrayList<>();
+    private List<Warning> warnings = new ArrayList<>();
 
     public Student() {
     }
 
-    public Student(String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, UsuarioStatusEnum status, UsuarioRoleEnum role, List<Address> address, List<Log> log, List<Warnings> warnings) {
+    public Student(String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, UsuarioStatusEnum status, UsuarioRoleEnum role, List<Address> address, List<Log> log, List<Warning> warnings) {
         this.name = name;
         this.lastName = lastName;
         this.cpf = cpf;
@@ -225,11 +225,11 @@ public class Student {
         this.log = log;
     }
 
-    public List<Warnings> getWarnings() {
+    public List<Warning> getWarnings() {
         return warnings;
     }
 
-    public void setWarnings(List<Warnings> warnings) {
+    public void setWarnings(List<Warning> warnings) {
         this.warnings = warnings;
     }
 }

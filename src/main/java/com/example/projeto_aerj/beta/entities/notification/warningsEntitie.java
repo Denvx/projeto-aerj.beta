@@ -1,7 +1,7 @@
 package com.example.projeto_aerj.beta.entities.notification;
 
 import com.example.projeto_aerj.beta.models.Student;
-import com.example.projeto_aerj.beta.models.Warnings;
+import com.example.projeto_aerj.beta.models.Warning;
 
 import java.time.LocalDateTime;
 
@@ -73,8 +73,8 @@ public class warningsEntitie {
         this.student = student;
     }
 
-    public Warnings toModel(){
-        return new Warnings(
+    public Warning toModel(){
+        return new Warning(
                 this.getTitulo(),
                 this.getMensagem(),
                 this.getDataEnvio(),
@@ -83,7 +83,7 @@ public class warningsEntitie {
         );
     }
 
-    public static  warningsEntitie fromModel(Warnings w){
+    public static  warningsEntitie fromModel(Warning w){
         return new warningsEntitie(
                 w.getTitulo(),
                 w.getMensagem(),
