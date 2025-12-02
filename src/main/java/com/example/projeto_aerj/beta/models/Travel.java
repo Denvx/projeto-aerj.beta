@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "travels")
-public class Travels {
+public class Travel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,16 +21,25 @@ public class Travels {
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     @JoinColumn(name = "veiculo_id", insertable = false, updatable = false)
-    private Vehicles veiculo;
+    private Vehicle veiculo;
 
-    public Travels() {
+    @Column(name = "rota_id")
+    private int rotaId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinColumn(name = "rota_id", referencedColumnName = "id",insertable = false, updatable = false)
+    private Routes routes;
+
+    public Travel() {
     }
 
-    public Travels(int id, LocalDateTime dataViagem, int veiculoId, Vehicles veiculo) {
+    public Travel(int id, LocalDateTime dataViagem, int veiculoId, Vehicle veiculo, int rotaId, Routes routes) {
         this.id = id;
         this.dataViagem = dataViagem;
         this.veiculoId = veiculoId;
         this.veiculo = veiculo;
+        this.rotaId = rotaId;
+        this.routes = routes;
     }
 
     public int getId() {
@@ -57,11 +66,27 @@ public class Travels {
         this.veiculoId = veiculoId;
     }
 
-    public Vehicles getVeiculo() {
+    public Vehicle getVeiculo() {
         return veiculo;
     }
 
-    public void setVeiculo(Vehicles veiculo) {
+    public void setVeiculo(Vehicle veiculo) {
         this.veiculo = veiculo;
+    }
+
+    public int getRotaId() {
+        return rotaId;
+    }
+
+    public void setRotaId(int rotaId) {
+        this.rotaId = rotaId;
+    }
+
+    public Routes getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(Routes routes) {
+        this.routes = routes;
     }
 }

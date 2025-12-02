@@ -14,7 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "student")
-public class Students {
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,17 +59,17 @@ public class Students {
     private List<Address> address = new ArrayList<>();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "students", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Log>  log = new ArrayList<>();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "students", cascade = CascadeType.ALL)
-    private List<Warnings> warnings = new ArrayList<>();
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Warning> warnings = new ArrayList<>();
 
-    public Students() {
+    public Student() {
     }
 
-    public Students(String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, UsuarioStatusEnum status, UsuarioRoleEnum role, List<Address> address, List<Log> log, List<Warnings> warnings) {
+    public Student(String name, String lastName, CPFValue cpf, Date dataNascimento, String telephone, EmailValue email, UsuarioSexoEnum sexo, String nickName, String passowrd, String registration, String course, String institution, UsuarioStatusEnum status, UsuarioRoleEnum role, List<Address> address, List<Log> log, List<Warning> warnings) {
         this.name = name;
         this.lastName = lastName;
         this.cpf = cpf;
@@ -225,11 +225,11 @@ public class Students {
         this.log = log;
     }
 
-    public List<Warnings> getWarnings() {
+    public List<Warning> getWarnings() {
         return warnings;
     }
 
-    public void setWarnings(List<Warnings> warnings) {
+    public void setWarnings(List<Warning> warnings) {
         this.warnings = warnings;
     }
 }

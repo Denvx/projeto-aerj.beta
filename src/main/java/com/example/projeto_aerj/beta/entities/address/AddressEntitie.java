@@ -4,8 +4,6 @@ import com.example.projeto_aerj.beta.models.Address;
 import com.example.projeto_aerj.beta.models.Student;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AddressEntitie {
     
@@ -23,7 +21,7 @@ public class AddressEntitie {
     public AddressEntitie() {
     }
 
-    public AddressEntitie(int id, String logradouro, String numeroCasa, String bairro, String cidade, int cep, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, int studanteId,Student student) {
+    public AddressEntitie(int id, String logradouro, String numeroCasa, String bairro, String cidade, int cep, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, int studanteId, Student student) {
         this.id = id;
         this.logradouro = logradouro;
         this.numeroCasa = numeroCasa;

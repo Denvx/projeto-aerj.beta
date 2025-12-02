@@ -1,6 +1,5 @@
 package com.example.projeto_aerj.beta.interfaces;
 
-import com.example.projeto_aerj.beta.models.Travel;
 import com.example.projeto_aerj.beta.models.Vehicle;
 
 import java.util.List;
