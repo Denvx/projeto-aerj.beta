@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "travels")
-public class Travel {
+public class Travels {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,12 +21,12 @@ public class Travel {
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     @JoinColumn(name = "veiculo_id", insertable = false, updatable = false)
-    private Vehicle veiculo;
+    private Vehicles veiculo;
 
-    public Travel() {
+    public Travels() {
     }
 
-    public Travel(int id, LocalDateTime dataViagem, int veiculoId, Vehicle veiculo) {
+    public Travels(int id, LocalDateTime dataViagem, int veiculoId, Vehicles veiculo) {
         this.id = id;
         this.dataViagem = dataViagem;
         this.veiculoId = veiculoId;
@@ -57,11 +57,11 @@ public class Travel {
         this.veiculoId = veiculoId;
     }
 
-    public Vehicle getVeiculo() {
+    public Vehicles getVeiculo() {
         return veiculo;
     }
 
-    public void setVeiculo(Vehicle veiculo) {
+    public void setVeiculo(Vehicles veiculo) {
         this.veiculo = veiculo;
     }
 }

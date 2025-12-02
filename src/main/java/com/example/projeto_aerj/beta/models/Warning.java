@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "warnings")
-public class Warning {
+public class Warnings {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -24,17 +24,18 @@ public class Warning {
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     @JoinColumn(name = "student_id", referencedColumnName = "id", insertable = false, updatable = false)
-    private Student student;
+    private Students students;
 
-    public Warning() {
+    public Warnings() {
     }
 
-    public Warning(String titulo, String mensagem, LocalDateTime dataEnvio, int studentId, Student student) {
+    public Warnings(int id, String titulo, String mensagem, LocalDateTime dataEnvio, int studentId, Students students) {
+        this.id = id;
         this.titulo = titulo;
         this.mensagem = mensagem;
         this.dataEnvio = dataEnvio;
         this.studentId = studentId;
-        this.student = student;
+        this.students = students;
     }
 
     @PrePersist
@@ -83,11 +84,11 @@ public class Warning {
         this.studentId = studentId;
     }
 
-    public Student getStudent() {
-        return student;
+    public Students getStudent() {
+        return students;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudent(Students students) {
+        this.students = students;
     }
 }
