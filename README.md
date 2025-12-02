@@ -1,303 +1,319 @@
-<h1 align="center">🚍 AERJ – Sistema de Gestão de Transporte Escolar</h1>
+<h1 align="center">🚍 AERJ – Sistema de Gestão de Transporte Escolar</h1> <p align="center"> <img src="https://img.shields.io/badge/Status-Beta%20v1.0-yellow?style=for-the-badge"/> <img src="https://img.shields.io/badge/Java-17%2B-orange?style=for-the-badge&logo=java"/> <img src="https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen?style=for-the-badge&logo=springboot"/> <img src="https://img.shields.io/badge/MySQL-5.7%2B-blue?style=for-the-badge&logo=mysql"/> </p> <p align="center"><strong>Versão Beta – Fase 1</strong> | Back-end + Banco de Dados</p>
+📌 Sumário
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Status-Beta%20v1.0-yellow?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Java-17%2B-orange?style=for-the-badge&logo=java"/>
-  <img src="https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen?style=for-the-badge&logo=springboot"/>
-  <img src="https://img.shields.io/badge/MySQL-5.7%2B-blue?style=for-the-badge&logo=mysql"/>
-</p>
+Sobre o Projeto
 
-<p align="center"><strong>Versão Beta – Fase 1</strong> | Back-end + Banco de Dados</p>
+Objetivo Geral
 
----
+Visão Final do Sistema
 
-# 📌 **Sumário**
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Objetivo Geral](#objetivo-geral)
-- [Visão Final do Sistema](#visão-final-do-sistema)
-- [Fluxo dos Usuários](#fluxo-dos-usuários)
-- [Arquitetura](#arquitetura)
-- [Banco de Dados](#banco-de-dados)
-- [Decisões de Design](#decisões-de-design)
-- [Comentários do Código](#comentários-do-código)
-- [Como Usar](#como-usar)
-- [Requisitos](#requisitos)
-- [Autor](#autor)
+Fluxo dos Usuários
 
----
+Arquitetura
 
-# 📘 **Sobre o Projeto**
+Banco de Dados
 
-Sistema completo de gerenciamento para o transporte escolar universitário da **AERJ**.
+Decisões de Design
 
-## ⭐ Funcionalidades Principais
+Comentários do Código
 
-| Módulo | Recursos |
-|--------|----------|
-| **Usuários** | Gestão de estudantes e administradores |
-| **Financeiro** | Pagamentos, mensalidades, pendências |
-| **Operacional** | Viagens, rotas, veículos, motoristas |
-| **Comunicação** | Sistema de avisos |
-| **Segurança** | Autenticação e logs de auditoria |
+Como Usar
 
-> ⚠️ **Nota:** Motoristas **não utilizam o sistema** — são cadastrados por um administrador e recebem rotas via **WhatsApp**.
+Requisitos
 
----
+Autor
 
-# 🧭 **Objetivo Geral**
+📘 Sobre o Projeto
 
-Construir um sistema **seguro**, **escalável** e **organizado** para gestão completa do transporte universitário.
+Sistema completo de gerenciamento para o transporte escolar universitário da AERJ, com foco em controle operacional, financeiro e administrativo.
 
-### Benefícios:
-✔ Redução de erros manuais  
-✔ Centralização total das informações  
+⭐ Funcionalidades Principais
+Módulo	Recursos
+Usuários	Gestão de estudantes e administradores
+Financeiro	Pagamentos, mensalidades, pendências
+Operacional	Viagens, rotas, veículos, motoristas
+Comunicação	Sistema de avisos
+Segurança	Autenticação JWT e logs de auditoria
+
+⚠️ Motoristas não acessam o sistema. São cadastrados por administradores e recebem rotas via WhatsApp.
+
+🧭 Objetivo Geral
+
+Construir um sistema seguro, escalável e organizado para gestão completa do transporte universitário.
+
+Benefícios:
+
+✔ Centralização completa
+✔ Redução de erros manuais
+✔ Automação de processos
 ✔ Base sólida para futuras funcionalidades do TCC
 
----
+🚀 Visão Final do Sistema (Roadmap)
+👨‍🎓 Portal do Aluno
 
-# 🚀 **Visão Final do Sistema (Roadmap)**
+Visualização de viagens
 
-## 👨‍🎓 Portal do Aluno
-- Visualização de viagens  
-- Consulta de mensalidades  
-- Histórico de pagamentos  
-- Recebimento de avisos  
-- Recuperação de senha  
+Histórico de pagamentos
 
-## 🛠 Portal do Administrador
-- Gestão completa de usuários  
-- Controle financeiro  
-- Geração automática de mensalidades  
-- Logs e auditoria  
-- Painel em tempo real  
+Consulta de mensalidades
 
-## 🧪 Recursos Avançados
-- Geração automática de viagens  
-- Controle de presença  
-- Envio de rotas pelo WhatsApp  
-- Exclusões lógicas e histórico completo  
+Recebimento de avisos
 
----
+Recuperação de senha
 
-# 🧑‍🤝‍🧑 **Fluxo dos Usuários**
+🛠 Portal do Administrador
 
-## 🧑‍🎓 Alunos — Ações Disponíveis
-- Cadastro  
-- Login seguro  
-- Visualização de viagens  
-- Consulta de pagamentos  
-- Recebimento de avisos  
-- Histórico completo  
+Gestão completa de usuários
 
----
+Controle financeiro
 
-## 🧑‍💼 Administradores — Responsabilidades
-- Cadastrar alunos/motoristas/veículos  
-- Controlar finanças  
-- Gerar viagens  
-- Enviar rotas ao motorista  
-- Administrar avisos  
-- Acompanhar logs  
+Geração de mensalidades
 
----
+Painel de controle
 
-## 🚐 Motoristas – Perfil Simplificado
+Logs e auditoria
 
-| Característica | Descrição |
-|----------------|-----------|
-| **Acesso ao sistema** | ❌ Não possui |
-| **Cadastro** | Feito por ADM |
-| **Comunicação** | WhatsApp |
-| **Função** | Dirigir conforme rota |
+🧪 Recursos Avançados (Futuros)
 
----
+Geração automática de viagens
 
-# 🏗 **Arquitetura**
+Controle de presença
 
+Envio automático das rotas
+
+Exclusões lógicas e histórico completo
+
+🧑‍🤝‍🧑 Fluxo dos Usuários
+🧑‍🎓 Alunos — Ações Disponíveis
+
+Cadastro
+
+Login seguro
+
+Visualização de viagens
+
+Consulta de pagamentos
+
+Avisos
+
+Histórico
+
+🧑‍💼 Administradores — Responsabilidades
+
+Cadastrar alunos
+
+Cadastrar motoristas
+
+Gerenciar veículos
+
+Gerenciar rotas e viagens
+
+Controlar finanças
+
+Enviar avisos
+
+Auditoria e logs
+
+🚐 Motoristas – Perfil Simplificado
+Característica	Descrição
+Acesso ao sistema	❌ Não possui
+Cadastro	Feito por administrador
+Comunicação	WhatsApp
+Função	Conduzir conforme rota definida
+🏗 Arquitetura
 ┌─────────────────────────────────────┐
-│ FRONT-END (Futuro) │
-│ React / Angular / Vue.js │
-└──────────────┬──────────────────────┘
-│ REST API
-┌──────────────┴──────────────────────┐
-│ BACK-END │
-│ Java 17+ | Spring Boot 3.x │
-│ • Controllers │
-│ • Services │
-│ • Repositories │
-│ • DTOs │
-└──────────────┬──────────────────────┘
-│ JDBC
-┌──────────────┴──────────────────────┐
-│ BANCO DE DADOS │
-│ MySQL / MariaDB (InnoDB) │
+│             FRONT-END (Futuro)      │
+│      React / Angular / Vue.js       │
+└───────────────────┬─────────────────┘
+                    │ REST API
+┌───────────────────┴─────────────────┐
+│               BACK-END              │
+│     Java 17+ • Spring Boot 3.x      │
+│  • Controllers                       │
+│  • Services                          │
+│  • Repositories                      │
+│  • DTOs                              │
+└───────────────────┬─────────────────┘
+                    │ JDBC
+┌───────────────────┴─────────────────┐
+│            BANCO DE DADOS           │
+│      MySQL / MariaDB (InnoDB)       │
 └─────────────────────────────────────┘
 
-markdown
-Copiar código
+🧩 Padrões Adotados
 
-### 🧩 Padrões Adotados
-- MVC  
-- DTO  
-- Repository Pattern  
-- Service Layer  
+MVC
 
-### ⚡ Real-Time (planejado)
-- WebSockets  
-- SSE  
-- Long Polling  
-- Logs, avisos, atualizações de viagens  
+DTO
 
----
+Camada Service
 
-# 🗄 **Banco de Dados**
+Repository Pattern
 
-## 📌 Convenções
+Value Objects (CPF, Email etc.)
 
-| Aspecto | Padrão |
-|--------|--------|
-| Nomenclatura | CamelCase |
-| Engine | InnoDB |
-| Validação | ENUM |
-| Indexação | Manual + automática |
-| Documentação | Comentários SQL |
+⚡ Real-Time (planejado)
 
----
+WebSockets
 
-## 🧱 Estrutura (Resumo)
+SSE
 
-### **Pessoas**
-- Usuários (login)
-- Alunos
-- Motoristas
-- Administradores
+Logs em tempo real
 
-### **Financeiro**
-- Mensalidades  
-- Pagamentos  
+Atualização de viagens
 
-### **Operacional**
-- Rotas  
-- Veículos  
-- Viagens  
-- AlunosViagens (N:N)  
+🗄 Banco de Dados
+📌 Convenções
+Aspecto	Padrão
+Nomenclatura	CamelCase
+Engine	InnoDB
+Validação	ENUM
+Indexação	Manual + automática
+Documentação	Comentários em SQL
+🧱 Estrutura (Resumo)
+Pessoas
 
-### **Auditoria**
-- Logs  
-- Avisos  
+Usuários
 
----
+Alunos
 
-# 🎯 **Decisões de Design (Essenciais)**
+Motoristas
 
-## 🧩 1. Tabela Pessoas como Base
-- Evita duplicações  
-- Centraliza dados  
-- Facilita manutenção  
-- Suporte a múltiplos papéis  
+Administradores
 
-### Diagrama
-Pessoas 1───1 Usuarios
-│
-├──1 Alunos
-├──1 Motoristas
-└──1 Administradores
+Financeiro
 
-yaml
-Copiar código
+Mensalidades
 
----
+Pagamentos
 
-## 🔐 2. Login e Segurança
-- Login permitido: **Aluno, Administrador**  
-- Motorista não acessa  
-- Senhas com **BCrypt**  
-- Senha nunca é armazenada em texto puro  
+Operacional
 
----
+Rotas
 
-## 🧮 3. Relacionamentos
-- Alunos ⇄ Viagens → Muitos-para-muitos  
-- Viagens → Motorista (N:1)  
-- Veículos → Viagens (1:N)  
+Veículos
 
----
+Viagens
 
-## 🗑 4. Exclusão Lógica
-- `ativo BOOLEAN DEFAULT TRUE`
-- Preserva histórico e auditoria  
-- Evita perdas irreversíveis  
+AlunosViagens (N:N)
 
----
+Auditoria
 
-## 🚀 5. Performance e Índices
-Ex.:  
-```sql
-INDEX idx_identificacao (identificacao)
-INDEX idx_matricula (matricula)
-INDEX idx_dataViagem (dataViagem)
-INDEX idx_ativo (ativo)
+Logs
+
+Avisos
+
+🎯 Decisões de Design (Essenciais)
+🧩 1. Tabela Pessoas como Base
+
+Evita duplicações
+
+Facilita manutenção
+
+Suporte a múltiplos papéis
+
+Diagrama
+Pessoas 1──1 Usuarios
+   │
+   ├──1 Alunos
+   ├──1 Motoristas
+   └──1 Administradores
+
+🔐 2. Login e Segurança
+
+Login permitido: Aluno e Administrador
+
+Motoristas não acessam
+
+Autenticação via JWT
+
+Senhas com BCrypt
+
+🧮 3. Relacionamentos Principais
+
+Alunos ⇄ Viagens → N:N
+
+Viagens → Motorista (N:1)
+
+Veículos → Viagens (1:N)
+
+🗑 4. Exclusão Lógica
+
+ativo BOOLEAN DEFAULT TRUE
+
+Mantém histórico
+
+Evita perda de dados
+
+🚀 5. Performance e Índices
+
+idx_identificacao
+
+idx_matricula
+
+idx_dataViagem
+
+idx_ativo
+
 📝 Comentários do Código
-(Seção mantida exatamente como enviada — formatada de forma premium)
-
 📌 PessoaModel
-java
-Copiar código
 /**
  * Tabela base de todos os tipos de usuários do sistema.
  */
+
 📌 UsuarioModel
-java
-Copiar código
 /**
- * Senha sempre vem com BCrypt.
+ * Senha sempre armazenada com BCrypt.
  */
+
 📌 AlunoModel
-java
-Copiar código
 /**
- * Extensão da tabela Pessoas contendo dados acadêmicos.
+ * Extensão da tabela Pessoas com dados acadêmicos.
  */
+
 📌 ViagemModel
-java
-Copiar código
 /**
- * Viagem real do transporte escolar.
+ * Representa uma viagem real do transporte escolar.
  */
+
 📌 AlunosViagens
-java
-Copiar código
 /**
- * Tabela de junção N:N com presença e observações.
+ * Tabela N:N contendo presença e observações.
  */
+
 ▶️ Como Usar o Projeto
 1️⃣ Clonar o Repositório
-bash
-Copiar código
 git clone https://github.com/seu-usuario/aerj-sistema.git
 cd aerj-sistema
+
 2️⃣ Configurar o Banco
+
+Ajuste as credenciais em:
+
 src/main/resources/application.properties
 
-3️⃣ Importar no IntelliJ
+3️⃣ Importar no IntelliJ ou Eclipse
 4️⃣ Executar
-bash
-Copiar código
 ./mvnw spring-boot:run
+
 5️⃣ Testar API (Postman)
-bash
-Copiar código
+
+Alguns endpoints:
+
 GET  /api/alunos
 POST /api/viagens
 PUT  /api/mensalidades/{id}
+
+
+Se quiser, eu gero toda a coleção do Postman para importar.
+
 🧰 Requisitos
 <p> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="50"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="50"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="50"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="50"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="50"/> </p>
-Tecnologia	Versão Mínima
+Tecnologia	Versão mínima
 Java	17+
 Spring Boot	3.x
 MySQL	5.7+
 MariaDB	10.2+
 Maven	3.8+
-
 👤 Autor
-<p align="center"><strong>Denver</strong></p> <p align="center">Projeto desenvolvido como parte da evolução acadêmica e desenvolvimento do TCC.</p> <p align="center"> <a href="mailto:denver.o.dev@gmail.com"> <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/> </a> <a href="https://github.com/Denvx"> <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/> </a> </p> <p align="center"> Encontrou algum problema? Abra uma <a href="https://github.com/Denvx/aerj-sistema/issues">issue</a> </p> <p align="center"><strong>AERJ Sistema</strong> © 2024 | Desenvolvido por Denver</p> ```
+<p align="center"><strong>Denver</strong></p> <p align="center">Projeto desenvolvido como parte da evolução acadêmica e do TCC.</p> <p align="center"> <a href="mailto:denver.o.dev@gmail.com"> <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/> </a> <a href="https://github.com/Denvx"> <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/> </a> </p> <p align="center">Encontrou algum problema? Abra uma <a href="https://github.com/Denvx/aerj-sistema/issues">issue</a></p> <p align="center"><strong>AERJ Sistema</strong> © 2024 | Desenvolvido por Denver</p>
