@@ -3,12 +3,12 @@ package com.example.projeto_aerj.beta.applications;
 import com.example.projeto_aerj.beta.entities.address.AddressEntitie;
 import com.example.projeto_aerj.beta.interfaces.AddressRepository;
 import com.example.projeto_aerj.beta.models.Address;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+@Service
 public class AddressApplication {
 
     private final AddressRepository addressRepository;

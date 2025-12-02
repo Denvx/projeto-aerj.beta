@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Address")
+@Table(name = "address")
 public class Address {
 
     @Id
@@ -34,7 +34,8 @@ public class Address {
     public Address() {
     }
 
-    public Address(String logradouro, String numeroCasa, String bairro, String cidade, int cep, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, int studanteId, Student student) {
+    public Address(int id, String logradouro, String numeroCasa, String bairro, String cidade, int cep, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, int studanteId, Student student) {
+        this.id = id;
         this.logradouro = logradouro;
         this.numeroCasa = numeroCasa;
         this.bairro = bairro;

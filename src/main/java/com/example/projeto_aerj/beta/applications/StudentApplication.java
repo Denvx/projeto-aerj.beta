@@ -2,9 +2,10 @@ package com.example.projeto_aerj.beta.applications;
 
 import com.example.projeto_aerj.beta.entities.person.StudentEntitie;
 import com.example.projeto_aerj.beta.interfaces.StudentRepository;
+import com.example.projeto_aerj.beta.models.Log;
 import com.example.projeto_aerj.beta.models.Student;
+import com.example.projeto_aerj.beta.repository.LogRepositoryJPA;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +13,11 @@ import java.util.List;
 public class StudentApplication {
 
     private final StudentRepository studentRepository;
+    private final LogRepositoryJPA logRepository;
 
-    public StudentApplication(StudentRepository studentRepository) {
+    public StudentApplication(StudentRepository studentRepository, LogRepositoryJPA logRepository) {
         this.studentRepository = studentRepository;
+        this.logRepository = logRepository;
     }
 
     public List<StudentEntitie> searchAll() {
@@ -33,6 +36,11 @@ public class StudentApplication {
     public void toAdd(StudentEntitie studentEntitie){
         Student student = studentEntitie.toModel();
         this.studentRepository.toAdd(student);
+
+        Log log = new Log();
+        log.setAcao("Criação do estudante");
+        log.setStudentId(student.getId());
+        logRepository.toAdd(log);
     }
 
     public void delete(int id){
@@ -42,5 +50,10 @@ public class StudentApplication {
     public void toUpdate(int id, StudentEntitie studentEntitie){
         Student student = studentEntitie.toModel();
         this.studentRepository.toUpdate(id, student);
+
+        Log log = new Log();
+        log.setAcao("Atualização do estudante");
+        log.setStudentId(id);
+        logRepository.toAdd(log);
     }
 }
