@@ -1,13 +1,13 @@
-🚍 AERJ – Sistema de Gestão de Transporte Escolar
-<div align="center">
-Mostrar Imagem
-Mostrar Imagem
-Mostrar Imagem
-Mostrar Imagem
-Versão Beta – Fase 1 | Back-end + Banco de Dados
-</div>
+AERJ – Sistema de Gestão de Transporte Escolar
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Beta%20v1.0-yellow?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Java-17%2B-orange?style=for-the-badge&logo=java"/>
+  <img src="https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen?style=for-the-badge&logo=springboot"/>
+  <img src="https://img.shields.io/badge/MySQL-5.7%2B-blue?style=for-the-badge&logo=mysql"/>
+</p>
+<p align="center"><strong>Versão Beta – Fase 1</strong> | Back-end + Banco de Dados</p>
 
-📋 Sumário
+Sumário
 
 Sobre o Projeto
 Objetivo Geral
@@ -22,116 +22,87 @@ Requisitos
 Autor
 
 
-🎯 Sobre o Projeto
+Sobre o Projeto
 Sistema completo de gerenciamento para transporte escolar universitário da AERJ.
 Funcionalidades Principais
-MóduloRecursos👥 UsuáriosGestão de estudantes e administradores💰 FinanceiroPagamentos e mensalidades🚐 OperacionalViagens e rotas📢 ComunicaçãoSistema de avisos🔒 SegurançaAutenticação e logs de auditoria
+MóduloRecursosUsuáriosGestão de estudantes e administradoresFinanceiroPagamentos e mensalidadesOperacionalViagens e rotasComunicaçãoSistema de avisosSegurançaAutenticação e logs de auditoria
 
-⚠️ Nota Importante: O motorista não utiliza o sistema. Ele é cadastrado por um administrador e recebe a rota/resumo da viagem via WhatsApp.
+Nota Importante: O motorista não utiliza o sistema. Ele é cadastrado por um administrador e recebe a rota/resumo da viagem via WhatsApp.
 
 Status Atual
 Este README documenta a Fase 1 do projeto:
 
-✅ Banco de Dados Estruturado
-✅ API REST Completa
-✅ Regras de Negócio Implementadas
+Banco de Dados Estruturado
+API REST Completa
+Regras de Negócio Implementadas
 
 
-🎯 Objetivo Geral
+Objetivo Geral
 Construir um sistema seguro, organizado e escalável para gerenciar todo o fluxo logístico e financeiro do transporte universitário da AERJ.
 Benefícios
 
-📉 Redução de erros manuais
-📊 Organização centralizada de dados
-🚀 Base sólida para funcionalidades avançadas no TCC
+Redução de erros manuais
+Organização centralizada de dados
+Base sólida para funcionalidades avançadas no TCC
 
 
-🚀 Visão Final do Sistema
+Visão Final do Sistema
 Funcionalidades Completas (Roadmap)
-<table>
-<tr>
-<td width="50%">
-🎓 Portal do Aluno
+Portal do Aluno
 
-✔ Visualização de viagens
-✔ Consulta de mensalidades
-✔ Histórico de pagamentos
-✔ Recebimento de avisos
-✔ Recuperação de senha
+Visualização de viagens
+Consulta de mensalidades
+Histórico de pagamentos
+Recebimento de avisos
+Recuperação de senha
 
-</td>
-<td width="50%">
-👨‍💼 Portal do Administrador
+Portal do Administrador
 
-✔ Gestão completa de usuários
-✔ Controle financeiro
-✔ Geração automática de mensalidades
-✔ Emissão de recibos
-✔ Painel em tempo real
-✔ Sistema de logs e auditoria
+Gestão completa de usuários
+Controle financeiro
+Geração automática de mensalidades
+Emissão de recibos
+Painel em tempo real
+Sistema de logs e auditoria
 
-</td>
-</tr>
-</table>
 Recursos Avançados
 
-🤖 Geração automática de viagens baseada em rotas
-✅ Controle de presenças
-📱 Integração com WhatsApp para motoristas
-🔐 Segurança avançada com exclusões lógicas
+Geração automática de viagens baseada em rotas
+Controle de presenças
+Integração com WhatsApp para motoristas
+Segurança avançada com exclusões lógicas
 
 
-👥 Fluxo dos Usuários
-🎓 Alunos
-mermaidgraph LR
-    A[Cadastro] --> B[Login]
-    B --> C[Visualizar Viagens]
-    B --> D[Consultar Mensalidades]
-    B --> E[Receber Avisos]
-    B --> F[Histórico]
-```
+Fluxo dos Usuários
+Alunos
+Ações Disponíveis:
 
-**Ações Disponíveis:**
-- Fazer cadastro ou ser cadastrado por ADM
-- Realizar login seguro
-- Visualizar viagens programadas
-- Consultar mensalidades e pagamentos
-- Receber e visualizar avisos
-- Recuperar senha
-- Acessar histórico completo
+Fazer cadastro ou ser cadastrado por ADM
+Realizar login seguro
+Visualizar viagens programadas
+Consultar mensalidades e pagamentos
+Receber e visualizar avisos
+Recuperar senha
+Acessar histórico completo
 
----
+Administradores
+Responsabilidades:
 
-### 👨‍💼 Administradores
+Cadastrar alunos, motoristas e veículos
+Gerar e gerenciar viagens
+Enviar rotas para motoristas (WhatsApp)
+Acompanhar financeiro
+Visualizar logs e auditoria
+Gerenciar sistema de avisos
 
-**Responsabilidades:**
-- 📝 Cadastrar alunos, motoristas e veículos
-- 🗓️ Gerar e gerenciar viagens
-- 📲 Enviar rotas para motoristas (WhatsApp)
-- 💰 Acompanhar financeiro
-- 📊 Visualizar logs e auditoria
-- 📢 Gerenciar sistema de avisos
+Motoristas
 
----
+Perfil Simplificado: Não utiliza o sistema diretamente
 
-### 🚐 Motoristas
+CaracterísticaDescriçãoAcesso ao SistemaNão possuiLoginNão realizaCadastroFeito por ADMComunicaçãoWhatsApp apenasFunçãoDirigir conforme rota
 
-> **Perfil Simplificado:** Não utiliza o sistema diretamente
-
-| Característica | Descrição |
-|----------------|-----------|
-| Acesso ao Sistema | ❌ Não possui |
-| Login | ❌ Não realiza |
-| Cadastro | ✅ Feito por ADM |
-| Comunicação | 📱 WhatsApp apenas |
-| Função | 🚗 Dirigir conforme rota |
-
----
-
-## 🏗️ Arquitetura
-
-### Stack Tecnológica
-```
+Arquitetura
+Stack Tecnológica
 ┌─────────────────────────────────────┐
 │         FRONT-END (Futuro)          │
 │    React / Angular / Vue.js         │
@@ -152,68 +123,55 @@ mermaidgraph LR
 │   • Engine InnoDB                   │
 │   • Relacional Normalizado          │
 └─────────────────────────────────────┘
-```
+Padrões Adotados
 
-### Padrões Adotados
+MVC - Model-View-Controller
+DTO - Data Transfer Objects
+Repository Pattern - Abstração de dados
+Service Layer - Lógica de negócio isolada
 
-- 🎯 **MVC** - Model-View-Controller
-- 📦 **DTO** - Data Transfer Objects
-- 🔗 **Repository Pattern** - Abstração de dados
-- 🧩 **Service Layer** - Lógica de negócio isolada
 
----
+Real Time (Planejado)
+Tecnologias Avaliadas:
 
-### ⚡ Real Time (Planejado)
+WebSockets
+Server-Sent Events (SSE)
+Long-polling (fallback)
 
-**Tecnologias Avaliadas:**
-- WebSockets
-- Server-Sent Events (SSE)
-- Long-polling (fallback)
+Funcionalidades em Tempo Real:
 
-**Funcionalidades em Tempo Real:**
-- ✅ Status de presença dos alunos
-- ✅ Atualizações de viagens
-- ✅ Alterações de rotas
-- ✅ Avisos críticos
-- ✅ Logs de auditoria
+Status de presença dos alunos
+Atualizações de viagens
+Alterações de rotas
+Avisos críticos
+Logs de auditoria
 
-> ⚠️ **Nota:** Rotas do motorista não são em tempo real — ele recebe via WhatsApp.
 
----
+Nota: Rotas do motorista não são em tempo real — ele recebe via WhatsApp.
 
-## 🗄️ Banco de Dados
 
-### Convenções
+Banco de Dados
+Convenções
+AspectoPadrão AdotadoNomenclaturaCamelCaseEngineInnoDBIndexaçãoManual + AutomáticaDocumentaçãoComentários SQLValidaçãoENUM para campos restritos
 
-| Aspecto | Padrão Adotado |
-|---------|----------------|
-| Nomenclatura | CamelCase |
-| Engine | InnoDB |
-| Indexação | Manual + Automática |
-| Documentação | Comentários SQL |
-| Validação | ENUM para campos restritos |
-
----
-
-### Estrutura das Tabelas
-```
-📊 PESSOAS (Tabela Base)
+Estrutura das Tabelas
+PESSOAS (Tabela Base)
 │
-├─── 👤 Usuarios (Credenciais)
-│    └─── 🔑 Login e Senha
+├─── Usuarios (Credenciais)
+│    └─── Login e Senha
 │
-├─── 🎓 Alunos
+├─── Alunos
 │    ├─── Matrícula
 │    └─── Curso
 │
-├─── 🚐 Motoristas
+├─── Motoristas
 │    ├─── CNH
 │    └─── Categoria
 │
-└─── 👨‍💼 Administradores
+└─── Administradores
      └─── Nível de Acesso
 
-💰 FINANCEIRO
+FINANCEIRO
 ├─── Mensalidades
 │    ├─── Valor
 │    ├─── Vencimento
@@ -224,7 +182,7 @@ mermaidgraph LR
      ├─── Valor
      └─── Método
 
-🚍 OPERACIONAL
+OPERACIONAL
 ├─── Rotas
 │    ├─── Origem
 │    ├─── Destino
@@ -245,7 +203,7 @@ mermaidgraph LR
      ├─── Presença
      └─── Observações
 
-📝 AUDITORIA
+AUDITORIA
 ├─── Logs
 │    ├─── Ação
 │    ├─── Usuário
@@ -255,22 +213,11 @@ mermaidgraph LR
      ├─── Título
      ├─── Mensagem
      └─── Data
-```
 
----
-
-## 💡 Decisões de Design
-
-### 1. 📊 Tabela Pessoas como Base
-
-**Por que centralizar dados pessoais?**
-
-<table>
-<tr>
-<td width="50%">
-
-#### ❌ Sem Tabela Pessoas
-```
+Decisões de Design
+1. Tabela Pessoas como Base
+Por que centralizar dados pessoais?
+Sem Tabela Pessoas - Problema: Dados duplicados
 Alunos {
   nome, cpf, email, telefone
 }
@@ -280,14 +227,7 @@ Motoristas {
 Administradores {
   nome, cpf, email, telefone
 }
-```
-**Problema:** Dados duplicados
-
-</td>
-<td width="50%">
-
-#### ✅ Com Tabela Pessoas
-```
+Com Tabela Pessoas - Vantagem: Dados centralizados
 Pessoas {
   nome, cpf, email, telefone
 }
@@ -297,21 +237,14 @@ Alunos {
 Motoristas {
   pessoaId → Pessoas
 }
-```
-**Vantagem:** Dados centralizados
+Benefícios:
 
-</td>
-</tr>
-</table>
+Evita duplicação de dados
+Uma pessoa pode ter múltiplos papéis
+Facilita manutenção
+Mantém normalização 3FN
 
-**Benefícios:**
-- ✅ Evita duplicação de dados
-- ✅ Uma pessoa pode ter múltiplos papéis
-- ✅ Facilita manutenção
-- ✅ Mantém normalização 3FN
-
-**Diagrama de Relacionamento:**
-```
+Diagrama de Relacionamento:
 Pessoas 1───1 Usuarios
    │
    ├──1 Alunos
@@ -320,9 +253,9 @@ Pessoas 1───1 Usuarios
    │
    └──1 Administradores
 
-2. 🔐 Login e Segurança
+2. Login e Segurança
 Quem Pode Fazer Login?
-UsuárioAcesso🎓 Alunos✅ Sim👨‍💼 Administradores✅ Sim🚐 Motoristas❌ Não
+UsuárioAcessoAlunosSimAdministradoresSimMotoristasNão
 Armazenamento de Senhas
 sqlsenhaHash VARCHAR(255) COMMENT 'Senha criptografada com BCrypt'
 Processo:
@@ -332,19 +265,13 @@ Sistema aplica BCrypt
 Hash é armazenado
 Senha original nunca é salva
 
-Recuperação de Senha
-mermaidgraph LR
-    A[Usuário solicita] --> B[Sistema gera token]
-    B --> C[Envia email]
-    C --> D[Usuário acessa link]
-    D --> E[Redefine senha]
 
-3. 🔗 Relacionamentos Principais
-Alunos ⟷ Viagens (N:N)
+3. Relacionamentos Principais
+Alunos e Viagens (N:N)
 Por que muitos-para-muitos?
 
-✅ Um aluno participa de várias viagens
-✅ Uma viagem inclui vários alunos
+Um aluno participa de várias viagens
+Uma viagem inclui vários alunos
 
 sqlAlunosViagens {
   alunoId → Alunos
@@ -352,35 +279,35 @@ sqlAlunosViagens {
   presente BOOLEAN
   observacao TEXT
 }
-Viagens → Motorista (N:1)
+Viagens e Motorista (N:1)
 Regras:
 
 1 motorista por viagem
 Motorista não acessa sistema
 Recebe rota via WhatsApp
 
-Veículos → Viagens (1:N)
+Veículos e Viagens (1:N)
 Lógica:
 
 Cada viagem usa 1 veículo
 Um veículo participa de várias viagens
 
 
-4. 🗑️ Exclusão Lógica
+4. Exclusão Lógica
 Entidades com Soft Delete:
 sqlativo BOOLEAN DEFAULT TRUE
 Aplicado em:
 
-✅ Pessoas
-✅ Usuarios
-✅ Alunos
-✅ Motoristas
-✅ Veiculos
+Pessoas
+Usuarios
+Alunos
+Motoristas
+Veiculos
 
 Por Que Não Excluir Fisicamente?
-MotivoBenefício📊 HistóricoMantém dados para relatórios🔗 IntegridadeEvita quebrar relacionamentos⚖️ LegalAtende requisitos de auditoria🔄 ReativaçãoPermite restaurar registros
+MotivoBenefícioHistóricoMantém dados para relatóriosIntegridadeEvita quebrar relacionamentosLegalAtende requisitos de auditoriaReativaçãoPermite restaurar registros
 
-5. ⚡ Performance e Índices
+5. Performance e Índices
 Índices Estratégicos:
 sql-- Busca rápida por CPF
 INDEX idx_identificacao (identificacao)
@@ -395,12 +322,12 @@ INDEX idx_dataViagem (dataViagem)
 INDEX idx_ativo (ativo)
 Benefícios:
 
-🚀 Consultas até 100x mais rápidas
-📉 Menor carga no servidor
-✅ Melhor experiência do usuário
+Consultas até 100x mais rápidas
+Menor carga no servidor
+Melhor experiência do usuário
 
 
-💻 Comentários Importantes do Código
+Comentários Importantes do Código
 1. PessoaModel
 java/**
  * Tabela base de todos os tipos de usuários do sistema.
@@ -545,12 +472,12 @@ public class AlunosViagens {
     private String observacao;
 }
 
-🚀 Como Usar o Projeto
+Como Usar o Projeto
 Passo a Passo
-1️⃣ Clonar o Repositório
+1. Clonar o Repositório
 bashgit clone https://github.com/seu-usuario/aerj-sistema.git
 cd aerj-sistema
-2️⃣ Configurar o Banco de Dados
+2. Configurar o Banco de Dados
 Edite src/main/resources/application.properties:
 properties# Configuração do MySQL
 spring.datasource.url=jdbc:mysql://localhost:3306/aerj_db
@@ -561,67 +488,48 @@ spring.datasource.password=sua_senha
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
-3️⃣ Importar no IntelliJ IDEA
+3. Importar no IntelliJ IDEA
 
 Abra o IntelliJ
 File → Open
 Selecione a pasta do projeto
 Aguarde o Maven baixar as dependências
 
-4️⃣ Executar o Projeto
+4. Executar o Projeto
 bash# Via Maven
 ./mvnw spring-boot:run
 
 # Ou no IntelliJ
 Run → Run 'Application'
-O banco será criado automaticamente na primeira execução! 🎉
-5️⃣ Testar a API
+O banco será criado automaticamente na primeira execução.
+5. Testar a API
 Usando Postman/Insomnia:
 httpGET http://localhost:8080/api/alunos
 POST http://localhost:8080/api/viagens
 PUT http://localhost:8080/api/mensalidades/{id}
 
-📦 Requisitos
+Requisitos
 Tecnologias Necessárias
-TecnologiaVersão Mínima☕ Java17+🍃 Spring Boot3.x🐬 MySQL5.7+🐳 MariaDB10.2+📦 Maven3.8+
-Dependências Principais
-xml<dependencies>
-    <!-- Spring Boot Starter Web -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    
-    <!-- Spring Data JPA -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
-    
-    <!-- MySQL Driver -->
-    <dependency>
-        <groupId>com.mysql</groupId>
-        <artifactId>mysql-connector-j</artifactId>
-    </dependency>
-    
-    <!-- Spring Security (Planejado) -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
-</dependencies>
+<p>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="40"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="40"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="40"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="40"/>
+</p>
+TecnologiaVersão MínimaJava17+Spring Boot3.xMySQL5.7+MariaDB10.2+Maven3.8+
 
-👨‍💻 Autor
-<div align="center">
-Denver
-Projeto desenvolvido como parte da evolução acadêmica e desenvolvimento do TCC.
-Mostrar Imagem
-Mostrar Imagem
-</div>
+Autor
+<p align="center"><strong>Denver</strong></p>
+<p align="center">Projeto desenvolvido como parte da evolução acadêmica e desenvolvimento do TCC.</p>
+<p align="center">
+  <a href="mailto:denver.o.dev@gmail.com">
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
+  </a>
+  <a href="https://github.com/Denvx">
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
+</p>
 
-<div align="center">
-📞 Suporte
-Encontrou algum problema? Abra uma issue
-
-AERJ Sistema © 2024 | Desenvolvido com ❤️ por Denver
-</div>
+<p align="center">Encontrou algum problema? Abra uma <a href="https://github.com/Denvx/aerj-sistema/issues">issue</a></p>
+<p align="center"><strong>AERJ Sistema</strong> © 2024 | Desenvolvido por Denver</p>
