@@ -1,10 +1,11 @@
 package com.example.projeto_aerj.beta.entities.vehicles;
 
 import com.example.projeto_aerj.beta.enums.StatusVeiculoEnum;
-import com.example.projeto_aerj.beta.models.Travel;
+import com.example.projeto_aerj.beta.models.Routes;
 import com.example.projeto_aerj.beta.models.Vehicle;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VehiclesEntitie {
@@ -16,11 +17,12 @@ public class VehiclesEntitie {
     private StatusVeiculoEnum statusVeiculoEnum;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;
+    private List<Routes> routes;
 
     public VehiclesEntitie() {
     }
 
-    public VehiclesEntitie(int id, String placa, String modelo, int capacidade, StatusVeiculoEnum statusVeiculoEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
+    public VehiclesEntitie(int id, String placa, String modelo, int capacidade, StatusVeiculoEnum statusVeiculoEnum, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, List<Routes> routes) {
         this.id = id;
         this.placa = placa;
         this.modelo = modelo;
@@ -28,6 +30,7 @@ public class VehiclesEntitie {
         this.statusVeiculoEnum = statusVeiculoEnum;
         this.dataCriacao = dataCriacao;
         this.dataAtualizacao = dataAtualizacao;
+        this.routes = routes;
     }
 
     public int getId() {
@@ -86,7 +89,13 @@ public class VehiclesEntitie {
         this.dataAtualizacao = dataAtualizacao;
     }
 
+    public List<Routes> getRoutes() {
+        return routes;
+    }
 
+    public void setRoutes(List<Routes> routes) {
+        this.routes = routes;
+    }
 
     public Vehicle toModel(){
         return new Vehicle(
@@ -108,7 +117,8 @@ public class VehiclesEntitie {
                 v.getCapacidade(),
                 v.getStatusVeiculoEnum(),
                 v.getDataCriacao(),
-                v.getDataAtualizacao()
+                v.getDataAtualizacao(),
+                null
         );
     }
 }

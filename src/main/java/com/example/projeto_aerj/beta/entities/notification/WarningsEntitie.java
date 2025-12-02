@@ -17,7 +17,8 @@ public class WarningsEntitie {
     public WarningsEntitie() {
     }
 
-    public WarningsEntitie(String titulo, String mensagem, LocalDateTime dataEnvio, int studentId, Student student) {
+    public WarningsEntitie(int id,String titulo, String mensagem, LocalDateTime dataEnvio, int studentId, Student student) {
+        this.id = id;
         this.titulo = titulo;
         this.mensagem = mensagem;
         this.dataEnvio = dataEnvio;
@@ -75,6 +76,7 @@ public class WarningsEntitie {
 
     public Warning toModel(){
         return new Warning(
+                this.getId(),
                 this.getTitulo(),
                 this.getMensagem(),
                 this.getDataEnvio(),
@@ -85,6 +87,7 @@ public class WarningsEntitie {
 
     public static WarningsEntitie fromModel(Warning w){
         return new WarningsEntitie(
+                w.getId(),
                 w.getTitulo(),
                 w.getMensagem(),
                 w.getDataEnvio(),

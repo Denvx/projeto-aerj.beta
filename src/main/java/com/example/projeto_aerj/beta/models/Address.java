@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "address")
@@ -29,7 +27,6 @@ public class Address {
     @JsonIgnore
     @JoinColumn(name = "studante_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Student student;
-
 
     public Address() {
     }

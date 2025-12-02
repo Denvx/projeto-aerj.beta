@@ -1,5 +1,6 @@
 package com.example.projeto_aerj.beta.entities.travels;
 
+import com.example.projeto_aerj.beta.models.Routes;
 import com.example.projeto_aerj.beta.models.Travel;
 import com.example.projeto_aerj.beta.models.Vehicle;
 
@@ -11,15 +12,19 @@ public class TravelsEntitie {
     private LocalDateTime dataViagem;
     private int veiculoId;
     private Vehicle veiculo;
+    private int rotaId;
+    private Routes routes;
 
     public TravelsEntitie() {
     }
 
-    public TravelsEntitie(int id, LocalDateTime dataViagem, int veiculoId, Vehicle veiculo) {
+    public TravelsEntitie(int id, LocalDateTime dataViagem, int veiculoId, Vehicle veiculo, int rotaId, Routes routes) {
         this.id = id;
         this.dataViagem = dataViagem;
         this.veiculoId = veiculoId;
         this.veiculo = veiculo;
+        this.rotaId = rotaId;
+        this.routes = routes;
     }
 
     public int getId() {
@@ -54,12 +59,32 @@ public class TravelsEntitie {
         this.veiculo = veiculo;
     }
 
+    public int getRotaId() {
+        return rotaId;
+    }
+
+    public void setRotaId(int rotaId) {
+        this.rotaId = rotaId;
+    }
+
+    public Routes getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(Routes routes) {
+        this.routes = routes;
+    }
+
     public Travel toModel(){
         return new Travel(
-                this.id,
-                this.dataViagem,
-                this.veiculoId,
-                this.veiculo
+                this.getId(),
+                this.getDataViagem(),
+                this.getVeiculoId(),
+                this.getVeiculo(),
+                this.getRotaId(),
+                null
+
+
         );
     }
 
@@ -68,7 +93,9 @@ public class TravelsEntitie {
                 travel.getId(),
                 travel.getDataViagem(),
                 travel.getVeiculoId(),
-                travel.getVeiculo()
+                travel.getVeiculo(),
+                travel.getRotaId(),
+                null
         );
     }
 }

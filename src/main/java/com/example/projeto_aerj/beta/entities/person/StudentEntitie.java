@@ -218,9 +218,9 @@ public class StudentEntitie {
                 this.getInstitution(),
                 this.getStatus(),
                 this.getRole(),
-                this.getAddress(),
-                this.getLog(),
-                this.getWarnings()
+                null,
+                null,
+                null
 
         );
     }
@@ -242,9 +242,9 @@ public class StudentEntitie {
                 s.getInstitution(),
                 s.getStatus(),
                 s.getRole(),
-                s.getAddress(),
-                s.getLog(),
-                s.getWarnings()
+                null,
+                null,
+                null
         );
     }
 }
