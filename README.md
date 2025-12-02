@@ -241,6 +241,10 @@ Tabela N:N contendo presença e observações.
 
 ▶️ Como Usar o Projeto
 1. Clonar o Repositório
+ •	**RF01**: O Wearable deve medir sinais vitais como: SpO2, Frequência Cardíaca e Temperatura Corporal.
+    •	**RF02**: O Wearable deve lidar com os dados dos sensores, realizando todas as etapas de cálculos e tratamento dos dados coletados possibilitados pelos limites do microcontrolador usado.
+    •	**RF03**: O Wearable deve ser capaz de enviar sua identidade junto com os sinais aferidos para ser associado à referência do paciente no sistema (ex: nome ou código).
+    •	**RF04**: O Wearable deve enviar um pacote de dados já minimamente tratados (contendo os sinais vitais mensurados e a referência do paciente) para o software desktop em intervalos de tempo pré-definidos.
 
 git clone https://github.com/seu-usuario/aerj-sistema.git
 cd aerj-sistema
