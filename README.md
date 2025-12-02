@@ -31,13 +31,13 @@ Sistema completo de gerenciamento para o transporte escolar universitário da AE
 
 ### ⭐ Funcionalidades Principais
 
-| Módulo | Recursos |
-|--------|----------|
-| **Usuários** | Gestão de estudantes e administradores |
-| **Financeiro** | Pagamentos, mensalidades, pendências |
-| **Operacional** | Viagens, rotas, veículos, motoristas |
-| **Comunicação** | Sistema de avisos |
-| **Segurança** | Autenticação JWT e logs de auditoria |
+| Módulo | Recursos |<br>
+|--------|----------|<br>
+| **Usuários** | Gestão de estudantes e administradores |<br>
+| **Financeiro** | Pagamentos, mensalidades, pendências |<br>
+| **Operacional** | Viagens, rotas, veículos, motoristas |<br>
+| **Comunicação** | Sistema de avisos |<br>
+| **Segurança** | Autenticação JWT e logs de auditoria |<br>
 
 **Importante:** Motoristas não acessam o sistema. Eles são cadastrados pelos administradores e recebem rotas via WhatsApp.
 
@@ -99,35 +99,35 @@ Construir um sistema seguro, escalável e organizado para gestão completa do tr
 - Auditoria
 
 ### Motoristas — Perfil Simplificado
-| Característica | Descrição |
-|----------------|-----------|
-| Acesso ao sistema | Não possui |
-| Cadastro | Feito pelo administrador |
-| Comunicação | WhatsApp |
-| Função | Conduzir conforme rota |
+| Característica | Descrição |<br>
+|----------------|-----------|<br>
+| Acesso ao sistema | Não possui |<br>
+| Cadastro | Feito pelo administrador |<br>
+| Comunicação | WhatsApp |<br>
+| Função | Conduzir conforme rota |<br>
 
 ---
 
 ## 🏗 Arquitetura
 
-┌─────────────────────────────────────┐
-│ FRONT-END (Futuro) │
-│ React / Angular / Vue.js │
-└───────────────────┬─────────────────┘
-│ REST API
-┌───────────────────┴─────────────────┐
-│ BACK-END │
-│ Java 17+ • Spring Boot 3.x │
-│ • Controllers │
-│ • Services │
-│ • Repositories │
-│ • DTOs │
-└───────────────────┬─────────────────┘
-│ JDBC
-┌───────────────────┴─────────────────┐
-│ BANCO DE DADOS │
-│ MySQL / MariaDB (InnoDB) │
-└─────────────────────────────────────┘
+┌─────────────────────────────────────┐<br>
+│ FRONT-END (Futuro)                  │<br>
+│ React / Angular / Vue.js            │<br>
+└───────────────────┬─────────────────┘<br>
+│ REST API<br>
+┌───────────────────┴─────────────────┐<br>
+│ BACK-END                            │<br>
+│ Java 17+ • Spring Boot 3.x          │<br>
+│ • Controllers                       │<br>
+│ • Services                          │<br>
+│ • Repositories                      │<br>
+│ • DTOs                              │<br>
+└───────────────────┬─────────────────┘<br>
+│ JDBC<br>
+┌───────────────────┴─────────────────┐<br>
+│ BANCO DE DADOS │<br>
+│ MySQL / MariaDB (InnoDB) │<br>
+└─────────────────────────────────────┘<br>
 
 
 ### Padrões Adotados
@@ -148,13 +148,13 @@ Construir um sistema seguro, escalável e organizado para gestão completa do tr
 ## 🗄 Banco de Dados
 
 ### Convenções
-| Aspecto | Padrão |
-|---------|--------|
-| Nomenclatura | CamelCase |
-| Engine | InnoDB |
-| Validação | ENUM |
-| Indexação | Manual + automática |
-| Documentação | Comentários em SQL |
+| Aspecto | Padrão |<br>
+|---------|--------|<br>
+| Nomenclatura | CamelCase |<br>
+| Engine | InnoDB |<br>
+| Validação | ENUM |<br>
+| Indexação | Manual + automática |<br>
+| Documentação | Comentários em SQL |<br>
 
 ### Estrutura (Resumo)
 - **Pessoas**
@@ -302,19 +302,19 @@ bash
 
 ### 🔍 Endpoints Principais para Teste
 
-| Método | Endpoint | Descrição | Body (Exemplo) |
-|--------|----------|-----------|----------------|
-| `GET` | `/api/alunos` | Listar todos os alunos | `-` |
-| `POST` | `/api/alunos` | Cadastrar novo aluno | `{"nome": "João Silva", "email": "joao@email.com", "matricula": "2024001"}` |
-| `GET` | `/api/alunos/{id}` | Buscar aluno por ID | `-` |
-| `PUT` | `/api/alunos/{id}` | Atualizar dados do aluno | `{"telefone": "11999999999", "curso": "Engenharia"}` |
-| `DELETE` | `/api/alunos/{id}` | Exclusão lógica do aluno | `-` |
-| `GET` | `/api/viagens` | Listar todas as viagens | `-` |
-| `POST` | `/api/viagens` | Criar nova viagem | `{"rota": "Centro ↔ Campus", "horarioSaida": "07:00", "motoristaId": 1}` |
-| `GET` | `/api/viagens/{id}` | Detalhes da viagem | `-` |
-| `PUT` | `/api/viagens/{id}` | Atualizar viagem | `{"horarioChegada": "08:30"}` |
-| `PUT` | `/api/mensalidades/{id}` | Atualizar mensalidade | `{"status": "PAGO", "dataPagamento": "2024-01-15"}` |
-| `GET` | `/api/mensalidades/aluno/{id}` | Mensalidades do aluno | `-` |
+| Método | Endpoint | Descrição | Body (Exemplo) |<br>
+|--------|----------|-----------|----------------|<br>
+| `GET` | `/api/alunos` | Listar todos os alunos | `-` |<br>
+| `POST` | `/api/alunos` | Cadastrar novo aluno | `{"nome": "João Silva", "email": "joao@email.com", "matricula": "2024001"}` |<br>
+| `GET` | `/api/alunos/{id}` | Buscar aluno por ID | `-` |<br>
+| `PUT` | `/api/alunos/{id}` | Atualizar dados do aluno | `{"telefone": "11999999999", "curso": "Engenharia"}` |<br>
+| `DELETE` | `/api/alunos/{id}` | Exclusão lógica do aluno | `-` |<br>
+| `GET` | `/api/viagens` | Listar todas as viagens | `-` |<br>
+| `POST` | `/api/viagens` | Criar nova viagem | `{"rota": "Centro ↔ Campus", "horarioSaida": "07:00", "motoristaId": 1}` |<br>
+| `GET` | `/api/viagens/{id}` | Detalhes da viagem | `-` |<br>
+| `PUT` | `/api/viagens/{id}` | Atualizar viagem | `{"horarioChegada": "08:30"}` |<br>
+| `PUT` | `/api/mensalidades/{id}` | Atualizar mensalidade | `{"status": "PAGO", "dataPagamento": "2024-01-15"}` |<br>
+| `GET` | `/api/mensalidades/aluno/{id}` | Mensalidades do aluno | `-` |<br>
 
 ### 📋 Exemplo de Requisição Completa
 **POST /api/alunos**
@@ -354,15 +354,15 @@ Postman	10.0+	Testes de API	⚠️ Opcional
 <div align="center">
 
 ### ✅ **Versões Testadas e Validadas**
-┌─────────────────────────────────────────────────┐
-│ VERSÕES OFICIALMENTE TESTADAS │
-├─────────────────────────────────────────────────┤
-│ • Java: 17, 21 │
-│ • Spring Boot: 3.1.5, 3.2.0 │
-│ • MySQL: 8.0, 8.2 │
-│ • MariaDB: 10.6, 10.11 │
-│ • Maven: 3.8.6, 3.9.6 │
-└─────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────┐<br>
+│ VERSÕES OFICIALMENTE TESTADAS                   │<br>
+├─────────────────────────────────────────────────┤<br>
+│ • Java: 17, 21                                  │<br>
+│ • Spring Boot: 3.1.5, 3.2.0                     │<br>
+│ • MySQL: 8.0, 8.2                               │<br>
+│ • MariaDB: 10.6, 10.11                          │<br>
+│ • Maven: 3.8.6, 3.9.6                           │<br>
+└─────────────────────────────────────────────────┘<br>
 
 text
 
@@ -395,7 +395,7 @@ Nota: A aplicação foi testada e validada com as versões especificadas acima. 
 
 <h2>👨‍💻 Autor</h2>
  
-🎓 Denver<br>
+<h3>🎓 Denver<br></h3>
 <p align="center">Desenvolvedor Full-Stack & Acadêmico</p>
 <p align="center"> Projeto desenvolvido como parte da evolução acadêmica e do Trabalho de Conclusão de Curso (TCC). </p><div align="center"> <a href="mailto:denver.o.dev@gmail.com"> <img src="https://img.shields.io/badge/📧_Email-D14836?style=for-the-badge&logo=gmail&logoColor=white&labelColor=555555"/> </a> <a href="https://github.com/Denvx"> <img src="https://img.shields.io/badge/🐙_GitHub-100000?style=for-the-badge&logo=github&logoColor=white&labelColor=555555"/> </a> <a href="https://linkedin.com/in/seu-linkedin"> <img src="https://img.shields.io/badge/💼_LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=555555"/> </a>
 <div align="center">
