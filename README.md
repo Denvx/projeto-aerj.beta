@@ -304,17 +304,17 @@ bash
 
 | Método | Endpoint | Descrição | Body (Exemplo) |<br>
 |--------|----------|-----------|----------------|<br>
-| `GET` | `/api/alunos` | Listar todos os alunos | `-` |<br>
-| `POST` | `/api/alunos` | Cadastrar novo aluno | `{"nome": "João Silva", "email": "joao@email.com", "matricula": "2024001"}` |<br>
-| `GET` | `/api/alunos/{id}` | Buscar aluno por ID | `-` |<br>
-| `PUT` | `/api/alunos/{id}` | Atualizar dados do aluno | `{"telefone": "11999999999", "curso": "Engenharia"}` |<br>
-| `DELETE` | `/api/alunos/{id}` | Exclusão lógica do aluno | `-` |<br>
-| `GET` | `/api/viagens` | Listar todas as viagens | `-` |<br>
-| `POST` | `/api/viagens` | Criar nova viagem | `{"rota": "Centro ↔ Campus", "horarioSaida": "07:00", "motoristaId": 1}` |<br>
-| `GET` | `/api/viagens/{id}` | Detalhes da viagem | `-` |<br>
-| `PUT` | `/api/viagens/{id}` | Atualizar viagem | `{"horarioChegada": "08:30"}` |<br>
-| `PUT` | `/api/mensalidades/{id}` | Atualizar mensalidade | `{"status": "PAGO", "dataPagamento": "2024-01-15"}` |<br>
-| `GET` | `/api/mensalidades/aluno/{id}` | Mensalidades do aluno | `-` |<br>
+| `GET` | `/api/v4/alunos` | Listar todos os alunos | `-` |<br>
+| `POST` | `/api/v4/alunos` | Cadastrar novo aluno | `{"nome": "João Silva", "email": "joao@email.com", "matricula": "2024001"}` |<br>
+| `GET` | `/api/v4/alunos/{id}` | Buscar aluno por ID | `-` |<br>
+| `PUT` | `/api/v4/alunos/{id}` | Atualizar dados do aluno | `{"telefone": "11999999999", "curso": "Engenharia"}` |<br>
+| `DELETE` | `/api/v4/alunos/{id}` | Exclusão lógica do aluno | `-` |<br>
+| `GET` | `/api/v4/viagens` | Listar todas as viagens | `-` |<br>
+| `POST` | `/api/v4/viagens` | Criar nova viagem | `{"rota": "Centro ↔ Campus", "horarioSaida": "07:00", "motoristaId": 1}` |<br>
+| `GET` | `/api/v4/viagens/{id}` | Detalhes da viagem | `-` |<br>
+| `PUT` | `/api/v4/viagens/{id}` | Atualizar viagem | `{"horarioChegada": "08:30"}` |<br>
+| `PUT` | `/api/v4/mensalidades/{id}` | Atualizar mensalidade | `{"status": "PAGO", "dataPagamento": "2024-01-15"}` |<br>
+| `GET` | `/api/v4/mensalidades/aluno/{id}` | Mensalidades do aluno | `-` |<br>
 
 ### 📋 Exemplo de Requisição Completa
 **POST /api/alunos**
