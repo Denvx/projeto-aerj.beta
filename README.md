@@ -241,11 +241,34 @@ Tabela N:N contendo presença e observações.
 
 ▶️ Como Usar o Projeto
 1. Clonar o Repositório
- •	**RF01**: O Wearable deve medir sinais vitais como: SpO2, Frequência Cardíaca e Temperatura Corporal.
-    •	**RF02**: O Wearable deve lidar com os dados dos sensores, realizando todas as etapas de cálculos e tratamento dos dados coletados possibilitados pelos limites do microcontrolador usado.
-    •	**RF03**: O Wearable deve ser capaz de enviar sua identidade junto com os sinais aferidos para ser associado à referência do paciente no sistema (ex: nome ou código).
-    •	**RF04**: O Wearable deve enviar um pacote de dados já minimamente tratados (contendo os sinais vitais mensurados e a referência do paciente) para o software desktop em intervalos de tempo pré-definidos.
-
+bash
 git clone https://github.com/seu-usuario/aerj-sistema.git
 cd aerj-sistema
+2. Configurar o Banco
+Edite o arquivo:
 
+text
+src/main/resources/application.properties
+3. Importar no IntelliJ ou Eclipse
+4. Executar
+bash
+./mvnw spring-boot:run
+5. Testar no Postman
+Exemplos:
+
+GET /api/alunos
+
+POST /api/viagens
+
+PUT /api/mensalidades/{id}
+
+🧰 Requisitos
+<p align="center"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="50"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="50"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="50"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="50"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="50"/> </p>
+Tecnologia	Versão mínima
+Java	17+
+Spring Boot	3.x
+MySQL	5.7+
+MariaDB	10.2+
+Maven	3.8+
+👤 Autor
+<p align="center"> <strong>Denver</strong> </p><p align="center"> Projeto desenvolvido como parte da evolução acadêmica e do TCC. </p><p align="center"> <a href="mailto:denver.o.dev@gmail.com"> <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/> </a> <a href="https://github.com/Denvx"> <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/> </a> </p><p align="center"> Encontrou algum problema? Abra uma <a href="https://github.com/Denvx/aerj-sistema/issues">issue</a> </p><p align="center"> <strong>AERJ Sistema</strong> © 2024 | Desenvolvido por Denver </p> ```
