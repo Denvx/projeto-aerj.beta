@@ -3,7 +3,6 @@ package com.example.projeto_aerj.beta.applications;
 import com.example.projeto_aerj.beta.entities.vehicles.VehiclesEntitie;
 import com.example.projeto_aerj.beta.interfaces.VehicleRepository;
 import com.example.projeto_aerj.beta.models.Vehicle;
-import com.example.projeto_aerj.beta.repository.LogRepositoryJPA;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;

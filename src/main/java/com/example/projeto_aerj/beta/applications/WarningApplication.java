@@ -1,6 +1,5 @@
 package com.example.projeto_aerj.beta.applications;
 
-import com.example.projeto_aerj.beta.entities.auditLog.LogEntitie;
 import com.example.projeto_aerj.beta.entities.notification.WarningsEntitie;
 import com.example.projeto_aerj.beta.interfaces.WarningRepository;
 import com.example.projeto_aerj.beta.models.Warning;

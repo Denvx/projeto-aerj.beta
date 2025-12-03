@@ -7,7 +7,6 @@ import com.example.projeto_aerj.beta.valueObjects.CPFValue;
 import com.example.projeto_aerj.beta.valueObjects.EmailValue;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

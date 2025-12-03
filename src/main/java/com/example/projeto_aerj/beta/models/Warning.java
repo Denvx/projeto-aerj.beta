@@ -29,7 +29,8 @@ public class Warning {
     public Warning() {
     }
 
-    public Warning(String titulo, String mensagem, LocalDateTime dataEnvio, int studentId, Student student) {
+    public Warning(int id, String titulo, String mensagem, LocalDateTime dataEnvio, int studentId, Student student) {
+        this.id = id;
         this.titulo = titulo;
         this.mensagem = mensagem;
         this.dataEnvio = dataEnvio;

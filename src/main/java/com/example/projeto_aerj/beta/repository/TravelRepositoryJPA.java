@@ -38,6 +38,7 @@ public class TravelRepositoryJPA implements TravelsRepository {
 
     @Override
     public void toUpdate(int id, Travel travel) {
+        travel.setId(id);
         this.travelJPA.save(travel);
     }
 }

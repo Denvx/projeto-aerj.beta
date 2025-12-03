@@ -2,7 +2,6 @@ package com.example.projeto_aerj.beta.applications;
 
 import com.example.projeto_aerj.beta.entities.travels.TravelsEntitie;
 import com.example.projeto_aerj.beta.interfaces.TravelsRepository;
-import com.example.projeto_aerj.beta.models.Log;
 import com.example.projeto_aerj.beta.models.Travel;
 import com.example.projeto_aerj.beta.repository.LogRepositoryJPA;
 import org.springframework.stereotype.Service;
@@ -44,6 +43,6 @@ public class TravelApplication {
 
     public void toUpdate(int id, TravelsEntitie travelsEntitie) {
         Travel travel = travelsEntitie.toModel();
-        this.travelsRepository.toUpdate(id,travel);
+        this.travelsRepository.toUpdate(id, travel);
     }
 }
