@@ -2,7 +2,6 @@ package com.example.projeto_aerj.beta.entities.travels;
 
 import com.example.projeto_aerj.beta.models.Routes;
 import com.example.projeto_aerj.beta.models.Travel;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
