@@ -2,7 +2,6 @@ package com.example.projeto_aerj.beta.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,7 @@ public class Routes {
     private LocalDateTime dataCriacao;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "routes", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
     private List<Travel> travels = new ArrayList<>();
 
     public Routes() {

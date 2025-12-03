@@ -20,7 +20,7 @@ public class Travel {
     private int veiculoId;
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
-    @JoinColumn(name = "veiculo_id", insertable = false, updatable = false)
+    @JoinColumn(name = "veiculo_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Vehicle veiculo;
 
     @Column(name = "rota_id")
@@ -28,18 +28,18 @@ public class Travel {
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     @JoinColumn(name = "rota_id", referencedColumnName = "id",insertable = false, updatable = false)
-    private Routes routes;
+    private Routes route;
 
     public Travel() {
     }
 
-    public Travel(int id, LocalDateTime dataViagem, int veiculoId, Vehicle veiculo, int rotaId, Routes routes) {
+    public Travel(int id, LocalDateTime dataViagem, int veiculoId, Vehicle veiculo, int rotaId, Routes route) {
         this.id = id;
         this.dataViagem = dataViagem;
         this.veiculoId = veiculoId;
         this.veiculo = veiculo;
         this.rotaId = rotaId;
-        this.routes = routes;
+        this.route = route;
     }
 
     public int getId() {
@@ -83,10 +83,10 @@ public class Travel {
     }
 
     public Routes getRoutes() {
-        return routes;
+        return route;
     }
 
-    public void setRoutes(Routes routes) {
-        this.routes = routes;
+    public void setRoutes(Routes route) {
+        this.route = route;
     }
 }

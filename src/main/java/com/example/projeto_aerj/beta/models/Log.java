@@ -2,7 +2,6 @@ package com.example.projeto_aerj.beta.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
 @Entity
